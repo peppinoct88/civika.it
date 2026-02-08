@@ -80,7 +80,7 @@ export default async function BlogArticlePage({
       url: "https://civika.it",
       logo: {
         "@type": "ImageObject",
-        url: "https://civika.it/logo-civika-new.svg",
+        url: "https://civika.it/logo-civika-white.svg",
         width: 200,
         height: 50,
       },

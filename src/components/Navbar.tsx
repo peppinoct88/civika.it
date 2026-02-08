@@ -86,7 +86,7 @@ export default function Navbar() {
       <div className="max-w-[1200px] mx-auto px-8 flex items-center justify-between">
         <Link href="/" className="flex items-center no-underline">
           <img
-            src="/logo-civika-new.svg"
+            src="/logo-civika-white.svg"
             alt="CIVIKA — Comunicazione Istituzionale per Comuni Siciliani"
             className="h-[36px] w-auto"
           />

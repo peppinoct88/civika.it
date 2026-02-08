@@ -89,7 +89,7 @@ export default function RootLayout({
     name: "CIVIKA",
     legalName: "CIVIKA SRL",
     url: "https://civika.it",
-    logo: "https://civika.it/logo-civika-new.svg",
+    logo: "https://civika.it/logo-civika-white.svg",
     description:
       "Comunicazione istituzionale, eventi professionali e bandi europei per i Comuni siciliani.",
     address: {
@@ -128,7 +128,7 @@ export default function RootLayout({
     publisher: {
       "@type": "Organization",
       name: "CIVIKA",
-      logo: "https://civika.it/logo-civika-new.svg",
+      logo: "https://civika.it/logo-civika-white.svg",
     },
     inLanguage: "it",
     potentialAction: {
@@ -144,6 +144,9 @@ export default function RootLayout({
         <meta name="theme-color" content="#0F1F33" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

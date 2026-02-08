@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="flex justify-between items-center flex-wrap gap-5 mb-8">
           <Link href="/" className="flex items-center no-underline">
             <img
-              src="/logo-civika-new.svg"
+              src="/logo-civika-white.svg"
               alt="CIVIKA — Comunicazione Istituzionale per Comuni Siciliani"
               className="h-[28px] w-auto"
             />

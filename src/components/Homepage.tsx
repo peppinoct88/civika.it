@@ -532,7 +532,7 @@ export default function Homepage() {
         <div className="max-w-[1200px] mx-auto px-8 flex items-center justify-between">
           <a href="#" className="flex items-center no-underline">
             <img
-              src="/logo-civika-new.svg"
+              src="/logo-civika-white.svg"
               alt="CIVIKA — Comunicazione Istituzionale per Comuni Siciliani"
               className="h-[36px] w-auto"
             />
@@ -810,7 +810,7 @@ export default function Homepage() {
             transition={{ duration: 1, ease: EASE, type: "spring", stiffness: 200 }}
           >
             <img
-              src="/logo-civika-new.svg"
+              src="/logo-civika-white.svg"
               alt="CIVIKA — Comunicazione Istituzionale per Comuni Siciliani"
               className="h-[60px] w-auto mx-auto drop-shadow-[0_8px_24px_rgba(212,160,60,0.35)]"
             />
@@ -1430,7 +1430,7 @@ export default function Homepage() {
           <div className="flex justify-between items-center flex-wrap gap-5 mb-8">
             <a href="/" className="flex items-center no-underline">
               <img
-                src="/logo-civika-new.svg"
+                src="/logo-civika-white.svg"
                 alt="CIVIKA — Comunicazione Istituzionale per Comuni Siciliani"
                 className="h-[28px] w-auto"
               />

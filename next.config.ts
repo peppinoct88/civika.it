@@ -19,6 +19,7 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
   compress: true,
   trailingSlash: false,
+  poweredByHeader: false,
   images: {
     formats: ["image/avif", "image/webp"],
   },
@@ -30,6 +31,24 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/(.*)\\.(jpg|jpeg|png|gif|ico|svg|webp|avif|woff|woff2)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/(.*)\\.(js|css)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/(.*)\\.(mp4|webm)",
         headers: [
           {
             key: "Cache-Control",
