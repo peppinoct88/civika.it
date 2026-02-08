@@ -26,6 +26,7 @@ export default function Footer() {
             { label: "Servizi", href: "/#servizi" },
             { label: "Blog", href: "/blog" },
             { label: "Contatti", href: "/contatti" },
+            { label: "Privacy Policy", href: "/privacy-policy" },
           ].map(({ label, href }) => (
             <Link
               key={label}

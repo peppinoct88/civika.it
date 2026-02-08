@@ -1454,6 +1454,7 @@ export default function Homepage() {
               ["Servizi", "#servizi"],
               ["Blog", "/blog"],
               ["Contatti", "/contatti"],
+              ["Privacy Policy", "/privacy-policy"],
             ].map(([label, href]) => (
               <a
                 key={label}
