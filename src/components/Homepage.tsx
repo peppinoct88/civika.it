@@ -13,6 +13,7 @@ import {
 } from "framer-motion";
 import Lenis from "lenis";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 /* ═══════════════════════════════════════════════
    CONSTANTS
@@ -1383,44 +1384,7 @@ export default function Homepage() {
       </Section>
 
       {/* ══════════ FOOTER ══════════ */}
-      <footer className="bg-[#070E18] px-8 py-12 border-t border-white/[0.04]">
-        <div className="max-w-[1000px] mx-auto">
-          <div className="flex justify-between items-center flex-wrap gap-5 mb-8">
-            <a href="/" className="flex items-center no-underline">
-              <img
-                src="/logo-civika-white.svg"
-                alt="CIVIKA — Comunicazione Istituzionale per Comuni Siciliani"
-                width={84}
-                height={28}
-                className="h-[28px] w-auto"
-              />
-            </a>
-            <div className="text-[13px] text-white/60">
-              La Regia per Eventi e Comunicazione Istituzionale
-            </div>
-            <div className="text-xs text-white/60">&copy; CIVIKA SRL 2026</div>
-          </div>
-          <div className="flex gap-8 flex-wrap justify-center border-t border-white/[0.06] pt-6">
-            {[
-              ["Home", "/"],
-              ["Chi Siamo", "/chi-siamo"],
-              ["Servizi", "#servizi"],
-              ["Blog", "/blog"],
-              ["Contatti", "/contatti"],
-              ["Privacy Policy", "/privacy-policy"],
-              ["Cookie Policy", "/cookie-policy"],
-            ].map(([label, href]) => (
-              <a
-                key={label}
-                href={href}
-                className="text-white/60 no-underline text-xs hover:text-[#D4A03C] transition-colors duration-300"
-              >
-                {label}
-              </a>
-            ))}
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
