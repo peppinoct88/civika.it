@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "CIVIKA: comunicazione istituzionale, eventi e bandi europei per i Comuni siciliani. Sito web AGID, social media e rassegna stampa.",
   alternates: {
-    canonical: "https://civika.it",
+    canonical: "https://www.civika.it",
   },
 };
 

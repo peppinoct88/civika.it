@@ -10,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://civika.it"),
+  metadataBase: new URL("https://www.civika.it"),
   title: {
     default: "CIVIKA — Comunicazione e Eventi per Comuni Siciliani",
     template: "%s",
@@ -30,13 +30,13 @@ export const metadata: Metadata = {
     "comunicazione PA sicilia",
     "CIVIKA",
   ],
-  authors: [{ name: "CIVIKA SRL", url: "https://civika.it" }],
+  authors: [{ name: "CIVIKA SRL", url: "https://www.civika.it" }],
   creator: "CIVIKA SRL",
   publisher: "CIVIKA SRL",
   openGraph: {
     type: "website",
     locale: "it_IT",
-    url: "https://civika.it",
+    url: "https://www.civika.it",
     siteName: "CIVIKA",
     title: "CIVIKA — Comunicazione e Eventi per Comuni Siciliani",
     description:
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://civika.it",
+    canonical: "https://www.civika.it",
   },
   verification: {
     // Add your Google Search Console verification code here
@@ -89,8 +89,8 @@ export default function RootLayout({
     "@type": "Organization",
     name: "CIVIKA",
     legalName: "CIVIKA SRL",
-    url: "https://civika.it",
-    logo: "https://civika.it/logo-civika-white.svg",
+    url: "https://www.civika.it",
+    logo: "https://www.civika.it/logo-civika-white.svg",
     description:
       "Comunicazione istituzionale, eventi professionali e bandi europei per i Comuni siciliani.",
     address: {
@@ -123,18 +123,18 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "CIVIKA",
-    url: "https://civika.it",
+    url: "https://www.civika.it",
     description:
       "CIVIKA — Il partner unico per la comunicazione istituzionale dei Comuni siciliani.",
     publisher: {
       "@type": "Organization",
       name: "CIVIKA",
-      logo: "https://civika.it/logo-civika-white.svg",
+      logo: "https://www.civika.it/logo-civika-white.svg",
     },
     inLanguage: "it",
     potentialAction: {
       "@type": "SearchAction",
-      target: "https://civika.it/blog?q={search_term_string}",
+      target: "https://www.civika.it/blog?q={search_term_string}",
       "query-input": "required name=search_term_string",
     },
   };

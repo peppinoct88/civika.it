@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { blogPosts } from "@/data/blog-posts";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://civika.it";
+  const baseUrl = "https://www.civika.it";
 
   /* Static pages — use real last-modified dates */
   const staticPages: MetadataRoute.Sitemap = [

@@ -27,13 +27,13 @@ export async function generateMetadata({
       type: "article",
       locale: "it_IT",
       siteName: "CIVIKA",
-      url: `https://civika.it/blog/${post.slug}`,
+      url: `https://www.civika.it/blog/${post.slug}`,
       publishedTime: post.date,
       authors: ["CIVIKA"],
       tags: [post.category, "Comunicazione Istituzionale", "Comuni Siciliani"],
       images: [
         {
-          url: "https://civika.it/og-image.png",
+          url: "https://www.civika.it/og-image.png",
           width: 1200,
           height: 630,
           alt: post.title,
@@ -44,10 +44,10 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: post.metaTitle,
       description: post.metaDescription,
-      images: ["https://civika.it/og-image.png"],
+      images: ["https://www.civika.it/og-image.png"],
     },
     alternates: {
-      canonical: `https://civika.it/blog/${post.slug}`,
+      canonical: `https://www.civika.it/blog/${post.slug}`,
     },
   };
 }
@@ -72,24 +72,24 @@ export default async function BlogArticlePage({
     author: {
       "@type": "Organization",
       name: "CIVIKA",
-      url: "https://civika.it",
+      url: "https://www.civika.it",
     },
     publisher: {
       "@type": "Organization",
       name: "CIVIKA",
-      url: "https://civika.it",
+      url: "https://www.civika.it",
       logo: {
         "@type": "ImageObject",
-        url: "https://civika.it/logo-civika-white.svg",
+        url: "https://www.civika.it/logo-civika-white.svg",
         width: 200,
         height: 50,
       },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://civika.it/blog/${post.slug}`,
+      "@id": `https://www.civika.it/blog/${post.slug}`,
     },
-    image: "https://civika.it/og-image.png",
+    image: "https://www.civika.it/og-image.png",
     articleSection: post.category,
     wordCount: post.content.split(/\s+/).length,
     inLanguage: "it",
@@ -104,19 +104,19 @@ export default async function BlogArticlePage({
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://civika.it",
+        item: "https://www.civika.it",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Blog",
-        item: "https://civika.it/blog",
+        item: "https://www.civika.it/blog",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: post.title,
-        item: `https://civika.it/blog/${post.slug}`,
+        item: `https://www.civika.it/blog/${post.slug}`,
       },
     ],
   };

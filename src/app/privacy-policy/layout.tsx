@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     images: ["/og-image.png"],
   },
   alternates: {
-    canonical: "https://civika.it/privacy-policy",
+    canonical: "https://www.civika.it/privacy-policy",
   },
   robots: {
     index: true,

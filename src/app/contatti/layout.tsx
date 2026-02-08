@@ -11,10 +11,10 @@ export const metadata: Metadata = {
     type: "website",
     locale: "it_IT",
     siteName: "CIVIKA",
-    url: "https://civika.it/contatti",
+    url: "https://www.civika.it/contatti",
     images: [
       {
-        url: "https://civika.it/og-image.png",
+        url: "https://www.civika.it/og-image.png",
         width: 1200,
         height: 630,
         alt: "CIVIKA — Contatti",
@@ -26,10 +26,10 @@ export const metadata: Metadata = {
     title: "Contatti — Parliamo del Vostro Comune | CIVIKA",
     description:
       "Contatta CIVIKA per un incontro gratuito sulla comunicazione del tuo Comune.",
-    images: ["https://civika.it/og-image.png"],
+    images: ["https://www.civika.it/og-image.png"],
   },
   alternates: {
-    canonical: "https://civika.it/contatti",
+    canonical: "https://www.civika.it/contatti",
   },
 };
 

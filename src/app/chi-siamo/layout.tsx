@@ -11,10 +11,10 @@ export const metadata: Metadata = {
     type: "website",
     locale: "it_IT",
     siteName: "CIVIKA",
-    url: "https://civika.it/chi-siamo",
+    url: "https://www.civika.it/chi-siamo",
     images: [
       {
-        url: "https://civika.it/og-image.png",
+        url: "https://www.civika.it/og-image.png",
         width: 1200,
         height: 630,
         alt: "CIVIKA — Chi Siamo",
@@ -26,10 +26,10 @@ export const metadata: Metadata = {
     title: "Chi Siamo | Team Comunicazione Comuni — CIVIKA",
     description:
       "Il team CIVIKA: professionisti della comunicazione istituzionale per i Comuni siciliani.",
-    images: ["https://civika.it/og-image.png"],
+    images: ["https://www.civika.it/og-image.png"],
   },
   alternates: {
-    canonical: "https://civika.it/chi-siamo",
+    canonical: "https://www.civika.it/chi-siamo",
   },
 };
 
