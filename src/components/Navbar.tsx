@@ -20,29 +20,17 @@ const LEGAL_LINKS = [
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isHidden, setIsHidden] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const lastScrollY = useRef(0);
 
   /* ── Scroll detection ── */
   useEffect(() => {
     const handleScroll = () => {
-      const currentY = window.scrollY;
-      setIsScrolled(currentY > 100);
-
-      /* Hide on scroll-down, show on scroll-up */
-      if (currentY > lastScrollY.current && currentY > 100 && !isMenuOpen) {
-        setIsHidden(true);
-      } else {
-        setIsHidden(false);
-      }
-
-      lastScrollY.current = currentY;
+      setIsScrolled(window.scrollY > 100);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isMenuOpen]);
+  }, []);
 
   /* ── Lock body scroll when menu is open ── */
   useEffect(() => {
@@ -56,9 +44,7 @@ export default function Navbar() {
     <>
       {/* ══════════ HEADER ══════════ */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-1000 ease-out ${
-          isHidden && !isMenuOpen ? "-translate-y-[150%]" : "translate-y-0"
-        }`}
+        className="fixed top-0 left-0 right-0 z-50"
       >
         {/* ── Pill background ── */}
         <div
