@@ -64,13 +64,16 @@ export default function Navbar() {
         <div
           className={`absolute left-1/2 -translate-x-1/2 rounded-full pointer-events-none transition-all duration-1000 ease-out ${
             isScrolled
-              ? "top-3 h-[52px] w-[320px] md:w-[460px] opacity-100 shadow-2xl"
-              : "top-8 h-[60px] w-[92%] max-w-[1200px] opacity-0"
+              ? "top-3 h-[56px] w-[340px] md:w-[480px] opacity-100 shadow-2xl shadow-[#070E18]/60"
+              : "top-8 h-[64px] w-[92%] max-w-[1200px] opacity-0"
           }`}
           style={{
             background: isScrolled
-              ? "linear-gradient(90deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%)"
+              ? "linear-gradient(135deg, #070E18 0%, #0F1F33 50%, #070E18 100%)"
               : "transparent",
+            borderWidth: isScrolled ? "1px" : "0px",
+            borderColor: "rgba(212, 160, 60, 0.12)",
+            borderStyle: "solid",
           }}
         />
 
@@ -78,7 +81,7 @@ export default function Navbar() {
         <nav
           className={`relative z-10 mx-auto flex items-center justify-between transition-all duration-1000 ease-out ${
             isScrolled
-              ? "mt-3 max-w-[280px] md:max-w-[420px] px-6 py-2.5"
+              ? "mt-3 max-w-[300px] md:max-w-[440px] px-7 py-2.5"
               : "mt-8 max-w-[1200px] px-8 py-3"
           }`}
         >
@@ -90,7 +93,7 @@ export default function Navbar() {
               width={108}
               height={36}
               className={`w-auto transition-all duration-1000 ease-out ${
-                isScrolled ? "h-[22px]" : "h-[36px]"
+                isScrolled ? "h-[28px]" : "h-[42px]"
               }`}
             />
           </Link>
