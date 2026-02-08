@@ -149,7 +149,7 @@ export default function ContattiPage() {
                         required
                         value={formData.nome}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#F7F5F0] text-[#0F1F33] text-sm focus:border-[#D4A03C] focus:ring-1 focus:ring-[#D4A03C]/30 outline-none transition-all"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#F7F5F0] text-[#0F1F33] text-base focus:border-[#D4A03C] focus:ring-1 focus:ring-[#D4A03C]/30 outline-none transition-all"
                         placeholder="Mario Rossi"
                       />
                     </div>
@@ -164,7 +164,7 @@ export default function ContattiPage() {
                         required
                         value={formData.comune}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#F7F5F0] text-[#0F1F33] text-sm focus:border-[#D4A03C] focus:ring-1 focus:ring-[#D4A03C]/30 outline-none transition-all"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#F7F5F0] text-[#0F1F33] text-base focus:border-[#D4A03C] focus:ring-1 focus:ring-[#D4A03C]/30 outline-none transition-all"
                         placeholder="Comune di..."
                       />
                     </div>
@@ -181,7 +181,7 @@ export default function ContattiPage() {
                         name="ruolo"
                         value={formData.ruolo}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#F7F5F0] text-[#0F1F33] text-sm focus:border-[#D4A03C] focus:ring-1 focus:ring-[#D4A03C]/30 outline-none transition-all"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#F7F5F0] text-[#0F1F33] text-base focus:border-[#D4A03C] focus:ring-1 focus:ring-[#D4A03C]/30 outline-none transition-all"
                         placeholder="Sindaco, Assessore, Segretario..."
                       />
                     </div>
@@ -194,7 +194,7 @@ export default function ContattiPage() {
                         name="servizio"
                         value={formData.servizio}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#F7F5F0] text-[#0F1F33] text-sm focus:border-[#D4A03C] focus:ring-1 focus:ring-[#D4A03C]/30 outline-none transition-all"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#F7F5F0] text-[#0F1F33] text-base focus:border-[#D4A03C] focus:ring-1 focus:ring-[#D4A03C]/30 outline-none transition-all"
                       >
                         <option value="">Seleziona...</option>
                         <option value="comunicazione">Comunicazione integrata</option>
@@ -219,7 +219,7 @@ export default function ContattiPage() {
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#F7F5F0] text-[#0F1F33] text-sm focus:border-[#D4A03C] focus:ring-1 focus:ring-[#D4A03C]/30 outline-none transition-all"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#F7F5F0] text-[#0F1F33] text-base focus:border-[#D4A03C] focus:ring-1 focus:ring-[#D4A03C]/30 outline-none transition-all"
                         placeholder="email@comune.it"
                       />
                     </div>
@@ -233,7 +233,7 @@ export default function ContattiPage() {
                         name="telefono"
                         value={formData.telefono}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#F7F5F0] text-[#0F1F33] text-sm focus:border-[#D4A03C] focus:ring-1 focus:ring-[#D4A03C]/30 outline-none transition-all"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#F7F5F0] text-[#0F1F33] text-base focus:border-[#D4A03C] focus:ring-1 focus:ring-[#D4A03C]/30 outline-none transition-all"
                         placeholder="+39..."
                       />
                     </div>
@@ -249,14 +249,14 @@ export default function ContattiPage() {
                       rows={4}
                       value={formData.messaggio}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#F7F5F0] text-[#0F1F33] text-sm focus:border-[#D4A03C] focus:ring-1 focus:ring-[#D4A03C]/30 outline-none transition-all resize-none"
+                      className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#F7F5F0] text-[#0F1F33] text-base focus:border-[#D4A03C] focus:ring-1 focus:ring-[#D4A03C]/30 outline-none transition-all resize-none"
                       placeholder="Raccontateci le vostre esigenze..."
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full bg-gradient-to-br from-[#D4A03C] to-[#E8C06A] text-white py-4 rounded-xl font-bold text-base shadow-lg shadow-[#D4A03C]/20 hover:shadow-xl hover:shadow-[#D4A03C]/30 transition-all duration-300 cursor-pointer"
+                    className="w-full bg-gradient-to-br from-[#D4A03C] to-[#E8C06A] text-[#0F1F33] py-4 rounded-xl font-bold text-base shadow-lg shadow-[#D4A03C]/20 hover:shadow-xl hover:shadow-[#D4A03C]/30 transition-all duration-300 cursor-pointer"
                   >
                     Invia richiesta
                   </button>
@@ -351,7 +351,7 @@ export default function ContattiPage() {
                 ].map((faq, i) => (
                   <div key={i} className={i < 2 ? "mb-4 pb-4 border-b border-white/10" : ""}>
                     <div className="text-sm font-semibold text-white mb-1">{faq.q}</div>
-                    <div className="text-xs text-white/50 leading-relaxed">{faq.a}</div>
+                    <div className="text-xs text-white/70 leading-relaxed">{faq.a}</div>
                   </div>
                 ))}
               </motion.div>

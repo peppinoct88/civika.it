@@ -9,13 +9,15 @@ export default function Footer() {
             <img
               src="/logo-civika-white.svg"
               alt="CIVIKA — Comunicazione Istituzionale per Comuni Siciliani"
+              width={84}
+              height={28}
               className="h-[28px] w-auto"
             />
           </Link>
-          <div className="text-[13px] text-white/30">
+          <div className="text-[13px] text-white/60">
             La Regia per Eventi e Comunicazione Istituzionale
           </div>
-          <div className="text-xs text-white/20">&copy; CIVIKA SRL 2026</div>
+          <div className="text-xs text-white/60">&copy; CIVIKA SRL 2026</div>
         </div>
         <nav aria-label="Footer navigation" className="flex gap-8 flex-wrap justify-center border-t border-white/[0.06] pt-6">
           {[
@@ -28,7 +30,7 @@ export default function Footer() {
             <Link
               key={label}
               href={href}
-              className="text-white/25 no-underline text-xs hover:text-[#D4A03C] transition-colors duration-300"
+              className="text-white/60 no-underline text-xs hover:text-[#D4A03C] transition-colors duration-300"
             >
               {label}
             </Link>

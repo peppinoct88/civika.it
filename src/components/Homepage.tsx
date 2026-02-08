@@ -476,13 +476,13 @@ export default function Homepage() {
   // Cinematic hero sequence
   useEffect(() => {
     const timers = [
-      setTimeout(() => setCurtainDone(true), 800),
-      setTimeout(() => setHeroSequence(1), 1200),
-      setTimeout(() => setHeroSequence(2), 1600),
-      setTimeout(() => setHeroSequence(3), 2800),
-      setTimeout(() => setHeroSequence(4), 3600),
-      setTimeout(() => setHeroSequence(5), 4200),
-      setTimeout(() => setHeroSequence(6), 5000),
+      setTimeout(() => setCurtainDone(true), 300),
+      setTimeout(() => setHeroSequence(1), 350),
+      setTimeout(() => setHeroSequence(2), 400),
+      setTimeout(() => setHeroSequence(3), 1100),
+      setTimeout(() => setHeroSequence(4), 1500),
+      setTimeout(() => setHeroSequence(5), 1900),
+      setTimeout(() => setHeroSequence(6), 2400),
     ];
     return () => timers.forEach(clearTimeout);
   }, []);
@@ -534,6 +534,8 @@ export default function Homepage() {
             <img
               src="/logo-civika-white.svg"
               alt="CIVIKA — Comunicazione Istituzionale per Comuni Siciliani"
+              width={108}
+              height={36}
               className="h-[36px] w-auto"
             />
           </a>
@@ -554,7 +556,7 @@ export default function Homepage() {
             ))}
             <MagneticButton
               href="/contatti"
-              className="inline-block no-underline bg-[#D4A03C] text-white px-7 py-2.5 rounded-[10px] font-bold text-sm shadow-lg shadow-[#D4A03C]/30"
+              className="inline-block no-underline bg-[#D4A03C] text-[#0F1F33] px-7 py-2.5 rounded-[10px] font-bold text-sm shadow-lg shadow-[#D4A03C]/30"
             >
               Parliamone
             </MagneticButton>
@@ -599,6 +601,7 @@ export default function Homepage() {
             loop
             playsInline
             preload="metadata"
+            poster="/og-image.png"
             title="CIVIKA — Comunicazione Istituzionale per Comuni Siciliani"
             className="absolute inset-0 w-full h-full object-cover"
           >
@@ -652,7 +655,7 @@ export default function Homepage() {
 
           {/* Subtitle */}
           <motion.p
-            className="text-[clamp(17px,2vw,21px)] text-white/60 max-w-[600px] mx-auto mb-13 leading-relaxed font-light"
+            className="text-[clamp(17px,2vw,21px)] text-white/75 max-w-[600px] mx-auto mb-13 leading-relaxed font-light"
             initial={{ opacity: 0, y: 30 }}
             animate={heroSequence >= 4 ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 1, ease: EASE }}
@@ -676,7 +679,7 @@ export default function Homepage() {
               />
               <MagneticButton
                 href="#contatti"
-                className="relative inline-block no-underline bg-gradient-to-br from-[#D4A03C] to-[#E8C06A] text-white px-10 py-4.5 rounded-[14px] font-bold text-base shadow-xl shadow-[#D4A03C]/30 overflow-hidden"
+                className="relative inline-block no-underline bg-gradient-to-br from-[#D4A03C] to-[#E8C06A] text-[#0F1F33] px-10 py-4.5 rounded-[14px] font-bold text-base shadow-xl shadow-[#D4A03C]/30 overflow-hidden"
               >
                 Parliamo del vostro Comune
               </MagneticButton>
@@ -723,7 +726,7 @@ export default function Homepage() {
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-4 whitespace-nowrap">
                     <span className="text-[32px] font-black text-[#D4A03C]">{item.n}</span>
-                    <span className="text-[13px] text-white/40 font-medium">{item.l}</span>
+                    <span className="text-[13px] text-white/70 font-medium">{item.l}</span>
                     <span className="text-white/10 text-xl">◆</span>
                   </div>
                 ))}
@@ -744,8 +747,8 @@ export default function Homepage() {
                   { n: "350", l: "senza ufficio comunicazione" },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-4 whitespace-nowrap">
-                    <span className="text-[28px] font-black text-white/20">{item.n}</span>
-                    <span className="text-[12px] text-white/25 font-medium">{item.l}</span>
+                    <span className="text-[28px] font-black text-white/60">{item.n}</span>
+                    <span className="text-[12px] text-white/60 font-medium">{item.l}</span>
                     <span className="text-[#D4A03C]/20 text-lg">◆</span>
                   </div>
                 ))}
@@ -812,6 +815,8 @@ export default function Homepage() {
             <img
               src="/logo-civika-white.svg"
               alt="CIVIKA — Comunicazione Istituzionale per Comuni Siciliani"
+              width={180}
+              height={60}
               className="h-[60px] w-auto mx-auto drop-shadow-[0_8px_24px_rgba(212,160,60,0.35)]"
             />
           </motion.div>
@@ -1086,7 +1091,7 @@ export default function Homepage() {
                   <div className="text-4xl mb-5 relative z-[1]">{svc.icon}</div>
                   <h3 className="text-lg font-bold text-white mb-4 relative z-[1]">{svc.title}</h3>
                   {svc.items.map((item, j) => (
-                    <div key={j} className="text-sm text-white/55 py-1.5 flex items-center gap-2.5 relative z-[1]">
+                    <div key={j} className="text-sm text-white/70 py-1.5 flex items-center gap-2.5 relative z-[1]">
                       <span className="text-[#D4A03C] text-[8px]">●</span> {item}
                     </div>
                   ))}
@@ -1304,7 +1309,7 @@ export default function Homepage() {
                   <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" style={{ background: "radial-gradient(circle at 50% 100%, rgba(212,160,60,0.1) 0%, transparent 60%)" }} />
                   <div className="text-4xl mb-4 relative z-[1]">{item.icon}</div>
                   <h3 className="text-lg font-bold text-white mb-2.5 relative z-[1]">{item.title}</h3>
-                  <p className="text-sm text-white/55 leading-relaxed relative z-[1]">{item.desc}</p>
+                  <p className="text-sm text-white/70 leading-relaxed relative z-[1]">{item.desc}</p>
                 </TiltCard>
               </motion.div>
             ))}
@@ -1377,13 +1382,13 @@ export default function Homepage() {
             <GrowLine color="bg-[#D4A03C]" />
           </motion.div>
           <motion.p
-            className="text-lg text-white/65 max-w-[500px] mx-auto mt-7 mb-3 leading-relaxed font-light"
+            className="text-lg text-white/75 max-w-[500px] mx-auto mt-7 mb-3 leading-relaxed font-light"
             {...fadeUp(0.7)}
           >
             Il primo passo è una conversazione. Nessun impegno, nessun contratto. Ci sediamo
             con voi, ascoltiamo, e vi proponiamo un piano su misura.
           </motion.p>
-          <motion.p className="text-sm text-white/40 mb-14" {...fadeUp(0.9)}>
+          <motion.p className="text-sm text-white/70 mb-14" {...fadeUp(0.9)}>
             Vi rispondiamo entro 24 ore. Il primo incontro è sempre gratuito.
           </motion.p>
 
@@ -1399,7 +1404,7 @@ export default function Homepage() {
                   <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: "radial-gradient(circle at 50% 50%, rgba(212,160,60,0.08) 0%, transparent 60%)" }} />
                   <div className="text-3xl mb-2.5 relative z-[1]">{c.icon}</div>
                   <div className="text-[15px] font-bold text-white mb-1 relative z-[1]">{c.label}</div>
-                  <div className="text-[13px] text-white/45 relative z-[1]">{c.desc}</div>
+                  <div className="text-[13px] text-white/70 relative z-[1]">{c.desc}</div>
                 </TiltCard>
               </motion.div>
             ))}
@@ -1415,7 +1420,7 @@ export default function Homepage() {
               />
               <MagneticButton
                 href="mailto:info@civika.it"
-                className="relative inline-block no-underline bg-gradient-to-br from-[#D4A03C] to-[#E8C06A] text-white px-14 py-5 rounded-2xl font-bold text-lg shadow-xl shadow-[#D4A03C]/30 overflow-hidden"
+                className="relative inline-block no-underline bg-gradient-to-br from-[#D4A03C] to-[#E8C06A] text-[#0F1F33] px-14 py-5 rounded-2xl font-bold text-lg shadow-xl shadow-[#D4A03C]/30 overflow-hidden"
               >
                 Contattaci ora
               </MagneticButton>
@@ -1432,13 +1437,15 @@ export default function Homepage() {
               <img
                 src="/logo-civika-white.svg"
                 alt="CIVIKA — Comunicazione Istituzionale per Comuni Siciliani"
+                width={84}
+                height={28}
                 className="h-[28px] w-auto"
               />
             </a>
-            <div className="text-[13px] text-white/30">
+            <div className="text-[13px] text-white/60">
               La Regia per Eventi e Comunicazione Istituzionale
             </div>
-            <div className="text-xs text-white/20">&copy; CIVIKA SRL 2026</div>
+            <div className="text-xs text-white/60">&copy; CIVIKA SRL 2026</div>
           </div>
           <div className="flex gap-8 flex-wrap justify-center border-t border-white/[0.06] pt-6">
             {[
@@ -1451,7 +1458,7 @@ export default function Homepage() {
               <a
                 key={label}
                 href={href}
-                className="text-white/25 no-underline text-xs hover:text-[#D4A03C] transition-colors duration-300"
+                className="text-white/60 no-underline text-xs hover:text-[#D4A03C] transition-colors duration-300"
               >
                 {label}
               </a>

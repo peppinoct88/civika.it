@@ -202,7 +202,7 @@ export default function ChiSiamoPage() {
               >
                 <div className="text-4xl font-black text-[#D4A03C] mb-2">{stat.num}</div>
                 <div className="text-[15px] font-semibold text-white mb-1">{stat.label}</div>
-                <div className="text-xs text-white/40">{stat.sub}</div>
+                <div className="text-xs text-white/70">{stat.sub}</div>
               </motion.div>
             ))}
           </div>
@@ -269,13 +269,13 @@ export default function ChiSiamoPage() {
           <motion.div {...fadeUp(0.5)}>
             <GrowLine color="bg-[#D4A03C]" />
           </motion.div>
-          <motion.p className="text-white/50 mt-6 mb-10 text-lg font-light" {...fadeUp(0.6)}>
+          <motion.p className="text-white/70 mt-6 mb-10 text-lg font-light" {...fadeUp(0.6)}>
             Il primo incontro è sempre gratuito e senza impegno.
           </motion.p>
           <motion.div {...fadeUp(0.8)}>
             <a
               href="/contatti"
-              className="inline-block no-underline bg-gradient-to-br from-[#D4A03C] to-[#E8C06A] text-white px-12 py-4.5 rounded-2xl font-bold text-lg shadow-xl shadow-[#D4A03C]/30 hover:shadow-2xl hover:shadow-[#D4A03C]/40 transition-shadow duration-500"
+              className="inline-block no-underline bg-gradient-to-br from-[#D4A03C] to-[#E8C06A] text-[#0F1F33] px-12 py-4.5 rounded-2xl font-bold text-lg shadow-xl shadow-[#D4A03C]/30 hover:shadow-2xl hover:shadow-[#D4A03C]/40 transition-shadow duration-500"
             >
               Contattaci
             </a>

@@ -192,13 +192,13 @@ export default function BlogPage() {
           <motion.div {...fadeUp(0.5)}>
             <GrowLine color="bg-[#D4A03C]" />
           </motion.div>
-          <motion.p className="text-white/50 mt-6 mb-10 text-lg font-light" {...fadeUp(0.6)}>
+          <motion.p className="text-white/70 mt-6 mb-10 text-lg font-light" {...fadeUp(0.6)}>
             Contattaci per ricevere i nostri approfondimenti sulla comunicazione istituzionale.
           </motion.p>
           <motion.div {...fadeUp(0.8)}>
             <Link
               href="/contatti"
-              className="inline-block no-underline bg-gradient-to-br from-[#D4A03C] to-[#E8C06A] text-white px-12 py-4.5 rounded-2xl font-bold text-lg shadow-xl shadow-[#D4A03C]/30 hover:shadow-2xl hover:shadow-[#D4A03C]/40 transition-shadow duration-500"
+              className="inline-block no-underline bg-gradient-to-br from-[#D4A03C] to-[#E8C06A] text-[#0F1F33] px-12 py-4.5 rounded-2xl font-bold text-lg shadow-xl shadow-[#D4A03C]/30 hover:shadow-2xl hover:shadow-[#D4A03C]/40 transition-shadow duration-500"
             >
               Contattaci
             </Link>

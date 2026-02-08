@@ -88,6 +88,8 @@ export default function Navbar() {
           <img
             src="/logo-civika-white.svg"
             alt="CIVIKA — Comunicazione Istituzionale per Comuni Siciliani"
+            width={108}
+            height={36}
             className="h-[36px] w-auto"
           />
         </Link>
@@ -104,7 +106,7 @@ export default function Navbar() {
           <MagneticButton
             href="/contatti"
             isLink
-            className="inline-block no-underline bg-[#D4A03C] text-white px-7 py-2.5 rounded-[10px] font-bold text-sm shadow-lg shadow-[#D4A03C]/30"
+            className="inline-block no-underline bg-[#D4A03C] text-[#0F1F33] px-7 py-2.5 rounded-[10px] font-bold text-sm shadow-lg shadow-[#D4A03C]/30"
           >
             Parliamone
           </MagneticButton>

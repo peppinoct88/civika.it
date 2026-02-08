@@ -118,11 +118,11 @@ export default function BlogArticleClient({ post }: { post: BlogPost }) {
           <motion.div className="flex items-center justify-center gap-3 mb-6" {...fadeUp(0.1)}>
             <Link
               href="/blog"
-              className="text-white/40 text-sm no-underline hover:text-[#D4A03C] transition-colors"
+              className="text-white/70 text-sm no-underline hover:text-[#D4A03C] transition-colors"
             >
               &larr; Blog
             </Link>
-            <span className="text-white/20">|</span>
+            <span className="text-white/60">|</span>
             <span className={`px-3 py-1 rounded-full text-[11px] font-bold tracking-wide ${CATEGORY_COLORS[post.category] || "bg-white/10 text-white/60"}`}>
               {post.category}
             </span>
@@ -133,7 +133,7 @@ export default function BlogArticleClient({ post }: { post: BlogPost }) {
           <motion.div {...fadeUp(0.6)}>
             <GrowLine color="bg-[#D4A03C]" />
           </motion.div>
-          <motion.div className="flex items-center justify-center gap-5 mt-6 text-white/40 text-sm" {...fadeUp(0.7)}>
+          <motion.div className="flex items-center justify-center gap-5 mt-6 text-white/70 text-sm" {...fadeUp(0.7)}>
             <time dateTime={post.date}>{formatDate(post.date)}</time>
             <span>&middot;</span>
             <span>{post.readTime} min di lettura</span>
@@ -161,7 +161,7 @@ export default function BlogArticleClient({ post }: { post: BlogPost }) {
           </Link>
           <Link
             href="/contatti"
-            className="inline-block no-underline bg-gradient-to-br from-[#D4A03C] to-[#E8C06A] text-white px-8 py-3.5 rounded-xl font-bold text-sm shadow-lg shadow-[#D4A03C]/20 hover:shadow-xl hover:shadow-[#D4A03C]/30 transition-all duration-300"
+            className="inline-block no-underline bg-gradient-to-br from-[#D4A03C] to-[#E8C06A] text-[#0F1F33] px-8 py-3.5 rounded-xl font-bold text-sm shadow-lg shadow-[#D4A03C]/20 hover:shadow-xl hover:shadow-[#D4A03C]/30 transition-all duration-300"
           >
             Parliamo del vostro Comune
           </Link>
