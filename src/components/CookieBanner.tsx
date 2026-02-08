@@ -52,6 +52,13 @@ export default function CookieBanner() {
               Non utilizziamo cookie di profilazione.
               Continuando la navigazione accetti l&apos;utilizzo dei cookie tecnici.{" "}
               <a
+                href="/cookie-policy"
+                className="text-[#E8C06A] underline underline-offset-2 hover:text-[#D4A03C] transition-colors"
+              >
+                Cookie Policy
+              </a>
+              {" · "}
+              <a
                 href="/privacy-policy"
                 className="text-[#E8C06A] underline underline-offset-2 hover:text-[#D4A03C] transition-colors"
               >

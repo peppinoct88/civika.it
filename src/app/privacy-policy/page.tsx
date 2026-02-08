@@ -183,6 +183,10 @@ export default function PrivacyPolicyPage() {
                 di marketing, né strumenti di tracciamento come Google Analytics o
                 Facebook Pixel.
               </p>
+              <p>
+                Per informazioni dettagliate sui cookie utilizzati, consulta la nostra{" "}
+                <a href="/cookie-policy" className="text-[#D4A03C] underline underline-offset-2 hover:text-[#1B3A5C] transition-colors">Cookie Policy</a>.
+              </p>
             </PolicySection>
 
             <PolicySection title="6. Servizi di terze parti" delay={0.35}>
