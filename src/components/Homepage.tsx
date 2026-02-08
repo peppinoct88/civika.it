@@ -12,6 +12,7 @@ import {
   useSpring,
 } from "framer-motion";
 import Lenis from "lenis";
+import Navbar from "./Navbar";
 
 /* ═══════════════════════════════════════════════
    CONSTANTS
@@ -432,7 +433,6 @@ function Section({
    ═══════════════════════════════════════════════ */
 
 export default function Homepage() {
-  const [scrolled, setScrolled] = useState(false);
   const [curtainDone, setCurtainDone] = useState(false);
   const [heroSequence, setHeroSequence] = useState(0);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -452,13 +452,6 @@ export default function Homepage() {
     requestAnimationFrame(raf);
 
     return () => lenis.destroy();
-  }, []);
-
-  // Scroll detection for navbar
-  useEffect(() => {
-    const h = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", h, { passive: true });
-    return () => window.removeEventListener("scroll", h);
   }, []);
 
   // Mouse tracking for parallax orbs
@@ -522,47 +515,7 @@ export default function Homepage() {
       <ScrollProgress />
 
       {/* ══════════ NAVBAR ══════════ */}
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
-          scrolled
-            ? "bg-[#0F1F33]/95 backdrop-blur-xl py-3.5 border-b border-white/5"
-            : "bg-transparent py-6"
-        }`}
-      >
-        <div className="max-w-[1200px] mx-auto px-8 flex items-center justify-between">
-          <a href="#" className="flex items-center no-underline">
-            <img
-              src="/logo-civika-white.svg"
-              alt="CIVIKA — Comunicazione Istituzionale per Comuni Siciliani"
-              width={108}
-              height={36}
-              className="h-[36px] w-auto"
-            />
-          </a>
-          <div className="flex gap-9 items-center">
-            {[
-              ["Chi Siamo", "/chi-siamo"],
-              ["Servizi", "#servizi"],
-              ["Blog", "/blog"],
-              ["Contatti", "/contatti"],
-            ].map(([label, href]) => (
-              <a
-                key={label}
-                href={href}
-                className="text-white/70 no-underline text-sm font-medium tracking-wide hover:text-[#D4A03C] transition-colors duration-300"
-              >
-                {label}
-              </a>
-            ))}
-            <MagneticButton
-              href="/contatti"
-              className="inline-block no-underline bg-[#D4A03C] text-[#0F1F33] px-7 py-2.5 rounded-[10px] font-bold text-sm shadow-lg shadow-[#D4A03C]/30"
-            >
-              Parliamone
-            </MagneticButton>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* ══════════ CURTAIN REVEAL ══════════ */}
       <AnimatePresence>

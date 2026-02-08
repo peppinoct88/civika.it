@@ -1,63 +1,10 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
-function MagneticButton({
-  children,
-  href = "#",
-  className = "",
-  isLink = false,
-}: {
-  children: React.ReactNode;
-  href?: string;
-  className?: string;
-  isLink?: boolean;
-}) {
-  const ref = useRef<HTMLAnchorElement>(null);
-  const [pos, setPos] = useState({ x: 0, y: 0 });
-
-  const handleMove = (e: React.MouseEvent) => {
-    if (!ref.current) return;
-    const rect = ref.current.getBoundingClientRect();
-    setPos({
-      x: (e.clientX - rect.left - rect.width / 2) * 0.2,
-      y: (e.clientY - rect.top - rect.height / 2) * 0.2,
-    });
-  };
-
-  if (isLink) {
-    return (
-      <motion.div
-        animate={{ x: pos.x, y: pos.y }}
-        whileHover={{ scale: 1.06 }}
-        transition={{ type: "spring", stiffness: 300, damping: 20 }}
-        onMouseMove={handleMove}
-        onMouseLeave={() => setPos({ x: 0, y: 0 })}
-      >
-        <Link href={href} className={className}>
-          {children}
-        </Link>
-      </motion.div>
-    );
-  }
-
-  return (
-    <motion.a
-      ref={ref}
-      href={href}
-      className={className}
-      onMouseMove={handleMove}
-      onMouseLeave={() => setPos({ x: 0, y: 0 })}
-      animate={{ x: pos.x, y: pos.y }}
-      whileHover={{ scale: 1.06 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-    >
-      {children}
-    </motion.a>
-  );
-}
+const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 const NAV_LINKS = [
   { label: "Chi Siamo", href: "/chi-siamo" },
@@ -66,52 +13,196 @@ const NAV_LINKS = [
   { label: "Contatti", href: "/contatti" },
 ];
 
-export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
+const LEGAL_LINKS = [
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Cookie Policy", href: "/cookie-policy" },
+];
 
+export default function Navbar() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const lastScrollY = useRef(0);
+
+  /* ── Scroll detection ── */
   useEffect(() => {
-    const h = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", h, { passive: true });
-    return () => window.removeEventListener("scroll", h);
-  }, []);
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+      setIsScrolled(currentY > 100);
+
+      /* Hide on scroll-down, show on scroll-up */
+      if (currentY > lastScrollY.current && currentY > 100 && !isMenuOpen) {
+        setIsHidden(true);
+      } else {
+        setIsHidden(false);
+      }
+
+      lastScrollY.current = currentY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isMenuOpen]);
+
+  /* ── Lock body scroll when menu is open ── */
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
-        scrolled
-          ? "bg-[#0F1F33]/95 backdrop-blur-xl py-3.5 border-b border-white/5"
-          : "bg-transparent py-6"
-      }`}
-    >
-      <div className="max-w-[1200px] mx-auto px-8 flex items-center justify-between">
-        <Link href="/" className="flex items-center no-underline">
-          <img
-            src="/logo-civika-white.svg"
-            alt="CIVIKA — Comunicazione Istituzionale per Comuni Siciliani"
-            width={108}
-            height={36}
-            className="h-[36px] w-auto"
-          />
-        </Link>
-        <div className="flex gap-9 items-center">
-          {NAV_LINKS.map(({ label, href }) => (
-            <Link
-              key={label}
-              href={href}
-              className="text-white/70 no-underline text-sm font-medium tracking-wide hover:text-[#D4A03C] transition-colors duration-300"
-            >
-              {label}
-            </Link>
-          ))}
-          <MagneticButton
-            href="/contatti"
-            isLink
-            className="inline-block no-underline bg-[#D4A03C] text-[#0F1F33] px-7 py-2.5 rounded-[10px] font-bold text-sm shadow-lg shadow-[#D4A03C]/30"
+    <>
+      {/* ══════════ HEADER ══════════ */}
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-1000 ease-out ${
+          isHidden && !isMenuOpen ? "-translate-y-[150%]" : "translate-y-0"
+        }`}
+      >
+        {/* ── Pill background ── */}
+        <div
+          className={`absolute left-1/2 -translate-x-1/2 rounded-full pointer-events-none transition-all duration-1000 ease-out ${
+            isScrolled
+              ? "top-3 h-[52px] w-[320px] md:w-[460px] opacity-100 shadow-2xl"
+              : "top-8 h-[60px] w-[92%] max-w-[1200px] opacity-0"
+          }`}
+          style={{
+            background: isScrolled
+              ? "linear-gradient(90deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%)"
+              : "transparent",
+          }}
+        />
+
+        {/* ── Nav content ── */}
+        <nav
+          className={`relative z-10 mx-auto flex items-center justify-between transition-all duration-1000 ease-out ${
+            isScrolled
+              ? "mt-3 max-w-[280px] md:max-w-[420px] px-6 py-2.5"
+              : "mt-8 max-w-[1200px] px-8 py-3"
+          }`}
+        >
+          {/* Logo */}
+          <Link href="/" className="flex items-center no-underline">
+            <img
+              src="/logo-civika-white.svg"
+              alt="CIVIKA"
+              width={108}
+              height={36}
+              className={`w-auto transition-all duration-1000 ease-out ${
+                isScrolled ? "h-[22px]" : "h-[36px]"
+              }`}
+            />
+          </Link>
+
+          {/* Hamburger */}
+          <button
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+            className="relative z-10 w-10 h-10 flex flex-col items-center justify-center gap-[6px] cursor-pointer group"
+            aria-label={isMenuOpen ? "Chiudi menu" : "Apri menu"}
+            aria-expanded={isMenuOpen}
           >
-            Parliamone
-          </MagneticButton>
-        </div>
-      </div>
-    </nav>
+            <span
+              className={`block h-[2px] bg-white rounded-full transition-all duration-500 ease-out origin-center ${
+                isMenuOpen
+                  ? "w-6 rotate-45 translate-y-[8px]"
+                  : "w-6 group-hover:w-5"
+              }`}
+            />
+            <span
+              className={`block h-[2px] w-4 bg-white rounded-full transition-all duration-500 ease-out ${
+                isMenuOpen ? "opacity-0 scale-x-0" : "group-hover:w-6"
+              }`}
+            />
+            <span
+              className={`block h-[2px] bg-white rounded-full transition-all duration-500 ease-out origin-center ${
+                isMenuOpen
+                  ? "w-6 -rotate-45 -translate-y-[8px]"
+                  : "w-6 group-hover:w-4"
+              }`}
+            />
+          </button>
+        </nav>
+      </header>
+
+      {/* ══════════ FULLSCREEN MENU ══════════ */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            className="fixed inset-0 z-40 bg-[#070E18]/[0.97] backdrop-blur-2xl flex flex-col items-center justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6, ease: EASE }}
+          >
+            {/* Main links */}
+            <nav className="flex flex-col items-center gap-5 md:gap-7">
+              {NAV_LINKS.map((link, i) => (
+                <motion.div
+                  key={link.label}
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: 0.05 + i * 0.07,
+                    ease: EASE,
+                  }}
+                >
+                  <Link
+                    href={link.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="text-white text-[clamp(30px,6vw,52px)] font-black no-underline hover:text-[#D4A03C] transition-colors duration-300"
+                  >
+                    {link.label}
+                  </Link>
+                </motion.div>
+              ))}
+
+              {/* CTA */}
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.05 + NAV_LINKS.length * 0.07,
+                  ease: EASE,
+                }}
+                className="mt-6"
+              >
+                <Link
+                  href="/contatti"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="inline-block no-underline bg-[#D4A03C] text-[#0F1F33] px-10 py-4 rounded-full font-bold text-lg hover:bg-[#E8C06A] transition-colors duration-300 shadow-lg shadow-[#D4A03C]/25"
+                >
+                  Parliamone
+                </Link>
+              </motion.div>
+            </nav>
+
+            {/* Legal links — bottom */}
+            <motion.div
+              className="absolute bottom-10 flex gap-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.6, delay: 0.5, ease: EASE }}
+            >
+              {LEGAL_LINKS.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="text-white/50 text-xs no-underline hover:text-[#D4A03C] transition-colors duration-300"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
