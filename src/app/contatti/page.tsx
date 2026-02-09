@@ -3,6 +3,7 @@
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import PageShell from "@/components/PageShell";
+import { trackLead } from "@/lib/meta-events";
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
@@ -76,6 +77,13 @@ export default function ContattiPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // Track lead event via Meta Pixel + Conversions API
+    trackLead({
+      email: formData.email,
+      phone: formData.telefono,
+      firstName: formData.nome.split(" ")[0],
+      lastName: formData.nome.split(" ").slice(1).join(" "),
+    });
     // In production, this would send to an API
     setSubmitted(true);
   };
