@@ -22,7 +22,9 @@ function hashSHA256(value: string): string {
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
+    /* Support both fetch (application/json) and sendBeacon (text/plain) */
+    const rawText = await request.text();
+    const body = JSON.parse(rawText);
     const {
       event_name,
       event_source_url,

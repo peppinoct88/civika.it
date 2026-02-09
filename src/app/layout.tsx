@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import CookieBanner from "@/components/CookieBanner";
 import ServerPageView from "@/components/ServerPageView";
+import EventTracker from "@/components/EventTracker";
 import "./globals.css";
 
 const inter = Inter({
@@ -181,6 +182,7 @@ export default function RootLayout({
       <body className={`${inter.variable} font-sans antialiased`} suppressHydrationWarning>
         {children}
         <ServerPageView />
+        <EventTracker />
         <CookieBanner />
       </body>
     </html>
