@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import CookieBanner from "@/components/CookieBanner";
+import ServerPageView from "@/components/ServerPageView";
 import "./globals.css";
 
 const inter = Inter({
@@ -148,17 +149,17 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-        {/* Google Analytics */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-K0JZPPYSG4" />
+        {/* Google Analytics — first-party proxy */}
+        <script async src="/api/t/ga" />
         <script
           dangerouslySetInnerHTML={{
-            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-K0JZPPYSG4');`,
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-K0JZPPYSG4',{send_page_view:true,cookie_flags:'SameSite=None;Secure'});`,
           }}
         />
-        {/* Meta Pixel */}
+        {/* Meta Pixel — first-party proxy */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','887486544068900');fbq('track','PageView');`,
+            __html: `!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','/api/t/fb');fbq('init','887486544068900');fbq('track','PageView');`,
           }}
         />
         <noscript>
@@ -179,6 +180,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} font-sans antialiased`} suppressHydrationWarning>
         {children}
+        <ServerPageView />
         <CookieBanner />
       </body>
     </html>
