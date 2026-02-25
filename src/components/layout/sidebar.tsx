@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { cn } from "@/lib/utils";
 import {
   LayoutDashboard,
   Users,
@@ -14,26 +13,22 @@ import {
   Search,
   ChevronLeft,
   ChevronRight,
+  Sparkles,
 } from "lucide-react";
 
 interface NavItem {
   label: string;
   href: string;
   icon: React.ComponentType<{ className?: string }>;
-  requiredPermission?: string;
 }
 
 const navigation: NavItem[] = [
   { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
-  { label: "Utenti", href: "/dashboard/users", icon: Users, requiredPermission: "users.read" },
-  { label: "Contenuti", href: "/dashboard/contents", icon: FileText, requiredPermission: "contents.read" },
-  { label: "Analytics", href: "/dashboard/analytics", icon: BarChart3, requiredPermission: "analytics.read" },
-  { label: "Audit Log", href: "/dashboard/audit", icon: ScrollText, requiredPermission: "audit_logs.read" },
+  { label: "Utenti", href: "/dashboard/users", icon: Users },
+  { label: "Contenuti", href: "/dashboard/contents", icon: FileText },
+  { label: "Analytics", href: "/dashboard/analytics", icon: BarChart3 },
+  { label: "Audit Log", href: "/dashboard/audit", icon: ScrollText },
   { label: "Impostazioni", href: "/dashboard/settings", icon: Settings },
-];
-
-const futureNavigation: NavItem[] = [
-  { label: "Scouting Bandi", href: "/dashboard/bandi", icon: Search, requiredPermission: "bandi.search" },
 ];
 
 export function Sidebar() {
@@ -42,74 +37,102 @@ export function Sidebar() {
 
   return (
     <aside
-      className={cn(
-        "fixed left-0 top-0 z-40 flex h-screen flex-col border-r border-[var(--border)] bg-[var(--surface)] transition-all duration-300",
-        collapsed ? "w-16" : "w-60"
-      )}
+      className={`fixed left-0 top-0 z-40 flex h-screen flex-col bg-[#0A1628] transition-all duration-300 ${
+        collapsed ? "w-[72px]" : "w-[260px]"
+      }`}
     >
-      {/* Logo */}
-      <div className="flex h-16 items-center border-b border-[var(--border)] px-4">
+      {/* ── Logo ── */}
+      <div className="flex h-[72px] items-center px-5">
         <Link href="/dashboard" className="flex items-center gap-3">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-500 text-sm font-bold text-white">
-            C
-          </div>
-          {!collapsed && (
-            <span className="text-lg font-bold text-primary-700">Civika</span>
-          )}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo-civika-white.svg"
+            alt="CIVIKA"
+            className={`transition-all duration-300 ${collapsed ? "h-7" : "h-8"}`}
+          />
         </Link>
       </div>
 
-      {/* Navigation */}
-      <nav className="flex-1 space-y-1 overflow-y-auto p-3">
+      {/* ── Separator ── */}
+      <div className="mx-4 h-px bg-gradient-to-r from-transparent via-[#1B3A5C]/40 to-transparent" />
+
+      {/* ── Navigation ── */}
+      <nav className="flex-1 space-y-1 overflow-y-auto px-3 py-4">
+        <p className={`mb-2 px-3 text-[10px] font-semibold uppercase tracking-[0.15em] text-[#4A6A8A] ${collapsed ? "hidden" : ""}`}>
+          Gestione
+        </p>
         {navigation.map((item) => {
           const isActive =
-            pathname === item.href || pathname.startsWith(item.href + "/");
+            pathname === item.href ||
+            (item.href !== "/dashboard" && pathname.startsWith(item.href + "/"));
           return (
             <Link
               key={item.href}
               href={item.href}
-              className={cn(
-                "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
+              className={`group relative flex items-center gap-3 rounded-xl px-3 py-2.5 text-[13px] font-medium transition-all duration-200 ${
+                collapsed ? "justify-center" : ""
+              } ${
                 isActive
-                  ? "bg-primary-50 text-primary-700"
-                  : "text-[var(--muted)] hover:bg-[var(--surface-2)] hover:text-[var(--foreground)]",
-                collapsed && "justify-center px-2"
-              )}
+                  ? "bg-[#D4A03C]/10 text-[#E8C06A]"
+                  : "text-[#6B8AAD] hover:bg-white/[0.04] hover:text-[#A0BED8]"
+              }`}
               title={collapsed ? item.label : undefined}
             >
-              <item.icon className={cn("h-5 w-5 shrink-0", isActive && "text-primary-500")} />
+              {isActive && (
+                <div className="absolute left-0 top-1/2 h-5 w-[3px] -translate-y-1/2 rounded-r-full bg-[#D4A03C]" />
+              )}
+              <item.icon
+                className={`h-[18px] w-[18px] shrink-0 transition-colors ${
+                  isActive ? "text-[#D4A03C]" : "text-[#4A6A8A] group-hover:text-[#8AACCC]"
+                }`}
+              />
               {!collapsed && <span>{item.label}</span>}
             </Link>
           );
         })}
 
-        {/* Separatore futuro */}
-        <div className="my-4 border-t border-[var(--border)]" />
-        {!collapsed && (
-          <p className="px-3 text-xs font-semibold uppercase tracking-wider text-[var(--muted-foreground)]">
-            Prossimamente
-          </p>
-        )}
-        {futureNavigation.map((item) => (
-          <div
-            key={item.href}
-            className={cn(
-              "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-[var(--muted-foreground)] opacity-50 cursor-not-allowed",
-              collapsed && "justify-center px-2"
-            )}
-            title={collapsed ? `${item.label} (prossimamente)` : undefined}
-          >
-            <item.icon className="h-5 w-5 shrink-0" />
-            {!collapsed && <span>{item.label}</span>}
-          </div>
-        ))}
+        {/* ── Bandi section ── */}
+        <div className="mx-1 my-4 h-px bg-gradient-to-r from-transparent via-[#1B3A5C]/30 to-transparent" />
+        <p className={`mb-2 px-3 text-[10px] font-semibold uppercase tracking-[0.15em] text-[#4A6A8A] ${collapsed ? "hidden" : ""}`}>
+          Scouting
+        </p>
+        <Link
+          href="/dashboard/bandi"
+          className={`group relative flex items-center gap-3 rounded-xl px-3 py-2.5 text-[13px] font-medium transition-all duration-200 ${
+            collapsed ? "justify-center" : ""
+          } ${
+            pathname.startsWith("/dashboard/bandi")
+              ? "bg-[#D4A03C]/10 text-[#E8C06A]"
+              : "text-[#6B8AAD] hover:bg-white/[0.04] hover:text-[#A0BED8]"
+          }`}
+          title={collapsed ? "Scouting Bandi" : undefined}
+        >
+          {pathname.startsWith("/dashboard/bandi") && (
+            <div className="absolute left-0 top-1/2 h-5 w-[3px] -translate-y-1/2 rounded-r-full bg-[#D4A03C]" />
+          )}
+          <Search
+            className={`h-[18px] w-[18px] shrink-0 transition-colors ${
+              pathname.startsWith("/dashboard/bandi") ? "text-[#D4A03C]" : "text-[#4A6A8A] group-hover:text-[#8AACCC]"
+            }`}
+          />
+          {!collapsed && (
+            <>
+              <span>Scouting Bandi</span>
+              <span className="ml-auto flex items-center gap-1 rounded-md bg-[#D4A03C]/15 px-1.5 py-0.5 text-[10px] font-semibold text-[#D4A03C]">
+                <Sparkles className="h-2.5 w-2.5" />
+                AI
+              </span>
+            </>
+          )}
+        </Link>
       </nav>
 
-      {/* Collapse toggle */}
-      <div className="border-t border-[var(--border)] p-3">
+      {/* ── Collapse toggle ── */}
+      <div className="px-3 pb-4">
+        <div className="mx-1 mb-3 h-px bg-gradient-to-r from-transparent via-[#1B3A5C]/30 to-transparent" />
         <button
           onClick={() => setCollapsed(!collapsed)}
-          className="flex w-full items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm text-[var(--muted)] hover:bg-[var(--surface-2)] hover:text-[var(--foreground)] transition-colors"
+          className="flex w-full items-center justify-center gap-2 rounded-xl px-3 py-2 text-[13px] text-[#4A6A8A] hover:bg-white/[0.04] hover:text-[#8AACCC] transition-all"
         >
           {collapsed ? (
             <ChevronRight className="h-4 w-4" />

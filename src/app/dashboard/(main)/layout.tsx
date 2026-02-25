@@ -7,16 +7,10 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="dashboard min-h-screen">
-      {/* Sidebar */}
+    <div className="min-h-screen bg-[#0B1929]">
       <Sidebar />
-
-      {/* Main content area */}
-      <div className="pl-60 transition-all duration-300">
-        {/* Topbar */}
+      <div className="pl-[260px] transition-all duration-300">
         <Topbar />
-
-        {/* Page content */}
         <main className="p-6">{children}</main>
       </div>
     </div>
