@@ -68,14 +68,14 @@ export default function ChiSiamoPage() {
           >
             Chi Siamo
           </motion.span>
-          <h1 className="text-[clamp(34px,5vw,58px)] font-black text-white leading-[1.1] mb-6">
+          <h1 className="text-[clamp(22px,5vw,58px)] font-black text-white leading-[1.1] mb-6">
             <TextReveal text="La regia dietro la visibilità dei Comuni siciliani." delay={0.2} />
           </h1>
           <motion.div {...fadeUp(0.7)}>
             <GrowLine color="bg-[#D4A03C]" />
           </motion.div>
           <motion.p
-            className="text-[19px] text-white/60 max-w-[560px] mx-auto mt-7 leading-relaxed font-light"
+            className="text-[clamp(15px,3.5vw,19px)] text-white/60 max-w-[560px] mx-auto mt-7 leading-relaxed font-light"
             {...fadeUp(0.8)}
           >
             CIVIKA nasce da un&apos;idea semplice: ogni Comune siciliano merita di essere visto,
@@ -85,10 +85,10 @@ export default function ChiSiamoPage() {
       </header>
 
       {/* ══ LA NOSTRA STORIA ══ */}
-      <section className="bg-[#F7F5F0] py-28 px-8">
+      <section className="bg-[#F7F5F0] py-16 sm:py-28 px-4 sm:px-8">
         <div className="max-w-[900px] mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-[clamp(28px,3.5vw,44px)] font-black text-[#0F1F33] leading-tight">
+            <h2 className="text-[clamp(20px,3.5vw,44px)] font-black text-[#0F1F33] leading-tight">
               <TextReveal text="La nostra storia" />
             </h2>
             <motion.div className="mt-5" {...fadeUp(0.4)}>
@@ -118,10 +118,10 @@ export default function ChiSiamoPage() {
       </section>
 
       {/* ══ I NOSTRI VALORI ══ */}
-      <section className="bg-white py-28 px-8">
+      <section className="bg-white py-16 sm:py-28 px-4 sm:px-8">
         <div className="max-w-[1000px] mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-[clamp(28px,3.5vw,44px)] font-black text-[#0F1F33] leading-tight">
+            <h2 className="text-[clamp(20px,3.5vw,44px)] font-black text-[#0F1F33] leading-tight">
               <TextReveal text="I valori che ci guidano" />
             </h2>
             <motion.div className="mt-5" {...fadeUp(0.4)}>
@@ -164,11 +164,11 @@ export default function ChiSiamoPage() {
             ].map((value, i) => (
               <motion.div
                 key={i}
-                className="bg-[#F7F5F0] rounded-2xl p-8 border border-gray-200 group hover:border-[#D4A03C]/30 hover:shadow-lg transition-all duration-500"
+                className="bg-[#F7F5F0] rounded-2xl p-5 sm:p-8 border border-gray-200 group hover:border-[#D4A03C]/30 hover:shadow-lg transition-all duration-500"
                 {...scaleIn(0.1 * i)}
               >
-                <div className="text-4xl mb-4">{value.icon}</div>
-                <h3 className="text-[17px] font-bold text-[#0F1F33] mb-3">{value.title}</h3>
+                <div className="text-2xl sm:text-4xl mb-3 sm:mb-4">{value.icon}</div>
+                <h3 className="text-[15px] sm:text-[17px] font-bold text-[#0F1F33] mb-3">{value.title}</h3>
                 <p className="text-sm text-gray-500 leading-relaxed">{value.desc}</p>
               </motion.div>
             ))}
@@ -177,10 +177,10 @@ export default function ChiSiamoPage() {
       </section>
 
       {/* ══ NUMERI ══ */}
-      <section className="bg-gradient-to-br from-[#0F1F33] to-[#1B3A5C] py-28 px-8">
+      <section className="bg-gradient-to-br from-[#0F1F33] to-[#1B3A5C] py-16 sm:py-28 px-4 sm:px-8">
         <div className="max-w-[900px] mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-[clamp(28px,3.5vw,44px)] font-black text-white leading-tight">
+            <h2 className="text-[clamp(20px,3.5vw,44px)] font-black text-white leading-tight">
               <TextReveal text="CIVIKA in numeri" />
             </h2>
             <motion.div className="mt-5" {...fadeUp(0.4)}>
@@ -188,7 +188,7 @@ export default function ChiSiamoPage() {
             </motion.div>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
             {[
               { num: "391", label: "Comuni in Sicilia", sub: "Il nostro mercato" },
               { num: "100%", label: "Focus PA", sub: "Nessun cliente privato" },
@@ -197,10 +197,10 @@ export default function ChiSiamoPage() {
             ].map((stat, i) => (
               <motion.div
                 key={i}
-                className="bg-white/[0.04] rounded-2xl px-6 py-8 border border-white/[0.08] text-center backdrop-blur-sm"
+                className="bg-white/[0.04] rounded-2xl px-4 sm:px-6 py-5 sm:py-8 border border-white/[0.08] text-center backdrop-blur-sm"
                 {...scaleIn(0.12 * i)}
               >
-                <div className="text-4xl font-black text-[#D4A03C] mb-2">{stat.num}</div>
+                <div className="text-2xl sm:text-4xl font-black text-[#D4A03C] mb-2">{stat.num}</div>
                 <div className="text-[15px] font-semibold text-white mb-1">{stat.label}</div>
                 <div className="text-xs text-white/70">{stat.sub}</div>
               </motion.div>
@@ -210,10 +210,10 @@ export default function ChiSiamoPage() {
       </section>
 
       {/* ══ COME LAVORIAMO ══ */}
-      <section className="bg-white py-28 px-8">
+      <section className="bg-white py-16 sm:py-28 px-4 sm:px-8">
         <div className="max-w-[900px] mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-[clamp(28px,3.5vw,44px)] font-black text-[#0F1F33] leading-tight">
+            <h2 className="text-[clamp(20px,3.5vw,44px)] font-black text-[#0F1F33] leading-tight">
               <TextReveal text="Come lavoriamo con i Comuni" />
             </h2>
             <motion.div className="mt-5" {...fadeUp(0.4)}>
@@ -245,14 +245,14 @@ export default function ChiSiamoPage() {
           ].map((step, i) => (
             <motion.div
               key={i}
-              className={`flex gap-6 items-start ${i < 3 ? "mb-6" : ""}`}
+              className={`flex gap-3 sm:gap-6 items-start ${i < 3 ? "mb-6" : ""}`}
               {...fadeUp(0.1 + 0.1 * i)}
             >
-              <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#D4A03C] to-[#1B3A5C] flex items-center justify-center text-white font-extrabold text-sm shrink-0 shadow-lg">
+              <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-[#D4A03C] to-[#1B3A5C] flex items-center justify-center text-white font-extrabold text-sm shrink-0 shadow-lg">
                 {step.n}
               </div>
-              <div className="bg-[#F7F5F0] rounded-2xl px-7 py-5 flex-1 border border-gray-200 hover:border-[#D4A03C]/30 hover:shadow-lg transition-all duration-500">
-                <h3 className="text-[17px] font-bold text-[#0F1F33] mb-1.5">{step.title}</h3>
+              <div className="bg-[#F7F5F0] rounded-2xl px-4 sm:px-7 py-4 sm:py-5 flex-1 border border-gray-200 hover:border-[#D4A03C]/30 hover:shadow-lg transition-all duration-500">
+                <h3 className="text-[15px] sm:text-[17px] font-bold text-[#0F1F33] mb-1.5">{step.title}</h3>
                 <p className="text-sm text-gray-500 leading-relaxed">{step.desc}</p>
               </div>
             </motion.div>
@@ -261,9 +261,9 @@ export default function ChiSiamoPage() {
       </section>
 
       {/* ══ CTA ══ */}
-      <section className="bg-gradient-to-br from-[#070E18] to-[#1B3A5C] py-24 px-8 text-center">
+      <section className="bg-gradient-to-br from-[#070E18] to-[#1B3A5C] py-16 sm:py-28 px-4 sm:px-8 text-center">
         <div className="max-w-[600px] mx-auto">
-          <h2 className="text-[clamp(26px,3.5vw,40px)] font-black text-white leading-tight mb-4">
+          <h2 className="text-[clamp(20px,3.5vw,40px)] font-black text-white leading-tight mb-4">
             <TextReveal text="Pronti a far vedere il vostro Comune?" />
           </h2>
           <motion.div {...fadeUp(0.5)}>
@@ -275,7 +275,7 @@ export default function ChiSiamoPage() {
           <motion.div {...fadeUp(0.8)}>
             <a
               href="/contatti"
-              className="inline-block no-underline bg-gradient-to-br from-[#D4A03C] to-[#E8C06A] text-[#0F1F33] px-12 py-4.5 rounded-2xl font-bold text-lg shadow-xl shadow-[#D4A03C]/30 hover:shadow-2xl hover:shadow-[#D4A03C]/40 transition-shadow duration-500"
+              className="inline-block no-underline bg-gradient-to-br from-[#D4A03C] to-[#E8C06A] text-[#0F1F33] px-8 sm:px-12 py-3.5 sm:py-4.5 rounded-2xl font-bold text-base sm:text-lg shadow-xl shadow-[#D4A03C]/30 hover:shadow-2xl hover:shadow-[#D4A03C]/40 transition-shadow duration-500"
             >
               Contattaci
             </a>

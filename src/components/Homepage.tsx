@@ -569,7 +569,7 @@ export default function Homepage() {
         </motion.div>
 
 
-        <div className="max-w-[900px] mx-auto px-8 pt-36 pb-24 text-center relative z-10">
+        <div className="max-w-[900px] mx-auto px-4 sm:px-8 pt-24 sm:pt-36 pb-16 sm:pb-24 text-center relative z-10">
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
@@ -578,14 +578,14 @@ export default function Homepage() {
           >
             <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#D4A03C]/10 border border-[#D4A03C]/25 mb-10">
               <div className="w-1.5 h-1.5 rounded-full bg-[#D4A03C]" style={{ animation: "pulse-dot 2s ease infinite" }} />
-              <span className="text-[#E8C06A] text-[13px] font-semibold tracking-[1.5px] uppercase">
+              <span className="text-[#E8C06A] text-[11px] sm:text-[13px] font-semibold tracking-[0.5px] sm:tracking-[1.5px] uppercase">
                 La Regia per la Visibilità Istituzionale
               </span>
             </div>
           </motion.div>
 
           {/* Title Line 1 — char-by-char */}
-          <h1 className="text-[clamp(38px,5.5vw,68px)] font-black text-white leading-[1.1] mb-2 overflow-hidden">
+          <h1 className="text-[clamp(18px,5vw,68px)] font-black text-white leading-[1.1] mb-2 overflow-hidden">
             <CharReveal text="Il vostro Comune lavora." delay={0} stagger={0.03} started={heroSequence >= 2} />
           </h1>
 
@@ -599,7 +599,7 @@ export default function Homepage() {
 
           {/* Title Line 2 — gradient blur-to-sharp */}
           <motion.h1
-            className="text-[clamp(38px,5.5vw,68px)] font-black leading-[1.1] mb-8"
+            className="text-[clamp(18px,5vw,68px)] font-black leading-[1.1] mb-8"
             initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
             animate={heroSequence >= 3 ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
             transition={{ duration: 1, ease: EASE }}
@@ -609,7 +609,7 @@ export default function Homepage() {
 
           {/* Subtitle */}
           <motion.p
-            className="text-[clamp(17px,2vw,21px)] text-white/75 max-w-[600px] mx-auto mb-13 leading-relaxed font-light"
+            className="text-[clamp(15px,2vw,21px)] text-white/75 max-w-[600px] mx-auto mb-8 sm:mb-13 leading-relaxed font-light"
             initial={{ opacity: 0, y: 30 }}
             animate={heroSequence >= 4 ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 1, ease: EASE }}
@@ -633,14 +633,14 @@ export default function Homepage() {
               />
               <MagneticButton
                 href="#contatti"
-                className="relative inline-block no-underline bg-gradient-to-br from-[#D4A03C] to-[#E8C06A] text-[#0F1F33] px-10 py-4.5 rounded-[14px] font-bold text-base shadow-xl shadow-[#D4A03C]/30 overflow-hidden"
+                className="relative inline-block no-underline bg-gradient-to-br from-[#D4A03C] to-[#E8C06A] text-[#0F1F33] px-7 sm:px-10 py-3.5 sm:py-4.5 rounded-[14px] font-bold text-base shadow-xl shadow-[#D4A03C]/30 overflow-hidden"
               >
                 Parliamo del vostro Comune
               </MagneticButton>
             </div>
             <MagneticButton
               href="#servizi"
-              className="inline-block no-underline bg-white/5 text-white px-10 py-4.5 rounded-[14px] font-semibold text-base border border-white/15 hover:bg-white/10 transition-colors"
+              className="inline-block no-underline bg-white/5 text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-[14px] font-semibold text-base border border-white/15 hover:bg-white/10 transition-colors"
             >
               Scopri i servizi →
             </MagneticButton>
@@ -671,7 +671,7 @@ export default function Homepage() {
         <div className="marquee-mask overflow-hidden mb-3">
           <div className="flex w-max marquee-track" style={{ animation: "marquee 22s linear infinite" }}>
             {[0, 1].map((rep) => (
-              <div key={rep} className="flex gap-16 pr-16">
+              <div key={rep} className="flex gap-8 sm:gap-16 pr-8 sm:pr-16">
                 {[
                   { n: "75%", l: "dei cittadini non sa cosa fa il proprio Comune" },
                   { n: "90%", l: "senza addetto comunicazione" },
@@ -679,8 +679,8 @@ export default function Homepage() {
                   { n: "38%", l: "con almeno un social attivo" },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-4 whitespace-nowrap">
-                    <span className="text-[32px] font-black text-[#D4A03C]">{item.n}</span>
-                    <span className="text-[13px] text-white/70 font-medium">{item.l}</span>
+                    <span className="text-[22px] sm:text-[28px] md:text-[32px] font-black text-[#D4A03C]">{item.n}</span>
+                    <span className="text-[11px] sm:text-[13px] text-white/70 font-medium">{item.l}</span>
                     <span className="text-white/10 text-xl">◆</span>
                   </div>
                 ))}
@@ -692,7 +692,7 @@ export default function Homepage() {
         <div className="marquee-mask overflow-hidden">
           <div className="flex w-max marquee-track" style={{ animation: "marquee 35s linear infinite" }}>
             {[0, 1].map((rep) => (
-              <div key={rep} className="flex gap-16 pr-16">
+              <div key={rep} className="flex gap-8 sm:gap-16 pr-8 sm:pr-16">
                 {[
                   { n: "391", l: "Comuni in Sicilia" },
                   { n: "82%", l: "sotto i 15.000 abitanti" },
@@ -701,8 +701,8 @@ export default function Homepage() {
                   { n: "350", l: "senza ufficio comunicazione" },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-4 whitespace-nowrap">
-                    <span className="text-[28px] font-black text-white/60">{item.n}</span>
-                    <span className="text-[12px] text-white/60 font-medium">{item.l}</span>
+                    <span className="text-[18px] sm:text-[24px] md:text-[28px] font-black text-white/60">{item.n}</span>
+                    <span className="text-[11px] sm:text-[12px] text-white/60 font-medium">{item.l}</span>
                     <span className="text-[#D4A03C]/20 text-lg">◆</span>
                   </div>
                 ))}
@@ -713,7 +713,7 @@ export default function Homepage() {
       </div>
 
       {/* ══════════ IL PROBLEMA — 3D Tilt Cards ══════════ */}
-      <Section id="problema" className="bg-[#F7F5F0] py-28 px-8">
+      <Section id="problema" className="bg-[#F7F5F0] py-16 sm:py-28 px-4 sm:px-8">
         <div className="max-w-[900px] mx-auto text-center">
           <motion.span
             className="inline-block px-4.5 py-1.5 rounded-full bg-red-50 text-red-600 text-[13px] font-semibold mb-5 tracking-wide"
@@ -721,7 +721,7 @@ export default function Homepage() {
           >
             Il Problema
           </motion.span>
-          <h2 className="text-[clamp(30px,4vw,48px)] font-black text-[#0F1F33] leading-[1.15] mb-5">
+          <h2 className="text-[clamp(22px,4vw,48px)] font-black text-[#0F1F33] leading-[1.15] mb-5">
             <TextReveal text="Cosa succede quando il Comune non comunica" delay={0.2} />
           </h2>
           <motion.div {...fadeUp(0.6)}>
@@ -744,7 +744,7 @@ export default function Homepage() {
             { icon: "🔄", title: "Spirale negativa", desc: "Meno visibilità → meno fiducia → meno partecipazione" },
           ].map((item, i) => (
             <motion.div key={i} {...scaleIn(0.15 * i)}>
-              <TiltCard className="relative bg-white rounded-2xl p-8 border border-gray-200 cursor-default h-full group">
+              <TiltCard className="relative bg-white rounded-2xl p-5 sm:p-8 border border-gray-200 cursor-default h-full group">
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-red-500/0 to-red-500/0 group-hover:from-red-500/5 group-hover:to-transparent transition-all duration-500" />
                 <div className="text-4xl mb-4 relative z-[1]">{item.icon}</div>
                 <h3 className="text-[17px] font-bold text-[#0F1F33] mb-2.5 relative z-[1]">{item.title}</h3>
@@ -756,7 +756,7 @@ export default function Homepage() {
       </Section>
 
       {/* ══════════ INTRO CIVIKA ══════════ */}
-      <Section className="bg-gradient-to-br from-[#0F1F33] to-[#1B3A5C] py-28 px-8 text-center relative overflow-hidden">
+      <Section className="bg-gradient-to-br from-[#0F1F33] to-[#1B3A5C] py-16 sm:py-28 px-4 sm:px-8 text-center relative overflow-hidden">
 
         <div className="max-w-[800px] mx-auto relative z-10">
           <motion.div
@@ -771,11 +771,11 @@ export default function Homepage() {
               alt="CIVIKA — Comunicazione Istituzionale per Comuni Siciliani"
               width={180}
               height={60}
-              className="h-[60px] w-auto mx-auto drop-shadow-[0_8px_24px_rgba(212,160,60,0.35)]"
+              className="h-[40px] sm:h-[60px] w-auto mx-auto drop-shadow-[0_8px_24px_rgba(212,160,60,0.35)]"
             />
           </motion.div>
 
-          <h2 className="text-[clamp(30px,4vw,50px)] font-black text-white leading-[1.15] mb-6">
+          <h2 className="text-[clamp(22px,4vw,50px)] font-black text-white leading-[1.15] mb-6">
             <TextReveal text="Ogni Comune merita di essere visto." delay={0.3} />
           </h2>
           <motion.div {...fadeUp(0.8)}>
@@ -806,10 +806,10 @@ export default function Homepage() {
       </Section>
 
       {/* ══════════ CONFRONTO ══════════ */}
-      <Section className="bg-white py-28 px-8">
+      <Section className="bg-white py-16 sm:py-28 px-4 sm:px-8">
         <div className="max-w-[1000px] mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-[clamp(28px,3.5vw,44px)] font-black text-[#0F1F33] leading-tight">
+            <h2 className="text-[clamp(20px,3.5vw,44px)] font-black text-[#0F1F33] leading-tight">
               <TextReveal text="Un evento fatto bene vale più di cento post" />
             </h2>
             <motion.div className="mt-5" {...fadeUp(0.5)}>
@@ -820,11 +820,11 @@ export default function Homepage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
             {/* Senza CIVIKA */}
             <motion.div className="rounded-3xl overflow-hidden border-2 border-gray-200" {...fadeLeft(0.1)}>
-              <div className="bg-red-50 px-7 py-5 flex items-center gap-2.5">
+              <div className="bg-red-50 px-4 sm:px-7 py-4 sm:py-5 flex items-center gap-2.5">
                 <span className="text-xl">❌</span>
                 <span className="font-extrabold text-lg text-red-600">Senza CIVIKA</span>
               </div>
-              <div className="p-7">
+              <div className="p-4 sm:p-7">
                 {[
                   ["Partecipanti", "Poche centinaia"],
                   ["Stampa", "0 articoli"],
@@ -854,11 +854,11 @@ export default function Homepage() {
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               />
               <div className="relative rounded-3xl overflow-hidden border-2 border-green-500 shadow-xl shadow-green-500/10 bg-white">
-                <div className="bg-green-50 px-7 py-5 flex items-center gap-2.5">
+                <div className="bg-green-50 px-4 sm:px-7 py-4 sm:py-5 flex items-center gap-2.5">
                   <span className="text-xl">✅</span>
                   <span className="font-extrabold text-lg text-green-600">Con CIVIKA</span>
                 </div>
-                <div className="p-7">
+                <div className="p-4 sm:p-7">
                   {[
                     ["Partecipanti", "Migliaia"],
                     ["Stampa", "3-8 uscite media"],
@@ -887,7 +887,7 @@ export default function Homepage() {
       </Section>
 
       {/* ══════════ 6 TIPOLOGIE EVENTI — 3D Tilt Cards ══════════ */}
-      <Section id="servizi" className="bg-[#F7F5F0] py-28 px-8">
+      <Section id="servizi" className="bg-[#F7F5F0] py-16 sm:py-28 px-4 sm:px-8">
         <div className="max-w-[1100px] mx-auto">
           <div className="text-center mb-16">
             <motion.span
@@ -896,7 +896,7 @@ export default function Homepage() {
             >
               Eventi Istituzionali
             </motion.span>
-            <h2 className="text-[clamp(28px,3.5vw,44px)] font-black text-[#0F1F33] leading-tight mt-4">
+            <h2 className="text-[clamp(20px,3.5vw,44px)] font-black text-[#0F1F33] leading-tight mt-4">
               <TextReveal text="6 tipologie di eventi. Una sola regia." delay={0.2} />
             </h2>
             <motion.div className="mt-5" {...fadeUp(0.6)}>
@@ -914,7 +914,7 @@ export default function Homepage() {
               { icon: "🎤", title: "Conferenze stampa", desc: "Presentazione iniziative, bilanci, annunci. Media management completo." },
             ].map((item, i) => (
               <motion.div key={i} {...scaleIn(0.1 * i)}>
-                <TiltCard className="relative bg-white rounded-2xl p-7 border border-gray-200 flex gap-4 items-start cursor-default group overflow-hidden h-full">
+                <TiltCard className="relative bg-white rounded-2xl p-4 sm:p-7 border border-gray-200 flex gap-4 items-start cursor-default group overflow-hidden h-full">
                   {/* Hover gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-br from-[#D4A03C]/0 to-[#1B3A5C]/0 group-hover:from-[#D4A03C]/5 group-hover:to-[#1B3A5C]/5 transition-all duration-700" />
                   <div className="w-[54px] h-[54px] rounded-2xl bg-[#1B3A5C]/5 group-hover:bg-[#D4A03C]/10 flex items-center justify-center text-3xl shrink-0 transition-colors duration-500 relative z-[1]">
@@ -932,7 +932,7 @@ export default function Homepage() {
       </Section>
 
       {/* ══════════ 6 STEP — Animated Timeline ══════════ */}
-      <Section id="metodo" className="bg-white py-28 px-8">
+      <Section id="metodo" className="bg-white py-16 sm:py-28 px-4 sm:px-8">
         <div className="max-w-[900px] mx-auto">
           <div className="text-center mb-16">
             <motion.span
@@ -941,7 +941,7 @@ export default function Homepage() {
             >
               Il Processo
             </motion.span>
-            <h2 className="text-[clamp(28px,3.5vw,44px)] font-black text-[#0F1F33] leading-tight mt-4">
+            <h2 className="text-[clamp(20px,3.5vw,44px)] font-black text-[#0F1F33] leading-tight mt-4">
               <TextReveal text="Dal concept alla rassegna stampa" delay={0.2} />
             </h2>
             <motion.div className="mt-5" {...fadeUp(0.6)}>
@@ -959,7 +959,7 @@ export default function Homepage() {
           <div className="relative">
             {/* Animated gradient timeline line */}
             <motion.div
-              className="absolute left-[31px] top-8 w-[2px]"
+              className="absolute left-[23px] sm:left-[31px] top-8 w-[2px]"
               style={{ background: "linear-gradient(180deg, #D4A03C, #1B3A5C, #D4A03C)" }}
               initial={{ height: 0, opacity: 0 }}
               whileInView={{ height: "calc(100% - 64px)", opacity: 1 }}
@@ -976,14 +976,14 @@ export default function Homepage() {
             ].map((step, i) => (
               <motion.div
                 key={i}
-                className={`flex gap-6 items-start relative ${i < 5 ? "mb-6" : ""}`}
+                className={`flex gap-3 sm:gap-6 items-start relative ${i < 5 ? "mb-4 sm:mb-6" : ""}`}
                 initial={{ opacity: 0, x: -40 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, ease: EASE, delay: 0.2 + 0.15 * i }}
               >
                 <motion.div
-                  className="w-16 h-16 rounded-full bg-gradient-to-br from-[#D4A03C] to-[#1B3A5C] flex items-center justify-center text-white font-extrabold text-base z-10 shadow-lg shadow-[#1B3A5C]/20 shrink-0"
+                  className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-[#D4A03C] to-[#1B3A5C] flex items-center justify-center text-white font-extrabold text-base z-10 shadow-lg shadow-[#1B3A5C]/20 shrink-0"
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
                   viewport={{ once: true }}
@@ -1011,7 +1011,7 @@ export default function Homepage() {
       </Section>
 
       {/* ══════════ 5 SERVIZI INTEGRATI ══════════ */}
-      <Section className="bg-gradient-to-br from-[#070E18] to-[#1B3A5C] py-28 px-8 relative overflow-hidden">
+      <Section className="bg-gradient-to-br from-[#070E18] to-[#1B3A5C] py-16 sm:py-28 px-4 sm:px-8 relative overflow-hidden">
 
         <div className="max-w-[1100px] mx-auto relative z-10">
           <div className="text-center mb-16">
@@ -1021,7 +1021,7 @@ export default function Homepage() {
             >
               Comunicazione Integrata
             </motion.span>
-            <h2 className="text-[clamp(28px,3.5vw,44px)] font-black text-white leading-tight mt-4">
+            <h2 className="text-[clamp(20px,3.5vw,44px)] font-black text-white leading-tight mt-4">
               <TextReveal text="Un unico partner. Cinque servizi integrati." delay={0.2} />
             </h2>
             <motion.div className="mt-5" {...fadeUp(0.6)}>
@@ -1038,7 +1038,7 @@ export default function Homepage() {
               { icon: "🎨", title: "Branding", items: ["Identità visiva dell'Ente", "Materiali per campagne", "Video istituzionali", "Template documentali"] },
             ].map((svc, i) => (
               <motion.div key={i} {...scaleIn(0.12 * i)}>
-                <TiltCard className="relative bg-white/[0.04] rounded-2xl p-8 border border-white/[0.08] backdrop-blur-sm cursor-default group overflow-hidden h-full">
+                <TiltCard className="relative bg-white/[0.04] rounded-2xl p-4 sm:p-8 border border-white/[0.08] backdrop-blur-sm cursor-default group overflow-hidden h-full">
                   {/* Gold border glow on hover */}
                   <div className="absolute inset-0 rounded-2xl border border-[#D4A03C]/0 group-hover:border-[#D4A03C]/30 transition-all duration-700" />
                   <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" style={{ background: "radial-gradient(circle at 50% 0%, rgba(212,160,60,0.08) 0%, transparent 60%)" }} />
@@ -1057,10 +1057,10 @@ export default function Homepage() {
       </Section>
 
       {/* ══════════ A NORMA ══════════ */}
-      <Section className="bg-white py-28 px-8">
+      <Section className="bg-white py-16 sm:py-28 px-4 sm:px-8">
         <div className="max-w-[900px] mx-auto">
           <div className="text-center mb-14">
-            <h2 className="text-[clamp(28px,3.5vw,44px)] font-black text-[#0F1F33] leading-tight">
+            <h2 className="text-[clamp(20px,3.5vw,44px)] font-black text-[#0F1F33] leading-tight">
               <TextReveal text="A norma. Sempre. Su tutto." />
             </h2>
             <motion.div className="mt-5" {...fadeUp(0.5)}>
@@ -1087,7 +1087,7 @@ export default function Homepage() {
             ].map(([norm, area, desc], i) => (
               <motion.div
                 key={i}
-                className={`grid grid-cols-[130px_160px_1fr_40px] items-center gap-4 px-6 py-4 rounded-xl group hover:bg-[#1B3A5C]/5 transition-all duration-300 ${
+                className={`grid grid-cols-[100px_120px_1fr_32px] sm:grid-cols-[130px_160px_1fr_40px] items-center gap-4 px-3 sm:px-6 py-3 sm:py-4 rounded-xl group hover:bg-[#1B3A5C]/5 transition-all duration-300 ${
                   i % 2 === 0 ? "bg-[#F7F5F0]" : "bg-white"
                 }`}
                 initial={{ opacity: 0, x: -30 }}
@@ -1114,7 +1114,7 @@ export default function Homepage() {
       </Section>
 
       {/* ══════════ BANDI ══════════ */}
-      <Section className="bg-[#F7F5F0] py-28 px-8">
+      <Section className="bg-[#F7F5F0] py-16 sm:py-28 px-4 sm:px-8">
         <div className="max-w-[900px] mx-auto">
           <div className="text-center mb-16">
             <motion.span
@@ -1123,7 +1123,7 @@ export default function Homepage() {
             >
               Servizio Complementare
             </motion.span>
-            <h2 className="text-[clamp(28px,3.5vw,44px)] font-black text-[#0F1F33] leading-tight mt-4">
+            <h2 className="text-[clamp(20px,3.5vw,44px)] font-black text-[#0F1F33] leading-tight mt-4">
               <TextReveal text="Vi aiutiamo anche a trovare i fondi" delay={0.2} />
             </h2>
             <motion.div className="mt-5" {...fadeUp(0.6)}>
@@ -1140,10 +1140,10 @@ export default function Homepage() {
           ].map((step, i) => (
             <motion.div
               key={i}
-              className="flex gap-5 items-center mb-3 bg-white rounded-2xl px-7 py-5 border border-gray-200 hover:-translate-y-1 hover:shadow-lg hover:border-[#D4A03C]/20 transition-all duration-500 group"
+              className="flex gap-5 items-center mb-3 bg-white rounded-2xl px-4 sm:px-7 py-4 sm:py-5 border border-gray-200 hover:-translate-y-1 hover:shadow-lg hover:border-[#D4A03C]/20 transition-all duration-500 group"
               {...fadeRight(0.1 * i)}
             >
-              <div className="w-12 h-12 rounded-[14px] bg-gradient-to-br from-[#D4A03C] to-[#E8C06A] flex items-center justify-center text-white font-extrabold text-[17px] shrink-0 group-hover:shadow-lg group-hover:shadow-[#D4A03C]/30 transition-shadow duration-500">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-[14px] bg-gradient-to-br from-[#D4A03C] to-[#E8C06A] flex items-center justify-center text-white font-extrabold text-[17px] shrink-0 group-hover:shadow-lg group-hover:shadow-[#D4A03C]/30 transition-shadow duration-500">
                 {step.n}
               </div>
               <div>
@@ -1180,10 +1180,10 @@ export default function Homepage() {
       </Section>
 
       {/* ══════════ METODO CIVIKA — 3D Phase Cards ══════════ */}
-      <Section className="bg-white py-28 px-8">
+      <Section className="bg-white py-16 sm:py-28 px-4 sm:px-8">
         <div className="max-w-[1000px] mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-[clamp(28px,3.5vw,44px)] font-black text-[#0F1F33] leading-tight">
+            <h2 className="text-[clamp(20px,3.5vw,44px)] font-black text-[#0F1F33] leading-tight">
               <TextReveal text="Il Metodo CIVIKA" />
             </h2>
             <motion.div className="mt-5" {...fadeUp(0.4)}>
@@ -1206,12 +1206,12 @@ export default function Homepage() {
             ].map((phase, i) => (
               <motion.div key={i} {...scaleIn(0.15 * i)}>
                 <TiltCard className="rounded-2xl overflow-hidden border border-gray-200 cursor-default group h-full bg-white">
-                  <div className={`${phase.color} px-7 py-6 text-white relative overflow-hidden`}>
+                  <div className={`${phase.color} px-4 sm:px-7 py-4 sm:py-6 text-white relative overflow-hidden`}>
                     <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors duration-700" />
                     <div className="text-3xl mb-1 opacity-70 relative z-[1]">{phase.n}</div>
                     <div className="text-xl font-extrabold relative z-[1]">{phase.title}</div>
                   </div>
-                  <div className="px-7 py-6">
+                  <div className="px-4 sm:px-7 py-4 sm:py-6">
                     {phase.items.map((item, j) => (
                       <div key={j} className="text-sm text-gray-500 py-1.5 leading-relaxed">
                         {item}
@@ -1235,11 +1235,11 @@ export default function Homepage() {
       </Section>
 
       {/* ══════════ PERCHÉ CIVIKA ══════════ */}
-      <Section id="perche" className="bg-gradient-to-br from-[#0F1F33] to-[#1B3A5C] py-28 px-8 relative overflow-hidden">
+      <Section id="perche" className="bg-gradient-to-br from-[#0F1F33] to-[#1B3A5C] py-16 sm:py-28 px-4 sm:px-8 relative overflow-hidden">
 
         <div className="max-w-[1100px] mx-auto relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-[clamp(28px,3.5vw,44px)] font-black text-white leading-tight">
+            <h2 className="text-[clamp(20px,3.5vw,44px)] font-black text-white leading-tight">
               <TextReveal text="Perché scegliere CIVIKA" />
             </h2>
             <motion.div className="mt-5" {...fadeUp(0.4)}>
@@ -1257,7 +1257,7 @@ export default function Homepage() {
               { icon: "📊", title: "Misurabili", desc: "Report con dati veri. Risultati, non slide." },
             ].map((item, i) => (
               <motion.div key={i} {...scaleIn(0.1 * i)}>
-                <TiltCard className="relative bg-white/[0.04] rounded-2xl p-8 border border-white/[0.08] backdrop-blur-sm cursor-default group overflow-hidden h-full">
+                <TiltCard className="relative bg-white/[0.04] rounded-2xl p-5 sm:p-8 border border-white/[0.08] backdrop-blur-sm cursor-default group overflow-hidden h-full">
                   {/* Gold border glow on hover */}
                   <div className="absolute inset-0 rounded-2xl border border-[#D4A03C]/0 group-hover:border-[#D4A03C]/40 transition-all duration-500" />
                   <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" style={{ background: "radial-gradient(circle at 50% 100%, rgba(212,160,60,0.1) 0%, transparent 60%)" }} />
@@ -1272,7 +1272,7 @@ export default function Homepage() {
       </Section>
 
       {/* ══════════ 391 COMUNI ══════════ */}
-      <Section className="bg-[#F7F5F0] py-28 px-8">
+      <Section className="bg-[#F7F5F0] py-16 sm:py-28 px-4 sm:px-8">
         <div className="max-w-[900px] mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
@@ -1280,11 +1280,11 @@ export default function Homepage() {
             viewport={{ once: true }}
             transition={{ duration: 1.2, type: "spring", stiffness: 100, damping: 15 }}
           >
-            <h2 className="text-[clamp(60px,9vw,100px)] font-black text-[#1B3A5C] mb-2">
+            <h2 className="text-[clamp(36px,9vw,100px)] font-black text-[#1B3A5C] mb-2">
               <NumberTicker end={391} />
             </h2>
           </motion.div>
-          <h3 className="text-[clamp(24px,3vw,36px)] font-extrabold text-[#0F1F33] mb-4">
+          <h3 className="text-[clamp(18px,3vw,36px)] font-extrabold text-[#0F1F33] mb-4">
             <TextReveal text="Comuni. Una missione." delay={0.3} />
           </h3>
           <motion.div {...fadeUp(0.5)}>
@@ -1299,8 +1299,8 @@ export default function Homepage() {
               { num: 350, label: "Senza ufficio comunicazione", detail: "90%" },
             ].map((s, i) => (
               <motion.div key={i} {...scaleIn(0.12 * i)}>
-                <TiltCard className="bg-white rounded-2xl px-5 py-7 border border-gray-200 cursor-default group h-full">
-                  <div className="text-4xl font-black text-[#1B3A5C]">
+                <TiltCard className="bg-white rounded-2xl px-3 sm:px-5 py-5 sm:py-7 border border-gray-200 cursor-default group h-full">
+                  <div className="text-3xl sm:text-4xl font-black text-[#1B3A5C]">
                     <NumberTicker end={s.num} />
                   </div>
                   <div className="text-[13px] text-gray-500 mt-1.5">{s.label}</div>
@@ -1325,11 +1325,11 @@ export default function Homepage() {
       {/* ══════════ CTA / CONTATTI ══════════ */}
       <Section
         id="contatti"
-        className="bg-gradient-to-br from-[#070E18] to-[#1B3A5C] py-28 px-8 text-center relative overflow-hidden"
+        className="bg-gradient-to-br from-[#070E18] to-[#1B3A5C] py-16 sm:py-28 px-4 sm:px-8 text-center relative overflow-hidden"
       >
 
         <div className="max-w-[700px] mx-auto relative z-10">
-          <h2 className="text-[clamp(30px,4vw,50px)] font-black text-white leading-tight mb-2">
+          <h2 className="text-[clamp(20px,4vw,50px)] font-black text-white leading-tight mb-2">
             <TextReveal text="Parliamo del vostro Comune." />
           </h2>
           <motion.div {...fadeUp(0.6)}>
@@ -1354,7 +1354,7 @@ export default function Homepage() {
               { icon: "📍", label: "Sede", desc: "Sicilia — Ci muoviamo noi" },
             ].map((c, i) => (
               <motion.div key={i} {...scaleIn(1 + 0.1 * i)}>
-                <TiltCard className="relative bg-white/[0.04] rounded-2xl px-5 py-7 border border-white/[0.08] backdrop-blur-sm cursor-default group overflow-hidden h-full">
+                <TiltCard className="relative bg-white/[0.04] rounded-2xl px-3 sm:px-5 py-5 sm:py-7 border border-white/[0.08] backdrop-blur-sm cursor-default group overflow-hidden h-full">
                   <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: "radial-gradient(circle at 50% 50%, rgba(212,160,60,0.08) 0%, transparent 60%)" }} />
                   <div className="text-3xl mb-2.5 relative z-[1]">{c.icon}</div>
                   <div className="text-[15px] font-bold text-white mb-1 relative z-[1]">{c.label}</div>
@@ -1374,7 +1374,7 @@ export default function Homepage() {
               />
               <MagneticButton
                 href="mailto:info@civika.it"
-                className="relative inline-block no-underline bg-gradient-to-br from-[#D4A03C] to-[#E8C06A] text-[#0F1F33] px-14 py-5 rounded-2xl font-bold text-lg shadow-xl shadow-[#D4A03C]/30 overflow-hidden"
+                className="relative inline-block no-underline bg-gradient-to-br from-[#D4A03C] to-[#E8C06A] text-[#0F1F33] px-8 sm:px-14 py-4 sm:py-5 rounded-2xl font-bold text-base sm:text-lg shadow-xl shadow-[#D4A03C]/30 overflow-hidden"
               >
                 Contattaci ora
               </MagneticButton>

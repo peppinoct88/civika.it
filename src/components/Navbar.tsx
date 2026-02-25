@@ -50,7 +50,7 @@ export default function Navbar() {
         <div
           className={`absolute left-1/2 -translate-x-1/2 rounded-full pointer-events-none transition-all duration-1000 ease-out ${
             isScrolled
-              ? "top-3 h-[56px] w-[340px] md:w-[480px] opacity-100 shadow-2xl shadow-[#070E18]/60"
+              ? "top-3 h-[56px] w-[calc(100%-24px)] max-w-[340px] md:max-w-[480px] md:w-[480px] opacity-100 shadow-2xl shadow-[#070E18]/60"
               : "top-8 h-[64px] w-[92%] max-w-[1200px] opacity-0"
           }`}
           style={{
@@ -67,7 +67,7 @@ export default function Navbar() {
         <nav
           className={`relative z-10 mx-auto flex items-center justify-between transition-all duration-1000 ease-out ${
             isScrolled
-              ? "mt-3 max-w-[300px] md:max-w-[440px] px-7 py-2.5"
+              ? "mt-3 max-w-[calc(100%-24px)] sm:max-w-[300px] md:max-w-[440px] px-4 sm:px-7 py-2.5"
               : "mt-8 max-w-[1200px] px-8 py-3"
           }`}
         >
@@ -141,7 +141,7 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setIsMenuOpen(false)}
-                    className="text-white text-[clamp(30px,6vw,52px)] font-black no-underline hover:text-[#D4A03C] transition-colors duration-300"
+                    className="text-white text-[clamp(24px,5vw,52px)] font-black no-underline hover:text-[#D4A03C] transition-colors duration-300"
                   >
                     {link.label}
                   </Link>
@@ -158,7 +158,7 @@ export default function Navbar() {
                   delay: 0.05 + NAV_LINKS.length * 0.07,
                   ease: EASE,
                 }}
-                className="mt-6"
+                className="mt-4 sm:mt-6"
               >
                 <Link
                   href="/contatti"
@@ -172,7 +172,7 @@ export default function Navbar() {
 
             {/* Legal links — bottom */}
             <motion.div
-              className="absolute bottom-10 flex gap-6"
+              className="absolute bottom-6 sm:bottom-10 flex flex-col sm:flex-row gap-3 sm:gap-6"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}

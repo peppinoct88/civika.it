@@ -60,8 +60,8 @@ function PolicySection({
 }) {
   return (
     <motion.div className="mb-10" {...fadeUp(delay)}>
-      <h2 className="text-[20px] font-bold text-[#0F1F33] mb-4">{title}</h2>
-      <div className="text-[15px] text-gray-600 leading-[1.85] space-y-3">
+      <h2 className="text-[18px] sm:text-[20px] font-bold text-[#0F1F33] mb-4">{title}</h2>
+      <div className="text-[14px] sm:text-[15px] text-gray-600 leading-[1.85] space-y-3">
         {children}
       </div>
     </motion.div>
@@ -80,14 +80,14 @@ export default function CookiePolicyPage() {
           >
             Informativa
           </motion.span>
-          <h1 className="text-[clamp(34px,5vw,58px)] font-black text-white leading-[1.1] mb-6">
+          <h1 className="text-[clamp(22px,5vw,58px)] font-black text-white leading-[1.1] mb-6">
             <TextReveal text="Cookie Policy" delay={0.2} />
           </h1>
           <motion.div {...fadeUp(0.7)}>
             <GrowLine color="bg-[#D4A03C]" />
           </motion.div>
           <motion.p
-            className="text-[19px] text-white/75 max-w-[520px] mx-auto mt-7 leading-relaxed font-light"
+            className="text-[clamp(15px,3.5vw,19px)] text-white/75 max-w-[520px] mx-auto mt-7 leading-relaxed font-light"
             {...fadeUp(0.8)}
           >
             Informativa estesa sull&apos;utilizzo dei cookie ai sensi dell&apos;art. 13 del Regolamento UE 2016/679 e della Direttiva 2002/58/CE (ePrivacy).
@@ -96,10 +96,10 @@ export default function CookiePolicyPage() {
       </header>
 
       {/* ══ CONTENUTO ══ */}
-      <section className="bg-[#F7F5F0] py-20 px-8">
+      <section className="bg-[#F7F5F0] py-16 sm:py-20 px-4 sm:px-8">
         <motion.div className="max-w-[720px] mx-auto" {...fadeUp(0.1)}>
-          <div className="bg-white rounded-3xl p-10 md:p-14 border border-gray-200 shadow-sm">
-            <motion.p className="text-xs text-gray-400 mb-10" {...fadeUp(0.15)}>
+          <div className="bg-white rounded-3xl p-5 sm:p-10 md:p-14 border border-gray-200 shadow-sm">
+            <motion.p className="text-xs text-gray-400 mb-6 sm:mb-10" {...fadeUp(0.15)}>
               Ultimo aggiornamento: 9 febbraio 2026
             </motion.p>
 
@@ -159,21 +159,21 @@ export default function CookiePolicyPage() {
 
               {/* Cookie table */}
               <div className="overflow-x-auto mt-4 mb-4">
-                <table className="w-full border-collapse text-sm">
+                <table className="w-full border-collapse text-xs sm:text-sm">
                   <thead>
                     <tr className="bg-[#F7F5F0]">
-                      <th className="text-left px-4 py-3 font-bold text-[#0F1F33] border border-gray-200">Nome</th>
-                      <th className="text-left px-4 py-3 font-bold text-[#0F1F33] border border-gray-200">Tipo</th>
-                      <th className="text-left px-4 py-3 font-bold text-[#0F1F33] border border-gray-200">Finalità</th>
-                      <th className="text-left px-4 py-3 font-bold text-[#0F1F33] border border-gray-200">Durata</th>
+                      <th className="text-left px-2 sm:px-4 py-2 sm:py-3 font-bold text-[#0F1F33] border border-gray-200">Nome</th>
+                      <th className="text-left px-2 sm:px-4 py-2 sm:py-3 font-bold text-[#0F1F33] border border-gray-200">Tipo</th>
+                      <th className="text-left px-2 sm:px-4 py-2 sm:py-3 font-bold text-[#0F1F33] border border-gray-200">Finalità</th>
+                      <th className="text-left px-2 sm:px-4 py-2 sm:py-3 font-bold text-[#0F1F33] border border-gray-200">Durata</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td className="px-4 py-3 border border-gray-200 font-mono text-xs text-[#1B3A5C]">civika_cookie_consent</td>
-                      <td className="px-4 py-3 border border-gray-200">Tecnico</td>
-                      <td className="px-4 py-3 border border-gray-200">Memorizza la scelta dell&apos;utente sul consenso cookie (accettato/rifiutato)</td>
-                      <td className="px-4 py-3 border border-gray-200">12 mesi</td>
+                      <td className="px-2 sm:px-4 py-2 sm:py-3 border border-gray-200 font-mono text-xs text-[#1B3A5C]">civika_cookie_consent</td>
+                      <td className="px-2 sm:px-4 py-2 sm:py-3 border border-gray-200">Tecnico</td>
+                      <td className="px-2 sm:px-4 py-2 sm:py-3 border border-gray-200">Memorizza la scelta dell&apos;utente sul consenso cookie (accettato/rifiutato)</td>
+                      <td className="px-2 sm:px-4 py-2 sm:py-3 border border-gray-200">12 mesi</td>
                     </tr>
                   </tbody>
                 </table>

@@ -99,14 +99,14 @@ export default function ContattiPage() {
           >
             Contatti
           </motion.span>
-          <h1 className="text-[clamp(34px,5vw,58px)] font-black text-white leading-[1.1] mb-6">
+          <h1 className="text-[clamp(22px,5vw,58px)] font-black text-white leading-[1.1] mb-6">
             <TextReveal text="Parliamo del vostro Comune." delay={0.2} />
           </h1>
           <motion.div {...fadeUp(0.7)}>
             <GrowLine color="bg-[#D4A03C]" />
           </motion.div>
           <motion.p
-            className="text-[19px] text-white/60 max-w-[500px] mx-auto mt-7 leading-relaxed font-light"
+            className="text-[clamp(15px,3.5vw,19px)] text-white/60 max-w-[500px] mx-auto mt-7 leading-relaxed font-light"
             {...fadeUp(0.8)}
           >
             Il primo passo è una conversazione. Nessun impegno, nessun contratto.
@@ -116,36 +116,36 @@ export default function ContattiPage() {
       </header>
 
       {/* ══ FORM + INFO ══ */}
-      <section className="bg-[#F7F5F0] py-28 px-8">
+      <section className="bg-[#F7F5F0] py-16 sm:py-28 px-4 sm:px-8">
         <div className="max-w-[1100px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
             {/* Form */}
             <motion.div className="lg:col-span-3" {...fadeUp(0.1)}>
               {submitted ? (
                 <motion.div
-                  className="bg-white rounded-3xl p-12 border border-gray-200 text-center"
+                  className="bg-white rounded-3xl p-8 sm:p-12 border border-gray-200 text-center"
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, ease: EASE }}
                 >
-                  <div className="text-5xl mb-4">✅</div>
-                  <h3 className="text-2xl font-black text-[#0F1F33] mb-3">
+                  <div className="text-3xl sm:text-5xl mb-4">✅</div>
+                  <h3 className="text-xl sm:text-2xl font-black text-[#0F1F33] mb-3">
                     Messaggio inviato!
                   </h3>
-                  <p className="text-gray-500 text-lg">
+                  <p className="text-gray-500 text-base sm:text-lg">
                     Vi ricontatteremo entro 24 ore. Grazie per l&apos;interesse.
                   </p>
                 </motion.div>
               ) : (
                 <form
                   onSubmit={handleSubmit}
-                  className="bg-white rounded-3xl p-10 border border-gray-200 shadow-sm"
+                  className="bg-white rounded-3xl p-6 sm:p-10 border border-gray-200 shadow-sm"
                 >
-                  <h2 className="text-2xl font-black text-[#0F1F33] mb-8">
+                  <h2 className="text-xl sm:text-2xl font-black text-[#0F1F33] mb-5 sm:mb-8">
                     Richiedi un incontro gratuito
                   </h2>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-5 mb-3 sm:mb-5">
                     <div>
                       <label htmlFor="nome" className="block text-sm font-semibold text-[#0F1F33] mb-2">
                         Nome e Cognome *
@@ -157,7 +157,7 @@ export default function ContattiPage() {
                         required
                         value={formData.nome}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#F7F5F0] text-[#0F1F33] text-base focus:border-[#D4A03C] focus:ring-1 focus:ring-[#D4A03C]/30 outline-none transition-all"
+                        className="w-full min-h-[44px] px-4 py-3 rounded-xl border border-gray-200 bg-[#F7F5F0] text-[#0F1F33] text-base focus:border-[#D4A03C] focus:ring-1 focus:ring-[#D4A03C]/30 outline-none transition-all"
                         placeholder="Mario Rossi"
                       />
                     </div>
@@ -172,13 +172,13 @@ export default function ContattiPage() {
                         required
                         value={formData.comune}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#F7F5F0] text-[#0F1F33] text-base focus:border-[#D4A03C] focus:ring-1 focus:ring-[#D4A03C]/30 outline-none transition-all"
+                        className="w-full min-h-[44px] px-4 py-3 rounded-xl border border-gray-200 bg-[#F7F5F0] text-[#0F1F33] text-base focus:border-[#D4A03C] focus:ring-1 focus:ring-[#D4A03C]/30 outline-none transition-all"
                         placeholder="Comune di..."
                       />
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-5 mb-3 sm:mb-5">
                     <div>
                       <label htmlFor="ruolo" className="block text-sm font-semibold text-[#0F1F33] mb-2">
                         Ruolo
@@ -189,7 +189,7 @@ export default function ContattiPage() {
                         name="ruolo"
                         value={formData.ruolo}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#F7F5F0] text-[#0F1F33] text-base focus:border-[#D4A03C] focus:ring-1 focus:ring-[#D4A03C]/30 outline-none transition-all"
+                        className="w-full min-h-[44px] px-4 py-3 rounded-xl border border-gray-200 bg-[#F7F5F0] text-[#0F1F33] text-base focus:border-[#D4A03C] focus:ring-1 focus:ring-[#D4A03C]/30 outline-none transition-all"
                         placeholder="Sindaco, Assessore, Segretario..."
                       />
                     </div>
@@ -202,7 +202,7 @@ export default function ContattiPage() {
                         name="servizio"
                         value={formData.servizio}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#F7F5F0] text-[#0F1F33] text-base focus:border-[#D4A03C] focus:ring-1 focus:ring-[#D4A03C]/30 outline-none transition-all"
+                        className="w-full min-h-[44px] px-4 py-3 rounded-xl border border-gray-200 bg-[#F7F5F0] text-[#0F1F33] text-base focus:border-[#D4A03C] focus:ring-1 focus:ring-[#D4A03C]/30 outline-none transition-all"
                       >
                         <option value="">Seleziona...</option>
                         <option value="comunicazione">Comunicazione integrata</option>
@@ -215,7 +215,7 @@ export default function ContattiPage() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-5 mb-3 sm:mb-5">
                     <div>
                       <label htmlFor="email" className="block text-sm font-semibold text-[#0F1F33] mb-2">
                         Email *
@@ -227,7 +227,7 @@ export default function ContattiPage() {
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#F7F5F0] text-[#0F1F33] text-base focus:border-[#D4A03C] focus:ring-1 focus:ring-[#D4A03C]/30 outline-none transition-all"
+                        className="w-full min-h-[44px] px-4 py-3 rounded-xl border border-gray-200 bg-[#F7F5F0] text-[#0F1F33] text-base focus:border-[#D4A03C] focus:ring-1 focus:ring-[#D4A03C]/30 outline-none transition-all"
                         placeholder="email@comune.it"
                       />
                     </div>
@@ -241,7 +241,7 @@ export default function ContattiPage() {
                         name="telefono"
                         value={formData.telefono}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#F7F5F0] text-[#0F1F33] text-base focus:border-[#D4A03C] focus:ring-1 focus:ring-[#D4A03C]/30 outline-none transition-all"
+                        className="w-full min-h-[44px] px-4 py-3 rounded-xl border border-gray-200 bg-[#F7F5F0] text-[#0F1F33] text-base focus:border-[#D4A03C] focus:ring-1 focus:ring-[#D4A03C]/30 outline-none transition-all"
                         placeholder="+39..."
                       />
                     </div>
@@ -257,7 +257,7 @@ export default function ContattiPage() {
                       rows={4}
                       value={formData.messaggio}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#F7F5F0] text-[#0F1F33] text-base focus:border-[#D4A03C] focus:ring-1 focus:ring-[#D4A03C]/30 outline-none transition-all resize-none"
+                      className="w-full min-h-[44px] px-4 py-3 rounded-xl border border-gray-200 bg-[#F7F5F0] text-[#0F1F33] text-base focus:border-[#D4A03C] focus:ring-1 focus:ring-[#D4A03C]/30 outline-none transition-all resize-none"
                       placeholder="Raccontateci le vostre esigenze..."
                     />
                   </div>
@@ -311,7 +311,7 @@ export default function ContattiPage() {
               ].map((info, i) => (
                 <motion.div
                   key={i}
-                  className="bg-white rounded-2xl px-6 py-5 border border-gray-200 flex gap-4 items-start group hover:border-[#D4A03C]/30 hover:shadow-md transition-all duration-500"
+                  className="bg-white rounded-2xl px-4 sm:px-6 py-4 sm:py-5 border border-gray-200 flex gap-4 items-start group hover:border-[#D4A03C]/30 hover:shadow-md transition-all duration-500"
                   {...scaleIn(0.3 + 0.1 * i)}
                 >
                   <div className="text-2xl">{info.icon}</div>
@@ -337,7 +337,7 @@ export default function ContattiPage() {
 
               {/* FAQ rapido */}
               <motion.div
-                className="bg-gradient-to-br from-[#1B3A5C] to-[#2A5580] rounded-2xl p-7 mt-8"
+                className="bg-gradient-to-br from-[#1B3A5C] to-[#2A5580] rounded-2xl p-5 sm:p-7 mt-8"
                 {...fadeUp(0.6)}
               >
                 <h4 className="text-[15px] font-bold text-[#E8C06A] mb-4">

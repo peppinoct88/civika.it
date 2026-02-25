@@ -90,14 +90,14 @@ export default function BlogPage() {
           >
             Blog
           </motion.span>
-          <h1 className="text-[clamp(34px,5vw,58px)] font-black text-white leading-[1.1] mb-6">
+          <h1 className="text-[clamp(22px,5vw,58px)] font-black text-white leading-[1.1] mb-6">
             <TextReveal text="Risorse per la comunicazione pubblica." delay={0.2} />
           </h1>
           <motion.div {...fadeUp(0.7)}>
             <GrowLine color="bg-[#D4A03C]" />
           </motion.div>
           <motion.p
-            className="text-[19px] text-white/60 max-w-[520px] mx-auto mt-7 leading-relaxed font-light"
+            className="text-[clamp(15px,3.5vw,19px)] text-white/60 max-w-[520px] mx-auto mt-7 leading-relaxed font-light"
             {...fadeUp(0.8)}
           >
             Guide, approfondimenti e novità per i Comuni che vogliono comunicare meglio.
@@ -106,15 +106,15 @@ export default function BlogPage() {
       </header>
 
       {/* ══ CATEGORIES + ARTICLES ══ */}
-      <section className="bg-[#F7F5F0] py-20 px-8">
+      <section className="bg-[#F7F5F0] py-16 sm:py-20 px-4 sm:px-8">
         <div className="max-w-[1100px] mx-auto">
           {/* Category Filter */}
-          <motion.div className="flex flex-wrap gap-3 justify-center mb-14" {...fadeUp(0.1)}>
+          <motion.div className="flex flex-wrap gap-3 justify-center mb-8 sm:mb-14" {...fadeUp(0.1)}>
             {BLOG_CATEGORIES.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer border ${
+                className={`px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer border ${
                   activeCategory === cat
                     ? "bg-[#0F1F33] text-white border-[#0F1F33] shadow-lg"
                     : "bg-white text-gray-500 border-gray-200 hover:border-[#D4A03C]/40 hover:text-[#0F1F33]"
@@ -126,7 +126,7 @@ export default function BlogPage() {
           </motion.div>
 
           {/* Articles Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-7">
             {filtered.map((post, i) => (
               <motion.article
                 key={post.slug}
@@ -139,7 +139,7 @@ export default function BlogPage() {
                   {/* Category color bar */}
                   <div className="h-1.5 bg-gradient-to-r from-[#D4A03C] to-[#1B3A5C]" />
 
-                  <div className="p-7">
+                  <div className="p-5 sm:p-7">
                     {/* Category + Read time */}
                     <div className="flex items-center gap-3 mb-4">
                       <span className={`px-3 py-1 rounded-full text-[11px] font-bold tracking-wide ${CATEGORY_COLORS[post.category] || "bg-gray-100 text-gray-600"}`}>
@@ -151,7 +151,7 @@ export default function BlogPage() {
                     </div>
 
                     {/* Title */}
-                    <h2 className="text-[17px] font-bold text-[#0F1F33] leading-snug mb-3 group-hover:text-[#D4A03C] transition-colors duration-300">
+                    <h2 className="text-[15px] sm:text-[17px] font-bold text-[#0F1F33] leading-snug mb-3 group-hover:text-[#D4A03C] transition-colors duration-300">
                       {post.title}
                     </h2>
 
@@ -176,7 +176,7 @@ export default function BlogPage() {
           </div>
 
           {filtered.length === 0 && (
-            <motion.div className="text-center py-20" {...fadeUp(0)}>
+            <motion.div className="text-center py-12 sm:py-20" {...fadeUp(0)}>
               <p className="text-gray-400 text-lg">Nessun articolo in questa categoria.</p>
             </motion.div>
           )}
@@ -184,9 +184,9 @@ export default function BlogPage() {
       </section>
 
       {/* ══ CTA Newsletter ══ */}
-      <section className="bg-gradient-to-br from-[#0F1F33] to-[#1B3A5C] py-24 px-8 text-center">
+      <section className="bg-gradient-to-br from-[#0F1F33] to-[#1B3A5C] py-16 sm:py-24 px-4 sm:px-8 text-center">
         <div className="max-w-[600px] mx-auto">
-          <h2 className="text-[clamp(26px,3.5vw,40px)] font-black text-white leading-tight mb-4">
+          <h2 className="text-[clamp(20px,3.5vw,40px)] font-black text-white leading-tight mb-4">
             <TextReveal text="Vuoi restare aggiornato?" />
           </h2>
           <motion.div {...fadeUp(0.5)}>
@@ -198,7 +198,7 @@ export default function BlogPage() {
           <motion.div {...fadeUp(0.8)}>
             <Link
               href="/contatti"
-              className="inline-block no-underline bg-gradient-to-br from-[#D4A03C] to-[#E8C06A] text-[#0F1F33] px-12 py-4.5 rounded-2xl font-bold text-lg shadow-xl shadow-[#D4A03C]/30 hover:shadow-2xl hover:shadow-[#D4A03C]/40 transition-shadow duration-500"
+              className="inline-block no-underline bg-gradient-to-br from-[#D4A03C] to-[#E8C06A] text-[#0F1F33] px-8 sm:px-12 py-3.5 sm:py-4.5 rounded-2xl font-bold text-base sm:text-lg shadow-xl shadow-[#D4A03C]/30 hover:shadow-2xl hover:shadow-[#D4A03C]/40 transition-shadow duration-500"
             >
               Contattaci
             </Link>

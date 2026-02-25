@@ -61,8 +61,8 @@ function PolicySection({
 }) {
   return (
     <motion.div className="mb-10" {...fadeUp(delay)}>
-      <h2 className="text-[20px] font-bold text-[#0F1F33] mb-4">{title}</h2>
-      <div className="text-[15px] text-gray-600 leading-[1.85] space-y-3">
+      <h2 className="text-[18px] sm:text-[20px] font-bold text-[#0F1F33] mb-4">{title}</h2>
+      <div className="text-[14px] sm:text-[15px] text-gray-600 leading-[1.85] space-y-3">
         {children}
       </div>
     </motion.div>
@@ -81,14 +81,14 @@ export default function PrivacyPolicyPage() {
           >
             Informativa
           </motion.span>
-          <h1 className="text-[clamp(34px,5vw,58px)] font-black text-white leading-[1.1] mb-6">
+          <h1 className="text-[clamp(22px,5vw,58px)] font-black text-white leading-[1.1] mb-6">
             <TextReveal text="Privacy Policy" delay={0.2} />
           </h1>
           <motion.div {...fadeUp(0.7)}>
             <GrowLine color="bg-[#D4A03C]" />
           </motion.div>
           <motion.p
-            className="text-[19px] text-white/75 max-w-[520px] mx-auto mt-7 leading-relaxed font-light"
+            className="text-[clamp(15px,3.5vw,19px)] text-white/75 max-w-[520px] mx-auto mt-7 leading-relaxed font-light"
             {...fadeUp(0.8)}
           >
             Informativa sul trattamento dei dati personali ai sensi del Regolamento UE 2016/679 (GDPR).
@@ -97,10 +97,10 @@ export default function PrivacyPolicyPage() {
       </header>
 
       {/* ══ CONTENUTO ══ */}
-      <section className="bg-[#F7F5F0] py-20 px-8">
+      <section className="bg-[#F7F5F0] py-16 sm:py-20 px-4 sm:px-8">
         <motion.div className="max-w-[720px] mx-auto" {...fadeUp(0.1)}>
-          <div className="bg-white rounded-3xl p-10 md:p-14 border border-gray-200 shadow-sm">
-            <motion.p className="text-xs text-gray-400 mb-10" {...fadeUp(0.15)}>
+          <div className="bg-white rounded-3xl p-5 sm:p-10 md:p-14 border border-gray-200 shadow-sm">
+            <motion.p className="text-xs text-gray-400 mb-6 sm:mb-10" {...fadeUp(0.15)}>
               Ultimo aggiornamento: 9 febbraio 2026
             </motion.p>
 

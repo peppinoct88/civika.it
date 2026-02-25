@@ -94,7 +94,7 @@ export default function Footer() {
       <GrowLine />
 
       {/* ── Main content ── */}
-      <div className="relative z-10 max-w-[1200px] mx-auto px-8 pt-20 pb-10">
+      <div className="relative z-10 max-w-[1200px] mx-auto px-4 sm:px-8 pt-12 sm:pt-20 pb-6 sm:pb-10">
         {/* Top row: Logo + tagline + CTA */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10 mb-16">
           {/* Logo block */}
@@ -118,7 +118,7 @@ export default function Footer() {
           <motion.div {...fadeUp(0.15)}>
             <Link
               href="/contatti"
-              className="group relative inline-flex items-center gap-3 no-underline bg-gradient-to-br from-[#D4A03C] to-[#C89530] text-[#0F1F33] px-9 py-4 rounded-full font-bold text-[15px] shadow-lg shadow-[#D4A03C]/20 hover:shadow-[#D4A03C]/40 hover:scale-[1.03] transition-all duration-500"
+              className="group relative inline-flex items-center gap-3 no-underline bg-gradient-to-br from-[#D4A03C] to-[#C89530] text-[#0F1F33] px-6 sm:px-9 py-3 sm:py-4 rounded-full font-bold text-[15px] shadow-lg shadow-[#D4A03C]/20 hover:shadow-[#D4A03C]/40 hover:scale-[1.03] transition-all duration-500"
             >
               Parliamone
               <svg
@@ -142,10 +142,10 @@ export default function Footer() {
         <GrowLine />
 
         {/* Navigation columns */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-10 md:gap-16 pt-14 pb-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-10 md:gap-16 pt-8 sm:pt-14 pb-8 sm:pb-14">
           {NAV_COLUMNS.map((col, colIdx) => (
             <motion.div key={col.title} {...fadeUp(0.1 + colIdx * 0.08)}>
-              <h4 className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/30 mb-5">
+              <h4 className="text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-white/30 mb-5">
                 {col.title}
               </h4>
               <ul className="list-none p-0 m-0 flex flex-col gap-3">
