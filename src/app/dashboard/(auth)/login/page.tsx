@@ -137,7 +137,7 @@ export default function DashboardLoginPage() {
             <img
               src="/logo-civika-white.svg"
               alt="CIVIKA"
-              className="h-12 w-auto"
+              className="h-24 w-auto"
             />
           </div>
 
