@@ -444,6 +444,44 @@ export const gdprConsents = pgTable(
 );
 
 // ============================================================
+// RICHIESTE DI CONTATTO
+// ============================================================
+
+export const contactRequestStatusEnum = pgEnum("contact_request_status", [
+  "new",
+  "read",
+  "replied",
+  "archived",
+]);
+
+export const contactRequests = pgTable(
+  "contact_requests",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    nome: varchar("nome", { length: 255 }).notNull(),
+    comune: varchar("comune", { length: 255 }).notNull(),
+    ruolo: varchar("ruolo", { length: 255 }),
+    email: varchar("email", { length: 255 }).notNull(),
+    telefono: varchar("telefono", { length: 30 }),
+    servizio: varchar("servizio", { length: 100 }),
+    messaggio: text("messaggio"),
+    status: contactRequestStatusEnum("status").notNull().default("new"),
+    ipAddress: inet("ip_address"),
+    userAgent: text("user_agent"),
+    emailSentAt: timestamp("email_sent_at", { withTimezone: true }),
+    readAt: timestamp("read_at", { withTimezone: true }),
+    notes: text("notes"),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow(),
+  },
+  (table) => [
+    index("idx_contact_requests_status").on(table.status),
+    index("idx_contact_requests_created").on(table.createdAt),
+    index("idx_contact_requests_email").on(table.email),
+  ]
+);
+
+// ============================================================
 // RELATIONS
 // ============================================================
 

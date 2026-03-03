@@ -68,6 +68,8 @@ export default function ContattiPage() {
     messaggio: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -75,17 +77,39 @@ export default function ContattiPage() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Track lead event via Meta Pixel + Conversions API
-    trackLead({
-      email: formData.email,
-      phone: formData.telefono,
-      firstName: formData.nome.split(" ")[0],
-      lastName: formData.nome.split(" ").slice(1).join(" "),
-    });
-    // In production, this would send to an API
-    setSubmitted(true);
+    setSubmitting(true);
+    setError("");
+
+    try {
+      // Invio dati al backend
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await res.json();
+
+      if (!res.ok) {
+        throw new Error(result.error || "Errore durante l'invio");
+      }
+
+      // Track lead event via Meta Pixel + Conversions API
+      trackLead({
+        email: formData.email,
+        phone: formData.telefono,
+        firstName: formData.nome.split(" ")[0],
+        lastName: formData.nome.split(" ").slice(1).join(" "),
+      });
+
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Si è verificato un errore. Riprova più tardi.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -262,11 +286,18 @@ export default function ContattiPage() {
                     />
                   </div>
 
+                  {error && (
+                    <div className="mb-4 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm">
+                      {error}
+                    </div>
+                  )}
+
                   <button
                     type="submit"
-                    className="w-full bg-gradient-to-br from-[#D4A03C] to-[#E8C06A] text-[#0F1F33] py-4 rounded-xl font-bold text-base shadow-lg shadow-[#D4A03C]/20 hover:shadow-xl hover:shadow-[#D4A03C]/30 transition-all duration-300 cursor-pointer"
+                    disabled={submitting}
+                    className="w-full bg-gradient-to-br from-[#D4A03C] to-[#E8C06A] text-[#0F1F33] py-4 rounded-xl font-bold text-base shadow-lg shadow-[#D4A03C]/20 hover:shadow-xl hover:shadow-[#D4A03C]/30 transition-all duration-300 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
                   >
-                    Invia richiesta
+                    {submitting ? "Invio in corso..." : "Invia richiesta"}
                   </button>
                   <p className="text-xs text-gray-400 mt-4 text-center">
                     Vi rispondiamo entro 24 ore. Il primo incontro è sempre gratuito.
