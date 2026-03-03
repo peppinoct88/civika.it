@@ -906,15 +906,16 @@ export default function Homepage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {[
-              { icon: "🎀", title: "Inaugurazioni", desc: "Taglio del nastro, visite guidate, presentazione opere alla cittadinanza." },
-              { icon: "🏛️", title: "Convegni istituzionali", desc: "Forum, seminari, tavoli di concertazione con relatori e ospiti istituzionali." },
-              { icon: "🎭", title: "Festival e cultura", desc: "Rassegne, festival, eventi di promozione turistica e territoriale." },
-              { icon: "🤝", title: "Animazione GAL/SNAI", desc: "Workshop partecipativi, assemblee, giornate LEADER." },
-              { icon: "🏅", title: "Cerimonie", desc: "Commemorazioni, cittadinanze onorarie, celebrazioni civiche." },
-              { icon: "🎤", title: "Conferenze stampa", desc: "Presentazione iniziative, bilanci, annunci. Media management completo." },
+              { icon: "🎀", title: "Inaugurazioni", desc: "Taglio del nastro, visite guidate, presentazione opere alla cittadinanza.", href: "/servizi/eventi-istituzionali" },
+              { icon: "🏛️", title: "Convegni istituzionali", desc: "Forum, seminari, tavoli di concertazione con relatori e ospiti istituzionali.", href: "/servizi/eventi-istituzionali" },
+              { icon: "🎭", title: "Festival e cultura", desc: "Rassegne, festival, eventi di promozione turistica e territoriale.", href: "/servizi/eventi-istituzionali" },
+              { icon: "🤝", title: "Animazione GAL/SNAI", desc: "Workshop partecipativi, assemblee, giornate LEADER.", href: "/servizi/eventi-istituzionali" },
+              { icon: "🏅", title: "Cerimonie", desc: "Commemorazioni, cittadinanze onorarie, celebrazioni civiche.", href: "/servizi/eventi-istituzionali" },
+              { icon: "🎤", title: "Conferenze stampa", desc: "Presentazione iniziative, bilanci, annunci. Media management completo.", href: "/servizi/eventi-istituzionali" },
             ].map((item, i) => (
               <motion.div key={i} {...scaleIn(0.1 * i)}>
-                <TiltCard className="relative bg-white rounded-2xl p-4 sm:p-7 border border-gray-200 flex gap-4 items-start cursor-default group overflow-hidden h-full">
+                <a href={item.href} className="block no-underline h-full">
+                <TiltCard className="relative bg-white rounded-2xl p-4 sm:p-7 border border-gray-200 flex gap-4 items-start cursor-pointer group overflow-hidden h-full">
                   {/* Hover gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-br from-[#D4A03C]/0 to-[#1B3A5C]/0 group-hover:from-[#D4A03C]/5 group-hover:to-[#1B3A5C]/5 transition-all duration-700" />
                   <div className="w-[54px] h-[54px] rounded-2xl bg-[#1B3A5C]/5 group-hover:bg-[#D4A03C]/10 flex items-center justify-center text-3xl shrink-0 transition-colors duration-500 relative z-[1]">
@@ -925,6 +926,7 @@ export default function Homepage() {
                     <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
                   </div>
                 </TiltCard>
+                </a>
               </motion.div>
             ))}
           </div>
@@ -1031,14 +1033,15 @@ export default function Homepage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
-              { icon: "🌐", title: "Sito web istituzionale", items: ["Conforme AGID e Design System Italia", "Accessibile WCAG 2.1 AA", "Integrazione SPID, CIE, pagoPA", "Manutenzione continua"] },
-              { icon: "📱", title: "Social media", items: ["Piano editoriale istituzionale", "Content creation professionale", "Gestione crisi e emergenze", "Community management"] },
-              { icon: "📰", title: "Ufficio stampa", items: ["Comunicati stampa", "Relazioni con media locali e regionali", "Media training per Sindaci", "Rassegna stampa"] },
-              { icon: "✉️", title: "Newsletter", items: ["Comunicazioni ai cittadini", "Mailing list segmentate", "Piattaforme conformi GDPR"] },
-              { icon: "🎨", title: "Branding", items: ["Identità visiva dell'Ente", "Materiali per campagne", "Video istituzionali", "Template documentali"] },
+              { icon: "🌐", title: "Sito web istituzionale", href: "/servizi/sito-web-comunale-agid", items: ["Conforme AGID e Design System Italia", "Accessibile WCAG 2.1 AA", "Integrazione SPID, CIE, pagoPA", "Manutenzione continua"] },
+              { icon: "📱", title: "Social media", href: "/servizi/social-media-comuni", items: ["Piano editoriale istituzionale", "Content creation professionale", "Gestione crisi e emergenze", "Community management"] },
+              { icon: "📰", title: "Ufficio stampa", href: "/servizi/ufficio-stampa-comuni", items: ["Comunicati stampa", "Relazioni con media locali e regionali", "Media training per Sindaci", "Rassegna stampa"] },
+              { icon: "✉️", title: "Newsletter", href: "/servizi/comunicazione-istituzionale", items: ["Comunicazioni ai cittadini", "Mailing list segmentate", "Piattaforme conformi GDPR"] },
+              { icon: "🎨", title: "Branding", href: "/servizi/comunicazione-istituzionale", items: ["Identità visiva dell'Ente", "Materiali per campagne", "Video istituzionali", "Template documentali"] },
             ].map((svc, i) => (
               <motion.div key={i} {...scaleIn(0.12 * i)}>
-                <TiltCard className="relative bg-white/[0.04] rounded-2xl p-4 sm:p-8 border border-white/[0.08] backdrop-blur-sm cursor-default group overflow-hidden h-full">
+                <a href={svc.href} className="block no-underline h-full">
+                <TiltCard className="relative bg-white/[0.04] rounded-2xl p-4 sm:p-8 border border-white/[0.08] backdrop-blur-sm cursor-pointer group overflow-hidden h-full">
                   {/* Gold border glow on hover */}
                   <div className="absolute inset-0 rounded-2xl border border-[#D4A03C]/0 group-hover:border-[#D4A03C]/30 transition-all duration-700" />
                   <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" style={{ background: "radial-gradient(circle at 50% 0%, rgba(212,160,60,0.08) 0%, transparent 60%)" }} />
@@ -1050,6 +1053,7 @@ export default function Homepage() {
                     </div>
                   ))}
                 </TiltCard>
+                </a>
               </motion.div>
             ))}
           </div>

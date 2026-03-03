@@ -125,6 +125,39 @@ export default function RootLayout({
     ],
   };
 
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: "CIVIKA",
+    url: "https://www.civika.it",
+    telephone: "+393498750521",
+    email: "civikasrl@gmail.com",
+    areaServed: {
+      "@type": "AdministrativeArea",
+      name: "Sicilia",
+    },
+    serviceType: [
+      "Comunicazione istituzionale",
+      "Realizzazione siti web comunali AGID",
+      "Social media management per Comuni",
+      "Organizzazione eventi istituzionali",
+      "Consulenza bandi europei e PNRR",
+      "Ufficio stampa per Comuni",
+    ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Servizi per Comuni",
+      itemListElement: [
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Comunicazione Istituzionale", url: "https://www.civika.it/servizi/comunicazione-istituzionale" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Sito Web Comunale AGID", url: "https://www.civika.it/servizi/sito-web-comunale-agid" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Social Media per Comuni", url: "https://www.civika.it/servizi/social-media-comuni" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Eventi Istituzionali", url: "https://www.civika.it/servizi/eventi-istituzionali" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Bandi Europei e PNRR", url: "https://www.civika.it/servizi/bandi-europei-comuni" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Ufficio Stampa", url: "https://www.civika.it/servizi/ufficio-stampa-comuni" } },
+      ],
+    },
+  };
+
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -180,7 +213,7 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify([organizationSchema, websiteSchema]),
+            __html: JSON.stringify([organizationSchema, websiteSchema, serviceSchema]),
           }}
         />
       </head>

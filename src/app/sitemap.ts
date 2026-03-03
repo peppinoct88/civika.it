@@ -44,6 +44,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  /* Service pages */
+  const servicePages: MetadataRoute.Sitemap = [
+    "servizi",
+    "servizi/comunicazione-istituzionale",
+    "servizi/sito-web-comunale-agid",
+    "servizi/social-media-comuni",
+    "servizi/eventi-istituzionali",
+    "servizi/bandi-europei-comuni",
+    "servizi/ufficio-stampa-comuni",
+  ].map((slug) => ({
+    url: `${baseUrl}/${slug}`,
+    lastModified: new Date("2026-03-03"),
+    changeFrequency: "monthly" as const,
+    priority: slug === "servizi" ? 0.9 : 0.85,
+  }));
+
   /* Blog articles */
   const blogPages: MetadataRoute.Sitemap = blogPosts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
@@ -52,5 +68,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...blogPages];
+  return [...staticPages, ...servicePages, ...blogPages];
 }
