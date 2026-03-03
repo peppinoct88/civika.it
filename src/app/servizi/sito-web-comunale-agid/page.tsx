@@ -99,10 +99,10 @@ export default function SitoWebComunaleAgidPage() {
         <div className="max-w-[900px] mx-auto">
           <div className="space-y-8">
             <motion.p className="text-lg text-gray-600 leading-relaxed" {...fadeUp(0.1)}>
-              Il sito web di un Comune è la sua vetrina digitale principale. Deve essere trasparente, facile da usare, accessibile a tutti i cittadini, e conforme agli standard dell&apos;Agenzia per l&apos;Italia Digitale (AGID). Ma molti comuni hanno siti obsoleti, lenti, poco funzionali o non conformi alla legge.
+              Il sito web di un Comune è la sua vetrina digitale principale. Deve essere trasparente, facile da usare, accessibile a tutti i cittadini, e conforme agli standard dell'Agenzia per l'Italia Digitale (AGID). Ma molti comuni hanno siti obsoleti, lenti, poco funzionali o non conformi alla legge.
             </motion.p>
             <motion.p className="text-lg text-gray-600 leading-relaxed" {...fadeUp(0.2)}>
-              CIVIKA sviluppa siti web comunali con tecnologie moderne, seguendo fedelmente le linee guida AGID e il Design System Italia. Integriamo i servizi digitali della PA: SPID e CIE per l&apos;autenticazione, pagoPA per i pagamenti, App IO per le notifiche. Il risultato è un sito che i cittadini amano usare e che la legge richiede.
+              CIVIKA sviluppa siti web comunali con tecnologie moderne, seguendo fedelmente le linee guida AGID e il Design System Italia. Integriamo i servizi digitali della PA: SPID e CIE per l'autenticazione, pagoPA per i pagamenti, App IO per le notifiche. Il risultato è un sito che i cittadini amano usare e che la legge richiede.
             </motion.p>
           </div>
         </div>
@@ -132,7 +132,7 @@ export default function SitoWebComunaleAgidPage() {
               },
               {
                 title: "Velocità e Performance",
-                desc: "AGID richiede tempi di caricamento veloci, ottimizzazione mobile, e un&apos;esperienza fluida. I siti lenti perdono cittadini e comunicano poca affidabilità.",
+                desc: "AGID richiede tempi di caricamento veloci, ottimizzazione mobile, e un'esperienza fluida. I siti lenti perdono cittadini e comunicano poca affidabilità.",
               },
               {
                 title: "Responsività Mobile",
@@ -174,7 +174,7 @@ export default function SitoWebComunaleAgidPage() {
               {
                 icon: "🔐",
                 title: "Integrazione SPID e CIE",
-                desc: "I cittadini si autenticano con la loro identità digitale ufficiale. Tracciabilità completa, massima sicurezza, conformità all&apos;identità digitale italiana.",
+                desc: "I cittadini si autenticano con la loro identità digitale ufficiale. Tracciabilità completa, massima sicurezza, conformità all'identità digitale italiana.",
               },
               {
                 icon: "💳",
@@ -184,7 +184,7 @@ export default function SitoWebComunaleAgidPage() {
               {
                 icon: "📱",
                 title: "Integrazione App IO",
-                desc: "Le notifiche del Comune arrivano nell&apos;app IO che tutti i cittadini stanno usando. Aumenta engagement e raggiunge direttamente i vostri abitanti.",
+                desc: "Le notifiche del Comune arrivano nell'app IO che tutti i cittadini stanno usando. Aumenta engagement e raggiunge direttamente i vostri abitanti.",
               },
               {
                 icon: "♿",
@@ -235,7 +235,7 @@ export default function SitoWebComunaleAgidPage() {
               },
               {
                 title: "Tempi e scadenze PNRR",
-                desc: "I comuni hanno scadenze precise per completare i progetti PNRR (dipendono dalla finestra temporale assegnata). Garantiamo il rispetto degli schedule, la documentazione completa e l&apos;ottenimento del rimborso finale.",
+                desc: "I comuni hanno scadenze precise per completare i progetti PNRR (dipendono dalla finestra temporale assegnata). Garantiamo il rispetto degli schedule, la documentazione completa e l'ottenimento del rimborso finale.",
               },
             ].map((item, i) => (
               <motion.div
@@ -268,7 +268,7 @@ export default function SitoWebComunaleAgidPage() {
               {
                 icon: "✅",
                 title: "Esperienza AGID collaudata",
-                desc: "Abbiamo sviluppato decine di siti web conformi AGID. Sappiamo esattamente cosa richiede l&apos;Agenzia e come verificare la conformità prima del rilascio.",
+                desc: "Abbiamo sviluppato decine di siti web conformi AGID. Sappiamo esattamente cosa richiede l'Agenzia e come verificare la conformità prima del rilascio.",
               },
               {
                 icon: "🚀",
@@ -278,7 +278,7 @@ export default function SitoWebComunaleAgidPage() {
               {
                 icon: "📈",
                 title: "Supporto PNRR completo",
-                desc: "Valutiamo l&apos;ammissibilità al finanziamento, prepariamo la documentazione tecnica, monitoriamo i milestone PNRR, assicuriamo l&apos;ottenimento del rimborso.",
+                desc: "Valutiamo l'ammissibilità al finanziamento, prepariamo la documentazione tecnica, monitoriamo i milestone PNRR, assicuriamo l'ottenimento del rimborso.",
               },
               {
                 icon: "👥",
@@ -374,14 +374,14 @@ export default function SitoWebComunaleAgidPage() {
             {[
               {
                 q: "Quanto tempo ci vuole per sviluppare un sito conforme AGID?",
-                a: "Dipende dalla complessità e dalle funzionalità richieste. Un sito piccolo-medio impiega 3-4 mesi. Un sito più complesso con molti servizi integrati può richiedere 5-6 mesi. Vi comunichiamo i tempi esatti dopo un&apos;analisi iniziale.",
+                a: "Dipende dalla complessità e dalle funzionalità richieste. Un sito piccolo-medio impiega 3-4 mesi. Un sito più complesso con molti servizi integrati può richiedere 5-6 mesi. Vi comunichiamo i tempi esatti dopo un'analisi iniziale.",
               },
               {
                 q: "Se il sito non è finanziato dal PNRR, quale è il costo?",
-                a: "Ogni sito è unico. Il costo dipende da quanti servizi volete integrati (SPID, pagoPA, App IO), quante pagine avete, quanto contenuto c&apos;è. Nel primo meeting gratuito analizziamo le vostre esigenze e prepariamo una proposta trasparente.",
+                a: "Ogni sito è unico. Il costo dipende da quanti servizi volete integrati (SPID, pagoPA, App IO), quante pagine avete, quanto contenuto c'è. Nel primo meeting gratuito analizziamo le vostre esigenze e prepariamo una proposta trasparente.",
               },
               {
-                q: "Come fate a garantire l&apos;accessibilità WCAG 2.1 AA?",
+                q: "Come fate a garantire l'accessibilità WCAG 2.1 AA?",
                 a: "Sviluppiamo con accessibility in mente: componenti semantici, contrasti adeguati, navigation da tastiera. Usiamo strumenti automatici di test, poi un auditor umano verifica il sito con veri lettori di schermo. Solo così raggiungiamo il massimo livello di conformità.",
               },
             ].map((faq, i) => (

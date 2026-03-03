@@ -89,7 +89,7 @@ export default function EventiIstituzionaliPage() {
             className="text-[clamp(15px,3.5vw,19px)] text-white/60 max-w-[560px] mx-auto mt-7 leading-relaxed font-light"
             {...fadeUp(0.8)}
           >
-            Dall&apos;idea alla realizzazione: concepting, logistica, comunicazione e post-evento. Creiamo momenti che lasciano il segno nella comunità.
+            Dall'idea alla realizzazione: concepting, logistica, comunicazione e post-evento. Creiamo momenti che lasciano il segno nella comunità.
           </motion.p>
         </div>
       </header>
@@ -99,10 +99,10 @@ export default function EventiIstituzionaliPage() {
         <div className="max-w-[900px] mx-auto">
           <div className="space-y-8">
             <motion.p className="text-lg text-gray-600 leading-relaxed" {...fadeUp(0.1)}>
-              Un evento istituzionale ben organizzato è uno dei momenti più importanti nella vita di un Comune. Che sia una festa patronale, un convegno politico, un&apos;inaugurazione o una conferenza stampa, ogni dettaglio comunica il valore e la professionalità dell&apos;amministrazione.
+              Un evento istituzionale ben organizzato è uno dei momenti più importanti nella vita di un Comune. Che sia una festa patronale, un convegno politico, un'inaugurazione o una conferenza stampa, ogni dettaglio comunica il valore e la professionalità dell'amministrazione.
             </motion.p>
             <motion.p className="text-lg text-gray-600 leading-relaxed" {...fadeUp(0.2)}>
-              CIVIKA gestisce l&apos;intero ciclo dell&apos;evento: dalla visione strategica al concept creativo, dalla logistica operativa alla comunicazione sui media e social. Il risultato è un evento che lascia il segno, rafforza la comunità e comunica efficacemente il vostro messaggio istituzionale.
+              CIVIKA gestisce l'intero ciclo dell'evento: dalla visione strategica al concept creativo, dalla logistica operativa alla comunicazione sui media e social. Il risultato è un evento che lascia il segno, rafforza la comunità e comunica efficacemente il vostro messaggio istituzionale.
             </motion.p>
           </div>
         </div>
@@ -130,7 +130,7 @@ export default function EventiIstituzionaliPage() {
               {
                 icon: "🎤",
                 title: "Convegni e conferenze",
-                desc: "Incontri tematici per cittadini, professionisti e stakeholder. Dalla selezione dei relatori all&apos;allestimento della sala, dalla registrazione video al follow-up comunicativo.",
+                desc: "Incontri tematici per cittadini, professionisti e stakeholder. Dalla selezione dei relatori all'allestimento della sala, dalla registrazione video al follow-up comunicativo.",
               },
               {
                 icon: "🎉",
@@ -140,7 +140,7 @@ export default function EventiIstituzionaliPage() {
               {
                 icon: "🌱",
                 title: "Animazione territoriale (SNAI e GAL)",
-                desc: "Se il vostro Comune riceve finanziamenti per l&apos;animazione territoriale, organizziamo workshop, cene conviviali, laboratori che rafforzano il tessuto comunitario e il senso di appartenenza.",
+                desc: "Se il vostro Comune riceve finanziamenti per l'animazione territoriale, organizziamo workshop, cene conviviali, laboratori che rafforzano il tessuto comunitario e il senso di appartenenza.",
               },
               {
                 icon: "📰",
@@ -183,7 +183,7 @@ export default function EventiIstituzionaliPage() {
             {[
               {
                 title: "1. Concept e Strategia",
-                desc: "Ascoltiamo i vostri obiettivi, la vision dell&apos;amministrazione, il target di pubblico. Sviluppiamo un concept creativo che traduce i vostri valori in un&apos;esperienza tangibile e memorabile.",
+                desc: "Ascoltiamo i vostri obiettivi, la vision dell'amministrazione, il target di pubblico. Sviluppiamo un concept creativo che traduce i vostri valori in un'esperienza tangibile e memorabile.",
               },
               {
                 title: "2. Logistica Operativa",
@@ -191,7 +191,7 @@ export default function EventiIstituzionaliPage() {
               },
               {
                 title: "3. Comunicazione Pre-Evento",
-                desc: "Lancio dell&apos;evento sui social, comunicati stampa, inviti personalizzati, reminder. Creiamo aspettativa e coinvolgiamo il pubblico nella fase preparatoria.",
+                desc: "Lancio dell'evento sui social, comunicati stampa, inviti personalizzati, reminder. Creiamo aspettativa e coinvolgiamo il pubblico nella fase preparatoria.",
               },
               {
                 title: "4. Gestione Evento (Day of)",
@@ -199,7 +199,7 @@ export default function EventiIstituzionaliPage() {
               },
               {
                 title: "5. Post-Evento e Follow-up",
-                desc: "Elaborazione foto e video, reportage sui media, articoli per il sito, grazie ai partecipanti, archivio digitale. L&apos;evento continua a vivere nel tempo tramite i contenuti.",
+                desc: "Elaborazione foto e video, reportage sui media, articoli per il sito, grazie ai partecipanti, archivio digitale. L'evento continua a vivere nel tempo tramite i contenuti.",
               },
             ].map((item, i) => (
               <motion.div
@@ -232,12 +232,12 @@ export default function EventiIstituzionaliPage() {
               {
                 icon: "✨",
                 title: "Creatività e visione",
-                desc: "Non seguiamo template. Ogni evento è unico e rispecchia l&apos;identità del vostro Comune. Trasformiamo i vostri obiettivi in esperienze indimenticabili.",
+                desc: "Non seguiamo template. Ogni evento è unico e rispecchia l'identità del vostro Comune. Trasformiamo i vostri obiettivi in esperienze indimenticabili.",
               },
               {
                 icon: "🎬",
                 title: "Storytelling integrato",
-                desc: "L&apos;evento non finisce il giorno stesso. Lo documentamos, lo comunichiamo, lo archivias come risorsa permanente di comunicazione e memoria del Comune.",
+                desc: "L'evento non finisce il giorno stesso. Lo documentiamo, lo comunichiamo, lo archiviamo come risorsa permanente di comunicazione e memoria del Comune.",
               },
               {
                 icon: "🤝",
@@ -277,7 +277,7 @@ export default function EventiIstituzionaliPage() {
           </div>
 
           <p className="text-lg text-gray-600 leading-relaxed text-center mb-12" {...fadeUp(0.2)}>
-            Gli eventi sono il cuore della comunicazione istituzionale. Integriamo perfettamente altre competenze per massimizzare l&apos;impatto.
+            Gli eventi sono il cuore della comunicazione istituzionale. Integriamo perfettamente altre competenze per massimizzare l'impatto.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -290,17 +290,17 @@ export default function EventiIstituzionaliPage() {
               {
                 title: "Social Media per Comuni",
                 link: "/servizi/social-media-comuni",
-                desc: "L&apos;evento inizia sui social mesi prima e continua dopo. Gestiamo la promozione, la diretta, il follow-up digitale con competenza full-channel.",
+                desc: "L'evento inizia sui social mesi prima e continua dopo. Gestiamo la promozione, la diretta, il follow-up digitale con competenza full-channel.",
               },
               {
                 title: "Ufficio Stampa per Comuni",
                 link: "/servizi/ufficio-stampa-comuni",
-                desc: "Ogni evento è un&apos;occasione di visibilità media. Coordiniamo giornalisti, prepariamo dossier, assicuriamo la copertura della stampa locale.",
+                desc: "Ogni evento è un'occasione di visibilità media. Coordiniamo giornalisti, prepariamo dossier, assicuriamo la copertura della stampa locale.",
               },
               {
                 title: "Sito Web Comunale AGID",
                 link: "/servizi/sito-web-comunale-agid",
-                desc: "L&apos;archivio digitale degli eventi vive nel vostro sito. Foto, video, articoli rimangono accessibili come memoria pubblica della comunità.",
+                desc: "L'archivio digitale degli eventi vive nel vostro sito. Foto, video, articoli rimangono accessibili come memoria pubblica della comunità.",
               },
             ].map((service, i) => (
               <motion.div
@@ -337,16 +337,16 @@ export default function EventiIstituzionaliPage() {
           <div className="space-y-6">
             {[
               {
-                q: "Quanto tempo prima dell&apos;evento iniziate a lavorarci?",
-                a: "Consigliamo di contattarci almeno 2-3 mesi prima, soprattutto se l&apos;evento è complesso. Per eventi più semplici, anche 4-6 settimane sono sufficienti. Più tempo abbiamo, più ampi sono gli spazi creativi e di coordinamento.",
+                q: "Quanto tempo prima dell'evento iniziate a lavorarci?",
+                a: "Consigliamo di contattarci almeno 2-3 mesi prima, soprattutto se l'evento è complesso. Per eventi più semplici, anche 4-6 settimane sono sufficienti. Più tempo abbiamo, più ampi sono gli spazi creativi e di coordinamento.",
               },
               {
                 q: "Come definite il budget per un evento?",
-                a: "Dipende da tipologia, grandezza, ambizione creativa e numero di partecipanti. Nell&apos;incontro iniziale ascoltiamo le vostre priorità e prepariamo una proposta con il breakdown completo dei costi. Trasparenza totale, senza sorprese.",
+                a: "Dipende da tipologia, grandezza, ambizione creativa e numero di partecipanti. Nell'incontro iniziale ascoltiamo le vostre priorità e prepariamo una proposta con il breakdown completo dei costi. Trasparenza totale, senza sorprese.",
               },
               {
-                q: "Gestite il giorno dell&apos;evento o solo la pianificazione?",
-                a: "Gestiamo tutto: pianificazione, coordinamento pre-evento e soprattutto il day-of. Un nostro project manager sarà presente dall&apos;inizio alla fine, coordinando tutti i dettagli e risolvendo imprevisti.",
+                q: "Gestite il giorno dell'evento o solo la pianificazione?",
+                a: "Gestiamo tutto: pianificazione, coordinamento pre-evento e soprattutto il day-of. Un nostro project manager sarà presente dall'inizio alla fine, coordinando tutti i dettagli e risolvendo imprevisti.",
               },
             ].map((faq, i) => (
               <motion.div

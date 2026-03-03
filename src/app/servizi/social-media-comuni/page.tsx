@@ -102,7 +102,7 @@ export default function SocialMediaComuniPage() {
               I social media sono dove vivono i vostri cittadini. Facebook, Instagram, TikTok, LinkedIn: ogni piattaforma è un canale di comunicazione diretto con la comunità. Ma gestirli bene richiede tempo, costanza, strategia e competenze specifiche.
             </motion.p>
             <motion.p className="text-lg text-gray-600 leading-relaxed" {...fadeUp(0.2)}>
-              Con l&apos;introduzione della figura di Social Media Manager nella PA (L.69/2025), anche i Comuni devono potenziare questa capacità. CIVIKA gestisce interamente i vostri canali social: dal piano editoriale alla pubblicazione quotidiana, dalla risposta ai cittadini al monitoraggio dell&apos;impatto. Il risultato? Una comunità più consapevole, informata e consenziente.
+              Con l'introduzione della figura di Social Media Manager nella PA (L.69/2025), anche i Comuni devono potenziare questa capacità. CIVIKA gestisce interamente i vostri canali social: dal piano editoriale alla pubblicazione quotidiana, dalla risposta ai cittadini al monitoraggio dell'impatto. Il risultato? Una comunità più consapevole, informata e partecipe.
             </motion.p>
           </div>
         </div>
@@ -124,7 +124,7 @@ export default function SocialMediaComuniPage() {
             {[
               {
                 title: "L.69/2025 - Riforma della PA digitale",
-                desc: "La riforma definisce il Social Media Manager come figura chiave nella PA. Riconoscere l&apos;importanza strategica di questi canali significa stare al passo con la modernizzazione.",
+                desc: "La riforma definisce il Social Media Manager come figura chiave nella PA. Riconoscere l'importanza strategica di questi canali significa stare al passo con la modernizzazione.",
               },
               {
                 title: "Raggiungere i cittadini dove sono",
@@ -132,7 +132,7 @@ export default function SocialMediaComuniPage() {
               },
               {
                 title: "Trasparenza e fiducia",
-                desc: "Comunicare sui social significa essere visibili, disponibili, umani. Aumenta la fiducia nei confronti dell&apos;amministrazione e crea un dialogo diretto con la comunità.",
+                desc: "Comunicare sui social significa essere visibili, disponibili, umani. Aumenta la fiducia nei confronti dell'amministrazione e crea un dialogo diretto con la comunità.",
               },
               {
                 title: "Gestione della crisi",
@@ -320,7 +320,7 @@ export default function SocialMediaComuniPage() {
               {
                 icon: "🎯",
                 title: "Specializzazione PA",
-                desc: "Non siamo un&apos;agenzia social generica. Lavoriamo esclusivamente con Amministrazioni pubbliche e conosciamo i vincoli, le priorità e le opportunità della comunicazione pubblica.",
+                desc: "Non siamo un'agenzia social generica. Lavoriamo esclusivamente con Amministrazioni pubbliche e conosciamo i vincoli, le priorità e le opportunità della comunicazione pubblica.",
               },
               {
                 icon: "📈",
@@ -365,7 +365,7 @@ export default function SocialMediaComuniPage() {
           </div>
 
           <p className="text-lg text-gray-600 leading-relaxed text-center mb-12" {...fadeUp(0.2)}>
-            La gestione dei social media cresce quando integrata con altri servizi di comunicazione. Scopri come CIVIKA completa l&apos;offerta.
+            La gestione dei social media cresce quando integrata con altri servizi di comunicazione. Scopri come CIVIKA completa l'offerta.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

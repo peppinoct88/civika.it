@@ -140,7 +140,7 @@ export default function UfficioStampaPage() {
               {
                 icon: "📰",
                 title: "Rassegna Stampa Quotidiana",
-                desc: "Ogni mattina o settimanalmente, vi consegniamo una rassegna completa di quello che la stampa scrive del vostro Comune e del territorio. Dati per capire l&apos;impatto della vostra comunicazione.",
+                desc: "Ogni mattina o settimanalmente, vi consegniamo una rassegna completa di quello che la stampa scrive del vostro Comune e del territorio. Dati per capire l'impatto della vostra comunicazione.",
               },
               {
                 icon: "🚨",
@@ -187,7 +187,7 @@ export default function UfficioStampaPage() {
               },
               {
                 title: "Dichiarazioni verificate",
-                desc: "Prima di mandare un comunicato ai media, verifichiamo ogni dato con gli uffici competenti. La credibilità del Comune dipende dall&apos;accuratezza delle informazioni. Noi la proteggiamo.",
+                desc: "Prima di mandare un comunicato ai media, verifichiamo ogni dato con gli uffici competenti. La credibilità del Comune dipende dall'accuratezza delle informazioni. Noi la proteggiamo.",
               },
               {
                 title: "Etica giornalistica e neutralità",
@@ -231,11 +231,11 @@ export default function UfficioStampaPage() {
               },
               {
                 title: "Neutralità e credibilità",
-                desc: "Un giornalista parla più facilmente con un consulente esterno che con l&apos;assessore comunicazione del Comune. L&apos;outsourcing aggiunge credibilità e distanza che i media apprezzano.",
+                desc: "Un giornalista parla più facilmente con un consulente esterno che con l'assessore comunicazione del Comune. L'outsourcing aggiunge credibilità e distanza che i media apprezzano.",
               },
               {
                 title: "Continuità garantita",
-                desc: "Se l&apos;ufficio stampa è interno e il responsabile se ne va, tutto crolla. Con CIVIKA, il servizio è sempre attivo, sempre di qualità, indipendente dai cambi organizzativi del Comune.",
+                desc: "Se l'ufficio stampa è interno e il responsabile se ne va, tutto crolla. Con CIVIKA, il servizio è sempre attivo, sempre di qualità, indipendente dai cambi organizzativi del Comune.",
               },
               {
                 title: "Costo prevedibile",
@@ -317,7 +317,7 @@ export default function UfficioStampaPage() {
           </div>
 
           <p className="text-lg text-gray-600 leading-relaxed text-center mb-12" {...fadeUp(0.2)}>
-            L&apos;ufficio stampa è parte di una strategia comunicativa integrata. Funziona meglio se coordinato con gli altri canali.
+            L'ufficio stampa è parte di una strategia comunicativa integrata. Funziona meglio se coordinato con gli altri canali.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -386,7 +386,7 @@ export default function UfficioStampaPage() {
               },
               {
                 q: "Quanto tempo prima di una conferenza stampa devo informarvi?",
-                a: "Idealmente almeno una settimana. Così abbiamo tempo di contattare i giornalisti, preparare il materiale, assicurare una buona attendance. Per urgenze, possiamo organizzi una conferenza stampa in 48-72 ore, ma con meno copertura.",
+                a: "Idealmente almeno una settimana. Così abbiamo tempo di contattare i giornalisti, preparare il materiale, assicurare una buona attendance. Per urgenze, possiamo organizzare una conferenza stampa in 48-72 ore, ma con meno copertura.",
               },
             ].map((faq, i) => (
               <motion.div

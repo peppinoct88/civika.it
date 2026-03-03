@@ -50,7 +50,7 @@ export default function Navbar() {
         <div
           className={`absolute left-1/2 -translate-x-1/2 rounded-full pointer-events-none transition-all duration-1000 ease-out ${
             isScrolled
-              ? "top-3 h-[56px] w-[calc(100%-24px)] max-w-[340px] md:max-w-[480px] md:w-[480px] opacity-100 shadow-2xl shadow-[#070E18]/60"
+              ? "top-3 h-[56px] w-[calc(100%-24px)] max-w-[480px] opacity-100 shadow-2xl shadow-[#070E18]/60"
               : "top-8 h-[64px] w-[92%] max-w-[1200px] opacity-0"
           }`}
           style={{
@@ -67,7 +67,7 @@ export default function Navbar() {
         <nav
           className={`relative z-10 mx-auto flex items-center justify-between transition-all duration-1000 ease-out ${
             isScrolled
-              ? "mt-3 max-w-[calc(100%-24px)] sm:max-w-[300px] md:max-w-[440px] px-4 sm:px-7 py-2.5"
+              ? "mt-3 max-w-[calc(100%-24px)] sm:max-w-[440px] md:max-w-[440px] px-5 sm:px-7 py-2.5"
               : "mt-8 max-w-[1200px] px-8 py-3"
           }`}
         >

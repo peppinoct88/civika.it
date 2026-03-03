@@ -102,7 +102,7 @@ export default function BandiEuropeiComuniPage() {
               Ogni anno, miliardi di euro di finanziamenti pubblici europei rimangono inutilizzati. Non per mancanza di denaro, ma per mancanza di capacità amministrativa e competenza nella gestione dei bandi. I Comuni più piccoli e con meno risorse sono spesso quelli che ne hanno più bisogno, ma anche quelli più in difficoltà nel accedere ai fondi.
             </motion.p>
             <motion.p className="text-lg text-gray-600 leading-relaxed" {...fadeUp(0.2)}>
-              CIVIKA aiuta i Comuni siciliani a esplorare, candidarsi e gestire i finanziamenti europei e del PNRR. Dal FESR al FEASR, dai Fondi SNAI ai programmi LEADER: identifichiamo le opportunità, scriviamo i progetti, supportiamo l&apos;istruttoria, garantiamo la rendicontazione corretta. Il vostro Comune ottiene le risorse che merita per trasformare il territorio.
+              CIVIKA aiuta i Comuni siciliani a esplorare, candidarsi e gestire i finanziamenti europei e del PNRR. Dal FESR al FEASR, dai Fondi SNAI ai programmi LEADER: identifichiamo le opportunità, scriviamo i progetti, supportiamo l'istruttoria, garantiamo la rendicontazione corretta. Il vostro Comune ottiene le risorse che merita per trasformare il territorio.
             </motion.p>
           </div>
         </div>
@@ -139,13 +139,13 @@ export default function BandiEuropeiComuniPage() {
               },
               {
                 number: "4",
-                title: "Supporto all&apos;istruttoria e negoziazione",
-                desc: "Se il vostro progetto viene selezionato, supportiamo l&apos;istruttoria: rispondiamo alle richieste di chiarimenti, modifichiamo se necessario, nego ziamo con l&apos;ente finanziatore per raggiungere l&apos;approvazione.",
+                title: "Supporto all'istruttoria e negoziazione",
+                desc: "Se il vostro progetto viene selezionato, supportiamo l'istruttoria: rispondiamo alle richieste di chiarimenti, modifichiamo se necessario, negoziamo con l'ente finanziatore per raggiungere l'approvazione.",
               },
               {
                 number: "5",
                 title: "Rendicontazione e chiusura del progetto",
-                desc: "Durante l&apos;implementazione del progetto, raccogliamo documentazione, gestiamo il bilancio, prepariamo i report. Al termine, completiamo la rendicontazione finale per ottenere il rimborso completo.",
+                desc: "Durante l'implementazione del progetto, raccogliamo documentazione, gestiamo il bilancio, prepariamo i report. Al termine, completiamo la rendicontazione finale per ottenere il rimborso completo.",
               },
             ].map((item, i) => (
               <motion.div
@@ -192,7 +192,7 @@ export default function BandiEuropeiComuniPage() {
               {
                 icon: "🏗️",
                 title: "FESR - Fondo Europeo di Sviluppo Regionale",
-                desc: "Investimenti in infrastrutture, ricerca, innovazione. I Comuni accedono spesso tramite progetti per l&apos;economia locale e il turismo sostenibile.",
+                desc: "Investimenti in infrastrutture, ricerca, innovazione. I Comuni accedono spesso tramite progetti per l'economia locale e il turismo sostenibile.",
               },
               {
                 icon: "🌾",
@@ -245,15 +245,15 @@ export default function BandiEuropeiComuniPage() {
             {[
               {
                 title: "Un approccio integrato",
-                desc: "Non pensiamo ai bandi come semplici amministrazione. Un bando approvato è un&apos;opportunità per comunicare il vostro impegno verso il territorio. Lo documentiamo, lo comunichiamo ai cittadini, organizziamo eventi di presentazione e chiusura del progetto.",
+                desc: "Non pensiamo ai bandi come semplici amministrazione. Un bando approvato è un'opportunità per comunicare il vostro impegno verso il territorio. Lo documentiamo, lo comunichiamo ai cittadini, organizziamo eventi di presentazione e chiusura del progetto.",
               },
               {
-                title: "Dal PNRR all&apos;evento: esempio concreto",
-                desc: "Supponete di vincere un bando PNRR per la rigenerazione urbana di una piazza. Non solo implementiamo il progetto: creiamo una comunicazione integrata (sito web, social, stampa), organizziamo l&apos;inaugur azione, documentamos i risultati. Il bando diventa una storia di trasformazione visibile per tutta la comunità.",
+                title: "Dal PNRR all'evento: esempio concreto",
+                desc: "Supponete di vincere un bando PNRR per la rigenerazione urbana di una piazza. Non solo implementiamo il progetto: creiamo una comunicazione integrata (sito web, social, stampa), organizziamo l'inaugurazione, documentiamo i risultati. Il bando diventa una storia di trasformazione visibile per tutta la comunità.",
               },
               {
                 title: "Trasparenza sulla spesa pubblica",
-                desc: "I cittadini hanno diritto di sapere come vengono spesi i loro soldi pubblici. Aiutiamo il Comune a comunicare con trasparenza il progetto finanziato, i risultati raggiunti, l&apos;impatto sulla comunità. Questa trasparenza aumenta fiducia e coinvolgimento.",
+                desc: "I cittadini hanno diritto di sapere come vengono spesi i loro soldi pubblici. Aiutiamo il Comune a comunicare con trasparenza il progetto finanziato, i risultati raggiunti, l'impatto sulla comunità. Questa trasparenza aumenta fiducia e coinvolgimento.",
               },
             ].map((item, i) => (
               <motion.div
@@ -296,12 +296,12 @@ export default function BandiEuropeiComuniPage() {
               {
                 icon: "📈",
                 title: "Track record provato",
-                desc: "Progetti finanziati, approvazioni ottenu te, rendicontazioni completate correttamente. Conosciamo cosa funziona e cosa gli enti finanziatori cercano.",
+                desc: "Progetti finanziati, approvazioni ottenute, rendicontazioni completate correttamente. Conosciamo cosa funziona e cosa gli enti finanziatori cercano.",
               },
               {
                 icon: "🤝",
                 title: "Partnership a lungo termine",
-                desc: "Non siamo una scatola nera che consegna un progetto e scompare. Restiamo coinvolti durante l&apos;implementazione, la rendicontazione e la comunicazione. Il vostro successo è il nostro successo.",
+                desc: "Non siamo una scatola nera che consegna un progetto e scompare. Restiamo coinvolti durante l'implementazione, la rendicontazione e la comunicazione. Il vostro successo è il nostro successo.",
               },
             ].map((item, i) => (
               <motion.div
@@ -331,7 +331,7 @@ export default function BandiEuropeiComuniPage() {
           </div>
 
           <p className="text-lg text-gray-600 leading-relaxed text-center mb-12" {...fadeUp(0.2)}>
-            I bandi sono il mezzo per realizzare i vostri progetti. Li integriamo con comunicazione e gestione di progetti reali per massimizzare l&apos;impatto.
+            I bandi sono il mezzo per realizzare i vostri progetti. Li integriamo con comunicazione e gestione di progetti reali per massimizzare l'impatto.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -349,7 +349,7 @@ export default function BandiEuropeiComuniPage() {
               {
                 title: "Eventi Istituzionali",
                 link: "/servizi/eventi-istituzionali",
-                desc: "Ogni progetto finanziato merita un evento di lancio e chiusura. Coordiniamo dal bando all&apos;evento finale con coerenza narrativa.",
+                desc: "Ogni progetto finanziato merita un evento di lancio e chiusura. Coordiniamo dal bando all'evento finale con coerenza narrativa.",
               },
               {
                 title: "Ufficio Stampa per Comuni",
@@ -392,7 +392,7 @@ export default function BandiEuropeiComuniPage() {
             {[
               {
                 q: "Quali sono le possibilità che il mio progetto venga approvato?",
-                a: "Dipende dal bando specifico, dalla qualità del progetto e dalla competitività. Non facciamo promesse fake, ma diciamo onestamente: se un bando è competitivo (per esempio PNRR), l&apos;approval rate è tra il 30-50% dei progetti presentati. Massimizziamo le probabilità di successo scrivendo progetti solidi, ma non possiamo garantire nulla.",
+                a: "Dipende dal bando specifico, dalla qualità del progetto e dalla competitività. Non facciamo promesse fake, ma diciamo onestamente: se un bando è competitivo (per esempio PNRR), l'approval rate è tra il 30-50% dei progetti presentati. Massimizziamo le probabilità di successo scrivendo progetti solidi, ma non possiamo garantire nulla.",
               },
               {
                 q: "Se il bando richiede cofinanziamento, quanto dovrà mettere il Comune?",

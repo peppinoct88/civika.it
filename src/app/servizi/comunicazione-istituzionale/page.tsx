@@ -100,7 +100,7 @@ export default function ComunicazioneIstituzionalePage() {
         <div className="max-w-[900px] mx-auto">
           <div className="space-y-8">
             <motion.p className="text-lg text-gray-600 leading-relaxed" {...fadeUp(0.1)}>
-              La comunicazione istituzionale non è una scelta, è un obbligo e un&apos;opportunità. Ogni Comune,
+              La comunicazione istituzionale non è una scelta, è un obbligo e un'opportunità. Ogni Comune,
               per legge (L.150/2000), deve comunicare in modo trasparente, tempestivo e inclusivo le proprie
               azioni, progetti e risultati. Ma spesso questa comunicazione è frammentaria, disorganizzata,
               affidata a risorse interne limitate.
@@ -109,7 +109,7 @@ export default function ComunicazioneIstituzionalePage() {
               Il risultato? Cittadini disinformati, progetti ignorati, occasioni mancate di dialogo pubblico.
               CIVIKA offre un servizio integrato che prende in carico tutta la comunicazione amministrativa:
               dalla strategia editoriale alla gestione quotidiana dei canali, dalla creazione di contenuti
-              professionali al monitoraggio dell&apos;impatto.
+              professionali al monitoraggio dell'impatto.
             </motion.p>
           </div>
         </div>
@@ -157,7 +157,7 @@ export default function ComunicazioneIstituzionalePage() {
               {
                 icon: "🎯",
                 title: "Coordinamento strategico",
-                desc: "Coordiniamo con gli uffici interni per garantire che tutta la comunicazione sia coerente, tempestiva e allineata alle priorità dell&apos;amministrazione.",
+                desc: "Coordiniamo con gli uffici interni per garantire che tutta la comunicazione sia coerente, tempestiva e allineata alle priorità dell'amministrazione.",
               },
             ].map((item, i) => (
               <motion.div
@@ -198,7 +198,7 @@ export default function ComunicazioneIstituzionalePage() {
               },
               {
                 title: "Linee guida AGID - Siti web PA",
-                desc: "L&apos;Agenzia per l&apos;Italia Digitale ha stabilito standard di usabilità, accessibilità e design per i siti pubblici. Applichiamo queste linee guida in ogni contenuto e aggiornamento.",
+                desc: "L'Agenzia per l'Italia Digitale ha stabilito standard di usabilità, accessibilità e design per i siti pubblici. Applichiamo queste linee guida in ogni contenuto e aggiornamento.",
               },
               {
                 title: "GDPR - Privacy dei dati",
@@ -235,7 +235,7 @@ export default function ComunicazioneIstituzionalePage() {
               {
                 icon: "🎯",
                 title: "Specializzazione totale",
-                desc: "Non siamo un&apos;agenzia generica che fa comunicazione istituzionale tra altri servizi. È il nostro unico mestiere. Conosciamo la PA a fondo, sappiamo cosa funziona e cosa no.",
+                desc: "Non siamo un'agenzia generica che fa comunicazione istituzionale tra altri servizi. È il nostro unico mestiere. Conosciamo la PA a fondo, sappiamo cosa funziona e cosa no.",
               },
               {
                 icon: "📈",
@@ -281,7 +281,7 @@ export default function ComunicazioneIstituzionalePage() {
 
           <p className="text-lg text-gray-600 leading-relaxed text-center mb-12" {...fadeUp(0.2)}>
             La comunicazione istituzionale cresce quando integrata con altri servizi specializzati.
-            Ecco come CIVIKA completa l&apos;offerta:
+            Ecco come CIVIKA completa l'offerta:
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -342,7 +342,7 @@ export default function ComunicazioneIstituzionalePage() {
             {[
               {
                 q: "Quanto costa il servizio di comunicazione istituzionale?",
-                a: "Il costo varia in base alla dimensione dell&apos;Amministrazione, alla complessità della comunicazione e ai servizi inclusi. Di solito è un retainer mensile fisso, senza sorprese. Nel primo incontro gratuito analizziamo le vostre esigenze e prepariamo una proposta trasparente.",
+                a: "Il costo varia in base alla dimensione dell'Amministrazione, alla complessità della comunicazione e ai servizi inclusi. Di solito è un retainer mensile fisso, senza sorprese. Nel primo incontro gratuito analizziamo le vostre esigenze e prepariamo una proposta trasparente.",
               },
               {
                 q: "Potete garantire che il nostro sito sia conforme alle linee AGID?",
