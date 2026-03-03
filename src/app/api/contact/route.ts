@@ -105,7 +105,7 @@ export async function POST(request: NextRequest) {
           : "Non specificato";
 
         await resend.emails.send({
-          from: process.env.RESEND_FROM_EMAIL || "Civika <onboarding@resend.dev>",
+          from: process.env.RESEND_FROM_EMAIL || "Civika <noreply@civika.it>",
           to: ["civikasrl@gmail.com"],
           subject: `Nuova richiesta da ${data.nome} — ${data.comune}`,
           html: `
