@@ -24,7 +24,8 @@ const NAV_COLUMNS = [
     title: "Contatti",
     links: [
       { label: "Contattaci", href: "/contatti" },
-      { label: "info@civika.it", href: "mailto:info@civika.it" },
+      { label: "civikasrl@gmail.com", href: "mailto:civikasrl@gmail.com" },
+      { label: "+39 349 875 0521", href: "tel:+393498750521" },
     ],
   },
   {

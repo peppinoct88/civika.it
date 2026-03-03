@@ -102,7 +102,7 @@ export default function RootLayout({
     },
     contactPoint: {
       "@type": "ContactPoint",
-      email: "info@civika.it",
+      email: "civikasrl@gmail.com",
       contactType: "customer service",
       availableLanguage: "Italian",
     },

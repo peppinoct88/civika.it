@@ -287,14 +287,14 @@ export default function ContattiPage() {
                 {
                   icon: "📧",
                   title: "Email",
-                  value: "info@civika.it",
-                  href: "mailto:info@civika.it",
+                  value: "civikasrl@gmail.com",
+                  href: "mailto:civikasrl@gmail.com",
                 },
                 {
                   icon: "📞",
                   title: "Telefono",
-                  value: "+39 000 000 0000",
-                  href: "tel:+390000000000",
+                  value: "+39 349 875 0521",
+                  href: "tel:+393498750521",
                 },
                 {
                   icon: "📍",

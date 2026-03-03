@@ -111,7 +111,7 @@ export default function PrivacyPolicyPage() {
               </p>
               <p>
                 Per qualsiasi richiesta relativa al trattamento dei dati personali è possibile
-                scrivere a: <a href="mailto:info@civika.it" className="text-[#D4A03C] underline underline-offset-2 hover:text-[#1B3A5C] transition-colors">info@civika.it</a>
+                scrivere a: <a href="mailto:civikasrl@gmail.com" className="text-[#D4A03C] underline underline-offset-2 hover:text-[#1B3A5C] transition-colors">civikasrl@gmail.com</a>
               </p>
             </PolicySection>
 
@@ -248,7 +248,7 @@ export default function PrivacyPolicyPage() {
               </p>
               <p>
                 Per esercitare i propri diritti, l&apos;interessato può inviare una richiesta
-                a: <a href="mailto:info@civika.it" className="text-[#D4A03C] underline underline-offset-2 hover:text-[#1B3A5C] transition-colors">info@civika.it</a>
+                a: <a href="mailto:civikasrl@gmail.com" className="text-[#D4A03C] underline underline-offset-2 hover:text-[#1B3A5C] transition-colors">civikasrl@gmail.com</a>
               </p>
               <p>
                 L&apos;interessato ha inoltre il diritto di proporre reclamo all&apos;Autorità

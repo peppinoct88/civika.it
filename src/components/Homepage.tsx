@@ -1373,7 +1373,7 @@ export default function Homepage() {
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               />
               <MagneticButton
-                href="mailto:info@civika.it"
+                href="mailto:civikasrl@gmail.com"
                 className="relative inline-block no-underline bg-gradient-to-br from-[#D4A03C] to-[#E8C06A] text-[#0F1F33] px-8 sm:px-14 py-4 sm:py-5 rounded-2xl font-bold text-base sm:text-lg shadow-xl shadow-[#D4A03C]/30 overflow-hidden"
               >
                 Contattaci ora

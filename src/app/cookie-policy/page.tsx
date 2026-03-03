@@ -266,7 +266,7 @@ export default function CookiePolicyPage() {
                 con sede in Sicilia, Italia.
               </p>
               <p>
-                Per qualsiasi richiesta relativa ai cookie o al trattamento dei dati personali: <a href="mailto:info@civika.it" className="text-[#D4A03C] underline underline-offset-2 hover:text-[#1B3A5C] transition-colors">info@civika.it</a>
+                Per qualsiasi richiesta relativa ai cookie o al trattamento dei dati personali: <a href="mailto:civikasrl@gmail.com" className="text-[#D4A03C] underline underline-offset-2 hover:text-[#1B3A5C] transition-colors">civikasrl@gmail.com</a>
               </p>
             </PolicySection>
 
@@ -278,7 +278,7 @@ export default function CookiePolicyPage() {
                 la portabilità dei dati.
               </p>
               <p>
-                L&apos;utente può esercitare tali diritti scrivendo a <a href="mailto:info@civika.it" className="text-[#D4A03C] underline underline-offset-2 hover:text-[#1B3A5C] transition-colors">info@civika.it</a>.
+                L&apos;utente può esercitare tali diritti scrivendo a <a href="mailto:civikasrl@gmail.com" className="text-[#D4A03C] underline underline-offset-2 hover:text-[#1B3A5C] transition-colors">civikasrl@gmail.com</a>.
               </p>
               <p>
                 È inoltre possibile proporre reclamo all&apos;Autorità Garante per la Protezione
