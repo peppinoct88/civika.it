@@ -103,6 +103,7 @@ export default function RootLayout({
     contactPoint: {
       "@type": "ContactPoint",
       email: "civikasrl@gmail.com",
+      telephone: "+393498750521",
       contactType: "customer service",
       availableLanguage: "Italian",
     },
@@ -110,7 +111,10 @@ export default function RootLayout({
       "@type": "AdministrativeArea",
       name: "Sicilia",
     },
-    sameAs: [],
+    sameAs: [
+      "https://www.facebook.com/civikasrl",
+      "https://www.instagram.com/civikasrl",
+    ],
     knowsAbout: [
       "Comunicazione istituzionale",
       "Eventi istituzionali",
@@ -147,6 +151,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#0F1F33" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
@@ -169,7 +174,7 @@ export default function RootLayout({
             width="1"
             style={{ display: "none" }}
             src="https://www.facebook.com/tr?id=887486544068900&ev=PageView&noscript=1"
-            alt=""
+            alt="Meta Pixel"
           />
         </noscript>
         <script
