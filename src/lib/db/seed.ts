@@ -222,15 +222,21 @@ async function seed() {
 
   // ---- UTENTE SUPER ADMIN ----
   console.log("👤 Creazione utente Super Admin...");
-  const passwordHash = await hash("CivikaAdmin2026!", 12);
+  const adminPassword = process.env.ADMIN_SEED_PASSWORD;
+  if (!adminPassword) {
+    console.error("   ❌ Variabile ADMIN_SEED_PASSWORD non impostata!");
+    console.error("   Esegui con: ADMIN_SEED_PASSWORD='TuaPassword!' npx tsx src/lib/db/seed.ts");
+    process.exit(1);
+  }
+  const passwordHash = await hash(adminPassword, 12);
 
   const [superAdmin] = await db
     .insert(schema.users)
     .values({
-      email: "gi.spalletta1988@gmail.com",
+      email: process.env.ADMIN_SEED_EMAIL || "gi.spalletta1988@gmail.com",
       passwordHash,
-      firstName: "Giuseppe",
-      lastName: "Spalletta",
+      firstName: process.env.ADMIN_SEED_FIRST_NAME || "Giuseppe",
+      lastName: process.env.ADMIN_SEED_LAST_NAME || "Spalletta",
       emailVerified: true,
       isActive: true,
       gdprConsentAt: new Date(),
@@ -251,8 +257,7 @@ async function seed() {
         .onConflictDoNothing();
     }
     console.log(`   ✅ Super Admin creato: ${superAdmin.email}`);
-    console.log(`   ⚠️  Password temporanea: CivikaAdmin2026!`);
-    console.log(`   ⚠️  CAMBIALA AL PRIMO LOGIN!\n`);
+    console.log(`   ⚠️  CAMBIA LA PASSWORD AL PRIMO LOGIN!\n`);
   } else {
     console.log(`   ℹ️  Super Admin già esistente, skip\n`);
   }

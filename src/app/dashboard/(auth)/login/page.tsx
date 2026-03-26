@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 /* ═══════════════════════════════════════════════
    CIVIKA — Dashboard Login
@@ -249,6 +250,16 @@ export default function DashboardLoginPage() {
                     className="w-full rounded-xl border border-[#1B3A5C]/50 bg-[#070E18]/60 py-3 pl-11 pr-4 text-sm text-white placeholder-[#4A5568] transition-all duration-300 focus:border-[#D4A03C]/50 focus:bg-[#070E18]/80 focus:ring-1 focus:ring-[#D4A03C]/20 focus:outline-none"
                   />
                 </div>
+              </div>
+
+              {/* Forgot password */}
+              <div className="flex justify-end -mt-1">
+                <Link
+                  href="/dashboard/forgot-password"
+                  className="text-xs text-[#8A9AB5] hover:text-[#D4A03C] transition-colors duration-300"
+                >
+                  Password dimenticata?
+                </Link>
               </div>
 
               {/* Error */}
