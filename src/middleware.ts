@@ -10,7 +10,11 @@ export async function middleware(request: NextRequest) {
   }
 
   const isLoginPage = pathname === "/dashboard/login";
-  const isDashboard = pathname.startsWith("/dashboard") && !isLoginPage;
+  const isAuthPage =
+    isLoginPage ||
+    pathname === "/dashboard/forgot-password" ||
+    pathname === "/dashboard/reset-password";
+  const isDashboard = pathname.startsWith("/dashboard") && !isAuthPage;
 
   // Se JWT_SECRET non è configurato, dashboard non ancora attiva
   const jwtSecret = process.env.JWT_SECRET;
@@ -49,8 +53,8 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(loginUrl);
   }
 
-  // Autenticato su login → redirect dashboard
-  if (isLoginPage && isAuthenticated) {
+  // Autenticato su pagine auth → redirect dashboard
+  if (isAuthPage && isAuthenticated) {
     return NextResponse.redirect(new URL("/dashboard", request.url));
   }
 
