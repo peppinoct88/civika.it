@@ -14,7 +14,7 @@ interface FadeUpProps {
 
 export function FadeUp({ children, className, delay = 0, as = "div" }: FadeUpProps) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-50px" });
+  const inView = useInView(ref, { once: true, amount: 0.1 });
 
   const Component = motion.create(as);
 

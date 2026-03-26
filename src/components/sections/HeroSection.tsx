@@ -50,7 +50,7 @@ function ScrollIndicator() {
 
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const inView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const inView = useInView(sectionRef, { once: true, amount: 0.1 });
 
   /* Parallax: video moves slower than scroll */
   const { scrollYProgress } = useScroll({

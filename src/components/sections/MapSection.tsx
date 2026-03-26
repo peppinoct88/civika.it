@@ -106,7 +106,7 @@ function CityDot({ city, delay }: { city: City; delay: number }) {
 export function MapSection() {
   const svgRef = useRef<SVGSVGElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
   const [pathLength, setPathLength] = useState(0);
 
   useEffect(() => {

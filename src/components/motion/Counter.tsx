@@ -22,7 +22,7 @@ export function Counter({
   className,
 }: CounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-50px" });
+  const inView = useInView(ref, { once: true, amount: 0.1 });
   const [value, setValue] = useState(from);
 
   useEffect(() => {

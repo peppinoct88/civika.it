@@ -15,7 +15,7 @@ const phases = [
     number: "01",
     title: "Ascolto",
     description:
-      "Partiamo sempre dall\u2019ascolto. Ogni Comune ha una storia diversa, esigenze uniche, un territorio con le sue specificit\u00E0.",
+      "Partiamo sempre dall'ascolto. Ogni Comune ha una storia diversa, esigenze uniche, un territorio con le sue specificità.",
   },
   {
     number: "02",
@@ -27,7 +27,7 @@ const phases = [
     number: "03",
     title: "Esecuzione",
     description:
-      "Realizziamo con standard professionali. Dalla grafica alla logistica, ogni dettaglio \u00E8 curato.",
+      "Realizziamo con standard professionali. Dalla grafica alla logistica, ogni dettaglio è curato.",
   },
   {
     number: "04",

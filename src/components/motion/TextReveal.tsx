@@ -19,7 +19,7 @@ export function TextReveal({
   stagger = 0.04,
 }: TextRevealProps) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-50px" });
+  const inView = useInView(ref, { once: true, amount: 0.1 });
   const words = text.split(" ");
 
   return (

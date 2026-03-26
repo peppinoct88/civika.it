@@ -24,7 +24,7 @@ const complianceItems = [
   },
   {
     law: "Linee Guida AGID",
-    description: "Design e accessibilit\u00E0 siti PA",
+    description: "Design e accessibilità siti PA",
   },
   {
     law: "CAD (D.Lgs. 82/2005)",
@@ -36,7 +36,7 @@ const complianceItems = [
   },
   {
     law: "Direttiva UE 2016/2102",
-    description: "Accessibilit\u00E0 web PA",
+    description: "Accessibilità web PA",
   },
 ] as const;
 
@@ -49,7 +49,7 @@ export function ComplianceSection() {
         <SectionHeader
           overline="Compliance normativa"
           title="A norma. Sempre. Su tutto."
-          subtitle="Il vostro Segretario Comunale pu\u00F2 stare tranquillo."
+          subtitle="Il vostro Segretario Comunale può stare tranquillo."
           dark
         />
 

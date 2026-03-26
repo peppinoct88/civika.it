@@ -27,7 +27,7 @@ const steps = [
   {
     title: "Concept e strategia",
     description:
-      "Progettiamo il concept dell\u2019evento o della campagna di comunicazione.",
+      "Progettiamo il concept dell'evento o della campagna di comunicazione.",
     icon: Lightbulb,
   },
   {
@@ -39,13 +39,13 @@ const steps = [
   {
     title: "Produzione e allestimento",
     description:
-      "Realizziamo tutto: dal materiale grafico all\u2019allestimento fisico.",
+      "Realizziamo tutto: dal materiale grafico all'allestimento fisico.",
     icon: Hammer,
   },
   {
     title: "Esecuzione e coordinamento",
     description:
-      "Il giorno dell\u2019evento siamo presenti con tutta la squadra.",
+      "Il giorno dell'evento siamo presenti con tutta la squadra.",
     icon: Users,
   },
   {
@@ -126,8 +126,8 @@ export function ProcessSection() {
                   6 fasi, un unico referente.
                 </span>{" "}
                 Dalla prima riunione alla consegna del report finale, gestiamo
-                ogni dettaglio perch&eacute; il Sindaco possa concentrarsi su
-                ci&ograve; che conta.
+                ogni dettaglio perché il Sindaco possa concentrarsi su
+                ciò che conta.
               </p>
 
               {/* Decorative accent line */}

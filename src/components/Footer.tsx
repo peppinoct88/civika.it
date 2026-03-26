@@ -34,7 +34,7 @@ const NAV_COLUMNS = [
 
 function GrowLine() {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
+  const inView = useInView(ref, { once: true, amount: 0.1 });
 
   return (
     <motion.div
@@ -50,7 +50,7 @@ function GrowLine() {
 
 export default function Footer() {
   const footerRef = useRef(null);
-  const inView = useInView(footerRef, { once: true, margin: "-80px" });
+  const inView = useInView(footerRef, { once: true, amount: 0.1 });
 
   const fadeUp = (delay = 0) => ({
     initial: { opacity: 0, y: 30 } as const,

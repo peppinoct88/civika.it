@@ -24,13 +24,13 @@ const differentials = [
     icon: Shield,
     title: "Specializzazione PA",
     description:
-      "Non siamo un\u2019agenzia generica. Lavoriamo esclusivamente con Comuni e istituzioni pubbliche siciliane.",
+      "Non siamo un'agenzia generica. Lavoriamo esclusivamente con Comuni e istituzioni pubbliche siciliane.",
   },
   {
     icon: Puzzle,
     title: "Approccio integrato",
     description:
-      "Eventi, comunicazione, bandi: un unico partner per tutte le esigenze di visibilit\u00E0.",
+      "Eventi, comunicazione, bandi: un unico partner per tutte le esigenze di visibilità.",
   },
   {
     icon: MapPin,
@@ -42,7 +42,7 @@ const differentials = [
     icon: Scale,
     title: "Compliance garantita",
     description:
-      "Ogni nostro output \u00E8 conforme alla normativa vigente. Zero rischi per l\u2019amministrazione.",
+      "Ogni nostro output è conforme alla normativa vigente. Zero rischi per l'amministrazione.",
   },
   {
     icon: Clock,
@@ -65,8 +65,8 @@ export function WhySection() {
     <SectionWrapper id="perche-noi" bg="gradient">
       <Container>
         <SectionHeader
-          overline="Perch\u00E9 noi"
-          title="Perch\u00E9 scegliere CIVIKA"
+          overline="Perché noi"
+          title="Perché scegliere CIVIKA"
           subtitle="6 ragioni concrete."
           dark
         />

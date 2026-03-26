@@ -49,13 +49,13 @@ export function FundingSection() {
         <SectionHeader
           overline="Bandi e fondi"
           title="Vi aiutiamo anche a trovare i fondi"
-          subtitle="Dall&#39;evento al bando. Dal bando all&#39;evento."
+          subtitle="Dall'evento al bando. Dal bando all'evento."
           dark
         />
 
         <FadeUp>
           <p className="mx-auto mb-12 max-w-2xl text-center text-[0.9375rem] leading-relaxed text-neutral-400 lg:mb-16">
-            Un evento ben comunicato genera visibilit&agrave;. La visibilit&agrave; rafforza
+            Un evento ben comunicato genera visibilità. La visibilità rafforza
             la candidatura ai bandi. I fondi ottenuti finanziano nuovi progetti e
             nuovi eventi. Un circolo virtuoso che parte dalla comunicazione.
           </p>

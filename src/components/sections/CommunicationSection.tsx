@@ -48,20 +48,20 @@ const services: Service[] = [
     icon: Newspaper,
     title: "Ufficio stampa",
     description:
-      "Comunicati stampa, relazioni media, rassegna stampa. Visibilit\u00E0 sui media locali e nazionali.",
+      "Comunicati stampa, relazioni media, rassegna stampa. Visibilità sui media locali e nazionali.",
     href: "/servizi/ufficio-stampa-comuni",
   },
   {
     icon: Mail,
     title: "Newsletter istituzionale",
     description:
-      "Comunicazioni periodiche ai cittadini. Informare con regolarit\u00E0 e professionalit\u00E0.",
+      "Comunicazioni periodiche ai cittadini. Informare con regolarità e professionalità.",
   },
   {
     icon: Palette,
     title: "Brand identity",
     description:
-      "Logo, immagine coordinata, materiale istituzionale. Un\u2019identit\u00E0 visiva coerente e moderna.",
+      "Logo, immagine coordinata, materiale istituzionale. Un'identità visiva coerente e moderna.",
   },
 ];
 
@@ -112,7 +112,7 @@ export function CommunicationSection() {
                 {/* Link arrow */}
                 {service.href && (
                   <div className="flex items-center gap-1.5 text-sm font-medium text-primary-400 group-hover:text-primary-300 transition-colors">
-                    <span>Scopri di pi&ugrave;</span>
+                    <span>Scopri di più</span>
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                   </div>
                 )}

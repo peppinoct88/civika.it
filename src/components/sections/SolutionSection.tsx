@@ -21,7 +21,7 @@ const valueProps = [
     icon: Handshake,
     title: "Un unico partner",
     description:
-      "Strategia, creativit\u00E0 e tecnologia in un solo interlocutore. Nessuna frammentazione, massima coerenza.",
+      "Strategia, creatività e tecnologia in un solo interlocutore. Nessuna frammentazione, massima coerenza.",
   },
   {
     icon: Layers,
@@ -33,7 +33,7 @@ const valueProps = [
     icon: BarChart3,
     title: "Risultati misurabili",
     description:
-      "Ogni azione \u00E8 tracciata e ottimizzata. Report chiari per dimostrare l\u2019impatto concreto.",
+      "Ogni azione è tracciata e ottimizzata. Report chiari per dimostrare l'impatto concreto.",
   },
 ] as const;
 
@@ -46,7 +46,7 @@ export function SolutionSection() {
         <SectionHeader
           overline="La soluzione"
           title="Ogni Comune merita di essere visto."
-          subtitle="CIVIKA \u00E8 la regia per la visibilit\u00E0 istituzionale."
+          subtitle="CIVIKA è la regia per la visibilità istituzionale."
           dark
         />
 
@@ -59,7 +59,7 @@ export function SolutionSection() {
           <p className="text-lg leading-relaxed text-neutral-300">
             Siamo il partner strategico che affianca le amministrazioni locali
             nella costruzione della propria{" "}
-            <GradientText variant="accent">visibilit\u00E0</GradientText>.
+            <GradientText variant="accent">visibilità</GradientText>.
             Dalla comunicazione istituzionale al digitale, dagli eventi alla
             formazione: trasformiamo i Comuni in protagonisti del proprio
             territorio.

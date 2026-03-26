@@ -15,27 +15,27 @@ import { StaggerContainer } from "@/components/motion/StaggerContainer";
 const problems = [
   {
     icon: EyeOff,
-    title: "Invisibilit\u00E0 digitale",
+    title: "Invisibilità digitale",
     description:
-      "Il 78% dei Comuni siciliani non ha una presenza online strutturata. I cittadini non trovano informazioni, non sanno cosa fa l\u2019amministrazione.",
+      "Il 78% dei Comuni siciliani non ha una presenza online strutturata. I cittadini non trovano informazioni, non sanno cosa fa l'amministrazione.",
   },
   {
     icon: CalendarX,
     title: "Eventi senza eco",
     description:
-      "Inaugurazioni, feste patronali, convegni: senza comunicazione professionale, la partecipazione crolla e l\u2019investimento si perde.",
+      "Inaugurazioni, feste patronali, convegni: senza comunicazione professionale, la partecipazione crolla e l'investimento si perde.",
   },
   {
     icon: FileX,
     title: "Fondi non richiesti",
     description:
-      "Miliardi di euro in bandi europei e PNRR restano inutilizzati perch\u00E9 mancano le competenze per accedervi.",
+      "Miliardi di euro in bandi europei e PNRR restano inutilizzati perché mancano le competenze per accedervi.",
   },
   {
     icon: Users,
     title: "Cittadini disconnessi",
     description:
-      "Senza canali di comunicazione attivi, il gap tra amministrazione e comunit\u00E0 cresce. La fiducia diminuisce.",
+      "Senza canali di comunicazione attivi, il gap tra amministrazione e comunità cresce. La fiducia diminuisce.",
   },
 ] as const;
 
@@ -48,7 +48,7 @@ export function ProblemSection() {
         <SectionHeader
           overline="Il problema"
           title="Cosa succede quando il Comune non comunica"
-          subtitle="L&#39;invisibilit\u00E0 costa pi\u00F9 di qualsiasi investimento in comunicazione."
+          subtitle="L'invisibilità costa più di qualsiasi investimento in comunicazione."
           dark
         />
 
