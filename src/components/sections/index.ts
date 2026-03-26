@@ -1,0 +1,14 @@
+export { HeroSection } from "./HeroSection";
+export { StatsTickerSection } from "./StatsTickerSection";
+export { ProblemSection } from "./ProblemSection";
+export { SolutionSection } from "./SolutionSection";
+export { ComparisonSection } from "./ComparisonSection";
+export { EventsSection } from "./EventsSection";
+export { ProcessSection } from "./ProcessSection";
+export { CommunicationSection } from "./CommunicationSection";
+export { ComplianceSection } from "./ComplianceSection";
+export { FundingSection } from "./FundingSection";
+export { MethodSection } from "./MethodSection";
+export { WhySection } from "./WhySection";
+export { MapSection } from "./MapSection";
+export { CTASection } from "./CTASection";

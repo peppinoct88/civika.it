@@ -1,15 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { fontVariables } from "@/lib/fonts";
 import CookieBanner from "@/components/CookieBanner";
 import ServerPageView from "@/components/ServerPageView";
 import EventTracker from "@/components/EventTracker";
 import "./globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.civika.it"),
@@ -48,7 +42,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "CIVIKA — La Regia per Eventi e Comunicazione Istituzionale",
+        alt: "CIVIKA — La Regia per la Visibilita Istituzionale",
       },
     ],
   },
@@ -73,10 +67,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.civika.it",
   },
-  verification: {
-    // Add your Google Search Console verification code here
-    // google: "your-verification-code",
-  },
   category: "business",
 };
 
@@ -85,7 +75,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  /* JSON-LD Organization structured data */
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -181,7 +170,7 @@ export default function RootLayout({
   return (
     <html lang="it">
       <head>
-        <meta name="theme-color" content="#0F1F33" />
+        <meta name="theme-color" content="#111113" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
@@ -217,7 +206,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.variable} font-sans antialiased`} suppressHydrationWarning>
+      <body className={`${fontVariables} font-sans antialiased`} suppressHydrationWarning>
+        <a href="#main-content" className="skip-to-content">
+          Vai al contenuto principale
+        </a>
         {children}
         <ServerPageView />
         <EventTracker />

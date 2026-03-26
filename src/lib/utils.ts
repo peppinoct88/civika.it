@@ -63,3 +63,10 @@ export function truncate(text: string, maxLength: number): string {
 export function getInitials(firstName: string, lastName: string): string {
   return `${firstName.charAt(0)}${lastName.charAt(0)}`.toUpperCase();
 }
+
+/**
+ * Formatta un numero in formato italiano (es. 1.234)
+ */
+export function formatNumber(n: number): string {
+  return new Intl.NumberFormat("it-IT").format(n);
+}
