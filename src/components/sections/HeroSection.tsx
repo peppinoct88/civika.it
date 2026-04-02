@@ -58,29 +58,29 @@ export function HeroSection() {
       ref={sectionRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* ── Photo Background ── */}
+      {/* ── Background Image — skyline ── */}
       <motion.div
         className="absolute inset-0 z-0"
         initial={{ opacity: 0 }}
-        animate={inView ? { opacity: 1 } : {}}
-        transition={{ duration: 1.2 }}
+        animate={inView ? { opacity: 0.25 } : {}}
+        transition={{ duration: 1.5 }}
         style={{ y: bgY }}
       >
         <img
-          className="h-full w-full object-cover object-top"
-          src="/giuseppe-spalletta.webp"
+          className="h-full w-full object-cover"
+          src="/hero-bg.jpg"
           alt=""
           aria-hidden="true"
         />
       </motion.div>
 
-      {/* ── Gradient Overlays ── */}
+      {/* ── Overlay Blu Civika pesante ── */}
       <div
-        className="absolute inset-0 z-[1] bg-gradient-to-b from-neutral-900/85 via-neutral-900/60 to-neutral-900/95"
+        className="absolute inset-0 z-[1] bg-gradient-to-b from-[#06111d]/90 via-[#0a1e2e]/80 to-[#0a1e2e]/95"
         aria-hidden="true"
       />
       <div
-        className="absolute inset-0 z-[1] bg-gradient-to-r from-neutral-900/40 via-transparent to-neutral-900/40"
+        className="absolute inset-0 z-[1] bg-gradient-to-t from-[#0a1e2e] via-transparent to-transparent"
         aria-hidden="true"
       />
 
