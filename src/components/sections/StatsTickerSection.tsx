@@ -11,10 +11,10 @@ interface Stat {
 }
 
 const stats: Stat[] = [
-  { value: "391", label: "Comuni in Sicilia" },
-  { value: "78%", label: "non comunica online" },
-  { value: "4,8M", label: "cittadini" },
-  { value: "€2,1Mld", label: "fondi europei persi" },
+  { value: "73%", label: "dei fondi pubblici non viene utilizzato" },
+  { value: "€42Mld", label: "disponibili in bandi attivi" },
+  { value: "1:23", label: "ROI medio per euro investito nei bandi" },
+  { value: "92%", label: "delle PMI non sa di poter accedere ai fondi" },
 ];
 
 /* ── Glass Stat Card ── */

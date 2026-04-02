@@ -8,32 +8,36 @@ import { Container } from "@/components/layout/Container";
 import { SectionHeader } from "@/components/molecules/SectionHeader";
 import { StaggerContainer } from "@/components/motion/StaggerContainer";
 
-/* ── Data ── */
+/* ── Data — Sistema Sblocca-Fondi™ 4 fasi ── */
 
 const phases = [
   {
     number: "01",
-    title: "Ascolto",
+    title: "MAPPA",
+    subtitle: "Scopriamo i tuoi fondi",
     description:
-      "Partiamo sempre dall'ascolto. Ogni Comune ha una storia diversa, esigenze uniche, un territorio con le sue specificità.",
+      "Analizziamo il tuo settore, la tua azienda e il territorio. Mappiamo tutti i bandi attivi — europei, nazionali e regionali — a cui puoi accedere oggi.",
   },
   {
     number: "02",
-    title: "Strategia",
+    title: "PROGETTO",
+    subtitle: "Costruiamo la proposta vincente",
     description:
-      "Definiamo obiettivi chiari e misurabili. Ogni azione ha uno scopo preciso dentro un piano organico.",
+      "Progettiamo la candidatura su misura: budget, obiettivi, partner, cronoprogramma. Ogni dettaglio calibrato sui criteri di valutazione del bando.",
   },
   {
     number: "03",
-    title: "Esecuzione",
+    title: "VERDETTO",
+    subtitle: "Presentiamo e seguiamo",
     description:
-      "Realizziamo con standard professionali. Dalla grafica alla logistica, ogni dettaglio è curato.",
+      "Presentiamo il progetto e gestiamo tutto l'iter burocratico fino alla risposta ufficiale. Tu continui a gestire la tua azienda, noi pensiamo al resto.",
   },
   {
     number: "04",
-    title: "Misurazione",
+    title: "INCASSO",
+    subtitle: "Sblocchi i fondi",
     description:
-      "Misuriamo i risultati e documentiamo tutto. Report dettagliati per il Sindaco e la Giunta.",
+      "Progetto approvato, fondi sbloccati. Ti accompagniamo nella rendicontazione per assicurare l'erogazione completa, senza intoppi.",
   },
 ] as const;
 
@@ -45,8 +49,8 @@ export function MethodSection() {
       <Container>
         <SectionHeader
           overline="Il metodo"
-          title="Il Metodo CIVIKA"
-          subtitle="Non improvvisiamo."
+          title="Il Sistema Sblocca-Fondi™"
+          subtitle="Quattro fasi. Un unico obiettivo: trasformare i bandi da burocrazia a capitale per la tua impresa."
           dark
         />
 
@@ -56,7 +60,7 @@ export function MethodSection() {
           <div
             className={cn(
               "hidden lg:block absolute top-[2.75rem] left-[12.5%] right-[12.5%] h-px",
-              "border-t border-dashed border-primary-500/30"
+              "border-t border-dashed border-accent-500/30"
             )}
             aria-hidden="true"
           />
@@ -77,7 +81,7 @@ export function MethodSection() {
                   <div
                     className={cn(
                       "lg:hidden absolute -top-5 left-1/2 -translate-x-1/2",
-                      "h-5 w-px border-l border-dashed border-primary-500/30"
+                      "h-5 w-px border-l border-dashed border-accent-500/30"
                     )}
                     aria-hidden="true"
                   />
@@ -87,19 +91,22 @@ export function MethodSection() {
                 <div
                   className={cn(
                     "relative z-10 flex h-[3.5rem] w-[3.5rem] items-center justify-center",
-                    "rounded-full border border-primary-500/20 bg-primary-500/10",
+                    "rounded-full border border-accent-500/20 bg-accent-500/10",
                     "mb-5"
                   )}
                 >
-                  <span className="font-display text-lg font-bold text-primary-400">
+                  <span className="font-display text-lg font-bold text-accent-400">
                     {phase.number}
                   </span>
                 </div>
 
                 {/* Title */}
-                <h3 className="font-heading text-base font-semibold text-neutral-100 mb-2">
+                <h3 className="font-heading text-base font-semibold text-accent-400 mb-1">
                   {phase.title}
                 </h3>
+                <p className="text-xs font-medium text-neutral-300 mb-3">
+                  {phase.subtitle}
+                </p>
 
                 {/* Description */}
                 <p className="text-sm leading-relaxed text-neutral-400 max-w-[260px]">

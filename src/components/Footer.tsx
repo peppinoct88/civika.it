@@ -7,18 +7,27 @@ import { easeOutExpo } from "@/lib/animations";
 
 const NAV_COLUMNS = [
   {
-    title: "Navigazione",
+    title: "Civika",
     links: [
       { label: "Home", href: "/" },
-      { label: "Chi Siamo", href: "/chi-siamo" },
+      { label: "Il Metodo", href: "/metodo" },
       { label: "Servizi", href: "/servizi" },
+      { label: "Chi Siamo", href: "/chi-siamo" },
+    ],
+  },
+  {
+    title: "Risorse",
+    links: [
+      { label: "Mappa dei Fondi\u2122", href: "/risorse/mappa-fondi" },
+      { label: "Fondi Fantasma (Libro)", href: "/risorse/fondi-fantasma" },
       { label: "Blog", href: "/blog" },
+      { label: "Webinar", href: "/webinar" },
     ],
   },
   {
     title: "Contatti",
     links: [
-      { label: "Contattaci", href: "/contatti" },
+      { label: "Diagnosi Gratuita", href: "/diagnosi" },
       { label: "civikasrl@gmail.com", href: "mailto:civikasrl@gmail.com" },
       { label: "+39 349 875 0521", href: "tel:+393498750521" },
     ],
@@ -39,7 +48,7 @@ function GrowLine() {
   return (
     <motion.div
       ref={ref}
-      className="h-px bg-gradient-to-r from-transparent via-primary-500/30 to-transparent"
+      className="h-px bg-gradient-to-r from-transparent via-accent-500/20 to-transparent"
       initial={{ scaleX: 0 }}
       animate={inView ? { scaleX: 1 } : {}}
       transition={{ duration: 1.2, ease: easeOutExpo }}
@@ -68,7 +77,7 @@ export default function Footer() {
         <div
           className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] opacity-[0.03]"
           style={{
-            background: "radial-gradient(ellipse at center, #3366cc 0%, transparent 70%)",
+            background: "radial-gradient(ellipse at center, #10B981 0%, transparent 70%)",
           }}
         />
       </div>
@@ -82,24 +91,26 @@ export default function Footer() {
             <Link href="/" className="inline-block no-underline mb-5">
               <img
                 src="/logo-civika-white.svg"
-                alt="CIVIKA — Comunicazione Istituzionale per Comuni Siciliani"
+                alt="CIVIKA — Sblocco Fondi per le Imprese"
                 width={150}
                 height={50}
                 className="h-[42px] w-auto"
               />
             </Link>
-            <p className="text-neutral-500 text-[15px] leading-relaxed">
-              La regia per la visibilita istituzionale dei Comuni
-              siciliani. Strategia, identita, risultati.
+            <p className="font-display italic text-neutral-400 text-lg leading-relaxed mb-2">
+              I fondi non si cercano. Si progettano.
+            </p>
+            <p className="text-neutral-600 text-[13px]">
+              Sblocco Fondi™ per PMI e Startup
             </p>
           </motion.div>
 
           <motion.div {...fadeUp(0.15)}>
             <Link
-              href="/contatti"
-              className="group relative inline-flex items-center gap-3 no-underline bg-primary-500 text-white px-6 sm:px-9 py-3 sm:py-4 rounded-[10px] font-bold text-[15px] shadow-lg shadow-primary-500/20 hover:shadow-primary-500/40 hover:bg-primary-600 transition-all duration-300"
+              href="/diagnosi"
+              className="group relative inline-flex items-center gap-3 no-underline bg-accent-500 text-white px-6 sm:px-9 py-3 sm:py-4 rounded-[10px] font-bold text-[15px] shadow-lg shadow-accent-500/20 hover:shadow-accent-500/40 hover:bg-accent-600 transition-all duration-300"
             >
-              Parliamone
+              Prenota la Diagnosi
               <svg
                 className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
                 fill="none"
@@ -117,7 +128,7 @@ export default function Footer() {
         <GrowLine />
 
         {/* Navigation columns */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-10 md:gap-16 pt-8 sm:pt-14 pb-8 sm:pb-14">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-10 md:gap-12 pt-8 sm:pt-14 pb-8 sm:pb-14">
           {NAV_COLUMNS.map((col, colIdx) => (
             <motion.div key={col.title} {...fadeUp(0.1 + colIdx * 0.08)}>
               <h4 className="text-[11px] font-bold uppercase tracking-[0.15em] text-neutral-600 mb-5">
@@ -128,9 +139,9 @@ export default function Footer() {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-neutral-400 no-underline text-[14px] hover:text-primary-400 transition-colors duration-300 inline-flex items-center gap-1.5 group/link"
+                      className="text-neutral-400 no-underline text-[14px] hover:text-accent-400 transition-colors duration-300 inline-flex items-center gap-1.5 group/link"
                     >
-                      <span className="w-0 h-px bg-primary-400 group-hover/link:w-3 transition-all duration-300" />
+                      <span className="w-0 h-px bg-accent-400 group-hover/link:w-3 transition-all duration-300" />
                       {link.label}
                     </Link>
                   </li>
@@ -155,7 +166,7 @@ export default function Footer() {
             <motion.span
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="text-primary-400 text-sm"
+              className="text-accent-400 text-sm"
             >
               &#9829;
             </motion.span>

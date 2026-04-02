@@ -6,10 +6,11 @@ import Link from "next/link";
 import { easeOutExpo } from "@/lib/animations";
 
 const NAV_LINKS = [
-  { label: "Chi Siamo", href: "/chi-siamo" },
+  { label: "Il Metodo", href: "/metodo" },
   { label: "Servizi", href: "/servizi" },
+  { label: "Chi Siamo", href: "/chi-siamo" },
+  { label: "Risorse", href: "/risorse/mappa-fondi" },
   { label: "Blog", href: "/blog" },
-  { label: "Contatti", href: "/contatti" },
 ];
 
 const LEGAL_LINKS = [
@@ -47,7 +48,7 @@ export default function Navbar() {
               ? "linear-gradient(135deg, #0a0a0c 0%, #111113 50%, #0a0a0c 100%)"
               : "transparent",
             borderWidth: isScrolled ? "1px" : "0px",
-            borderColor: "rgba(51, 102, 204, 0.15)",
+            borderColor: "rgba(16, 185, 129, 0.15)",
             borderStyle: "solid",
             backdropFilter: isScrolled ? "blur(12px)" : "none",
           }}
@@ -119,7 +120,7 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setIsMenuOpen(false)}
-                    className="text-white text-[clamp(24px,5vw,52px)] font-black no-underline hover:text-primary-400 transition-colors duration-300"
+                    className="text-white text-[clamp(24px,5vw,52px)] font-black no-underline hover:text-accent-400 transition-colors duration-300"
                   >
                     {link.label}
                   </Link>
@@ -134,11 +135,11 @@ export default function Navbar() {
                 className="mt-4 sm:mt-6"
               >
                 <Link
-                  href="/contatti"
+                  href="/diagnosi"
                   onClick={() => setIsMenuOpen(false)}
-                  className="inline-block no-underline bg-primary-500 text-white px-10 py-4 rounded-[10px] font-bold text-lg hover:bg-primary-600 transition-colors duration-300 shadow-lg shadow-primary-500/25"
+                  className="inline-block no-underline bg-accent-500 text-white px-10 py-4 rounded-[10px] font-bold text-lg hover:bg-accent-600 transition-colors duration-300 shadow-lg shadow-accent-500/25"
                 >
-                  Parliamone
+                  Diagnosi Gratuita
                 </Link>
               </motion.div>
             </nav>
@@ -155,7 +156,7 @@ export default function Navbar() {
                   key={link.label}
                   href={link.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-neutral-500 text-xs no-underline hover:text-primary-400 transition-colors duration-300"
+                  className="text-neutral-500 text-xs no-underline hover:text-accent-400 transition-colors duration-300"
                 >
                   {link.label}
                 </Link>

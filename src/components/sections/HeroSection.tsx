@@ -46,7 +46,7 @@ function ScrollIndicator() {
   );
 }
 
-/* ── Hero Section ── */
+/* ── Hero Section — Sblocco Fondi™ ── */
 
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -112,45 +112,46 @@ export function HeroSection() {
           animate={inView ? "visible" : "hidden"}
           className="flex flex-col items-center gap-6"
         >
-          {/* Overline */}
+          {/* Overline — stat che agita il problema */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, ease: easeOutExpo }}
           >
-            <Badge variant="default">
-              La regia per la visibilit&agrave; istituzionale
+            <Badge variant="accent">
+              Il 73% dei fondi pubblici resta inutilizzato
             </Badge>
           </motion.div>
 
-          {/* Main Title */}
+          {/* Main Title — Battlecry */}
           <h1 className="font-display text-4xl italic leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl max-w-4xl">
             <TextReveal
-              text="Il vostro Comune lavora. Ma i cittadini lo sanno?"
+              text="I fondi non si cercano. Si progettano."
               delay={0.3}
               stagger={0.05}
             />
           </h1>
 
-          {/* Subtitle */}
+          {/* Subtitle — Promessa + meccanismo */}
           <motion.p
             className="max-w-2xl text-lg leading-relaxed text-neutral-300 sm:text-xl"
             variants={heroSubtitle}
           >
-            Ogni giorno la vostra amministrazione lavora per il territorio. Ma
-            quanti lo sanno davvero?
+            Civika trasforma i bandi pubblici in capitale reale per la tua
+            impresa. Con il Sistema Sblocca-Fondi™, il tuo progetto
+            diventa la risposta che i bandi stanno cercando.
           </motion.p>
 
-          {/* CTAs */}
+          {/* CTAs — Primaria + Secondaria */}
           <motion.div
             className="flex flex-wrap items-center justify-center gap-4 pt-4"
             variants={heroCTA}
           >
-            <Button variant="primary" size="lg">
-              Scopri come
+            <Button variant="primary" size="lg" asChild>
+              <a href="/diagnosi">Prenota la Diagnosi Gratuita</a>
             </Button>
-            <Button variant="ghost" size="lg">
-              Contattaci
+            <Button variant="secondary" size="lg" asChild>
+              <a href="/risorse/mappa-fondi">Scarica la Mappa dei Fondi™</a>
             </Button>
           </motion.div>
         </motion.div>

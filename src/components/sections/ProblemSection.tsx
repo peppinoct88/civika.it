@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { EyeOff, CalendarX, FileX, Users } from "lucide-react";
+import { Ban, Clock, FileQuestion, TrendingDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { fadeUpChild } from "@/lib/animations";
 import { SectionWrapper } from "@/components/layout/SectionWrapper";
@@ -14,28 +14,28 @@ import { StaggerContainer } from "@/components/motion/StaggerContainer";
 
 const problems = [
   {
-    icon: EyeOff,
-    title: "Invisibilità digitale",
+    icon: FileQuestion,
+    title: "Bandi incomprensibili",
     description:
-      "Il 78% dei Comuni siciliani non ha una presenza online strutturata. I cittadini non trovano informazioni, non sanno cosa fa l'amministrazione.",
+      "Centinaia di pagine di burocrazia, requisiti tecnici e scadenze impossibili. La maggior parte degli imprenditori rinuncia prima ancora di iniziare.",
   },
   {
-    icon: CalendarX,
-    title: "Eventi senza eco",
+    icon: Clock,
+    title: "Tempo che non hai",
     description:
-      "Inaugurazioni, feste patronali, convegni: senza comunicazione professionale, la partecipazione crolla e l'investimento si perde.",
+      "Tra gestire l'azienda e decifrare un bando, il tempo non basta mai. E ogni bando perso è un'opportunità di crescita che non torna.",
   },
   {
-    icon: FileX,
-    title: "Fondi non richiesti",
+    icon: Ban,
+    title: "Consulenti generalisti",
     description:
-      "Miliardi di euro in bandi europei e PNRR restano inutilizzati perché mancano le competenze per accedervi.",
+      "Ti affidi a chi \"fa anche i bandi\" tra mille altre cose. Risultato: progetti deboli, bocciati, e soldi spesi in consulenze inutili.",
   },
   {
-    icon: Users,
-    title: "Cittadini disconnessi",
+    icon: TrendingDown,
+    title: "Il tuo competitor cresce. Tu no.",
     description:
-      "Senza canali di comunicazione attivi, il gap tra amministrazione e comunità cresce. La fiducia diminuisce.",
+      "Mentre tu pensi che i bandi siano \"roba per i grandi\", il tuo concorrente ha già sbloccato fondi per innovare, assumere e investire.",
   },
 ] as const;
 
@@ -47,8 +47,8 @@ export function ProblemSection() {
       <Container>
         <SectionHeader
           overline="Il problema"
-          title="Cosa succede quando il Comune non comunica"
-          subtitle="L'invisibilità costa più di qualsiasi investimento in comunicazione."
+          title="Milioni di euro restano bloccati. E la tua azienda paga il conto."
+          subtitle="Ogni anno miliardi di fondi pubblici non vengono assegnati. Non perché mancano le imprese meritevoli, ma perché nessuno le aiuta ad accedervi."
           dark
         />
 

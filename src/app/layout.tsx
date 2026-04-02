@@ -8,22 +8,22 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.civika.it"),
   title: {
-    default: "CIVIKA — Comunicazione e Eventi per Comuni Siciliani",
-    template: "%s",
+    default: "CIVIKA — Sblocco Fondi™ per PMI e Startup",
+    template: "%s | CIVIKA",
   },
   description:
-    "CIVIKA: comunicazione istituzionale, eventi e bandi europei per i Comuni siciliani. Sito web AGID, social media e rassegna stampa.",
+    "Civika trasforma i bandi pubblici in capitale reale per la tua impresa. Sistema Sblocca-Fondi™: dalla mappatura dei bandi all'incasso dei fondi.",
   keywords: [
-    "comunicazione istituzionale",
-    "comuni siciliani",
-    "comunicazione pubblica amministrazione",
-    "eventi istituzionali sicilia",
-    "bandi europei comuni",
-    "sito web comunale AGID",
-    "social media comuni",
-    "rassegna stampa PA",
-    "PNRR comuni sicilia",
-    "comunicazione PA sicilia",
+    "bandi PMI",
+    "finanziamenti imprese",
+    "consulente bandi",
+    "fondi europei PMI",
+    "bandi startup",
+    "PNRR imprese",
+    "finanziamenti a fondo perduto",
+    "consulenza bandi europei",
+    "sblocco fondi",
+    "Horizon Europe",
     "CIVIKA",
   ],
   authors: [{ name: "CIVIKA SRL", url: "https://www.civika.it" }],
@@ -34,23 +34,23 @@ export const metadata: Metadata = {
     locale: "it_IT",
     url: "https://www.civika.it",
     siteName: "CIVIKA",
-    title: "CIVIKA — Comunicazione e Eventi per Comuni Siciliani",
+    title: "CIVIKA — Sblocco Fondi™ per PMI e Startup",
     description:
-      "CIVIKA: comunicazione istituzionale, eventi e bandi europei per i Comuni siciliani.",
+      "Civika trasforma i bandi pubblici in capitale reale per la tua impresa. I fondi non si cercano. Si progettano.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "CIVIKA — La Regia per la Visibilita Istituzionale",
+        alt: "CIVIKA — I fondi non si cercano. Si progettano.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "CIVIKA — Comunicazione e Eventi per Comuni Siciliani",
+    title: "CIVIKA — Sblocco Fondi™ per PMI e Startup",
     description:
-      "CIVIKA: comunicazione istituzionale, eventi e bandi europei per i Comuni siciliani.",
+      "Civika trasforma i bandi pubblici in capitale reale per la tua impresa. I fondi non si cercano. Si progettano.",
     images: ["/og-image.png"],
   },
   robots: {
@@ -83,7 +83,7 @@ export default function RootLayout({
     url: "https://www.civika.it",
     logo: "https://www.civika.it/logo-civika-white.svg",
     description:
-      "Comunicazione istituzionale, eventi professionali e bandi europei per i Comuni siciliani.",
+      "Sblocco Fondi per PMI e Startup. Trasformiamo i bandi pubblici in capitale reale per la tua impresa.",
     address: {
       "@type": "PostalAddress",
       addressRegion: "Sicilia",
@@ -105,12 +105,12 @@ export default function RootLayout({
       "https://www.instagram.com/civikasrl",
     ],
     knowsAbout: [
-      "Comunicazione istituzionale",
-      "Eventi istituzionali",
       "Bandi europei",
-      "Sito web comunale",
-      "Social media management",
-      "Pubblica Amministrazione",
+      "Finanziamenti PMI",
+      "Fondi PNRR",
+      "Horizon Europe",
+      "Smart&Start",
+      "Progettazione bandi",
     ],
   };
 
@@ -126,23 +126,21 @@ export default function RootLayout({
       name: "Sicilia",
     },
     serviceType: [
-      "Comunicazione istituzionale",
-      "Realizzazione siti web comunali AGID",
-      "Social media management per Comuni",
-      "Organizzazione eventi istituzionali",
-      "Consulenza bandi europei e PNRR",
-      "Ufficio stampa per Comuni",
+      "Consulenza bandi europei",
+      "Progettazione bandi nazionali",
+      "Sblocco fondi PNRR",
+      "Consulenza finanziamenti PMI",
+      "Progettazione Horizon Europe",
+      "Consulenza Smart&Start",
     ],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Servizi per Comuni",
+      name: "Servizi Sblocco Fondi",
       itemListElement: [
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Comunicazione Istituzionale", url: "https://www.civika.it/servizi/comunicazione-istituzionale" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Sito Web Comunale AGID", url: "https://www.civika.it/servizi/sito-web-comunale-agid" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Social Media per Comuni", url: "https://www.civika.it/servizi/social-media-comuni" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Eventi Istituzionali", url: "https://www.civika.it/servizi/eventi-istituzionali" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Bandi Europei e PNRR", url: "https://www.civika.it/servizi/bandi-europei-comuni" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Ufficio Stampa", url: "https://www.civika.it/servizi/ufficio-stampa-comuni" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Pacchetto Standard", url: "https://www.civika.it/servizi/standard" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Pacchetto PRO", url: "https://www.civika.it/servizi/pro" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Pacchetto VIP", url: "https://www.civika.it/servizi/vip" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Diagnosi Sblocca-Fondi", url: "https://www.civika.it/diagnosi" } },
       ],
     },
   };
@@ -153,7 +151,7 @@ export default function RootLayout({
     name: "CIVIKA",
     url: "https://www.civika.it",
     description:
-      "CIVIKA — Il partner unico per la comunicazione istituzionale dei Comuni siciliani.",
+      "CIVIKA — Sblocco Fondi™ per PMI e Startup. I fondi non si cercano. Si progettano.",
     publisher: {
       "@type": "Organization",
       name: "CIVIKA",

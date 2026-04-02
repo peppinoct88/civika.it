@@ -9,34 +9,34 @@ import { Card } from "@/components/molecules/Card";
 
 const rows = [
   {
-    label: "Sito web",
-    without: "Pagina generica, non aggiornata",
-    withCivika: "Sito AGID compliant, aggiornato",
+    label: "Ricerca bandi",
+    without: "Ore perse a cercare senza metodo",
+    withCivika: "Mappa personalizzata dei fondi attivi",
   },
   {
-    label: "Social media",
-    without: "Post sporadici, senza strategia",
-    withCivika: "Piano editoriale integrato",
+    label: "Progettazione",
+    without: "Proposta generica, debole",
+    withCivika: "Progetto calibrato sui criteri di valutazione",
   },
   {
-    label: "Eventi",
-    without: "Organizzazione improvvisata",
-    withCivika: "Regia professionale completa",
+    label: "Burocrazia",
+    without: "Documenti mancanti, errori, ritardi",
+    withCivika: "Iter gestito dalla A alla Z",
   },
   {
-    label: "Rassegna stampa",
-    without: "Nessuna copertura media",
-    withCivika: "Comunicati e relazioni media",
+    label: "Tasso approvazione",
+    without: "Bocciature ripetute, senza capire perché",
+    withCivika: "Metodologia con track record verificabile",
   },
   {
-    label: "Bandi e fondi",
-    without: "Opportunita perse",
-    withCivika: "Monitoraggio e candidatura assistita",
+    label: "Tempo imprenditore",
+    without: "Settimane sottratte al business",
+    withCivika: "Tu gestisci l'azienda, noi il progetto",
   },
   {
-    label: "Normativa",
-    without: "Rischio sanzioni AGID",
-    withCivika: "Compliance garantita",
+    label: "Dopo l'approvazione",
+    without: "Rendicontazione incerta, rischio restituzione",
+    withCivika: "Accompagnamento fino all'ultimo euro erogato",
   },
 ] as const;
 
@@ -46,21 +46,21 @@ export function ComparisonSection() {
       <Container>
         <SectionHeader
           overline="Il confronto"
-          title="Un evento fatto bene vale piu di cento post"
-          subtitle="La differenza tra fare e far sapere."
+          title="Da solo vs con Civika"
+          subtitle="La differenza tra provare a vincere un bando e avere un sistema progettato per farlo."
         />
 
         <Card variant="glass" hover={false} className="p-0 sm:p-0 overflow-hidden">
           {/* Header row */}
           <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr_1fr] gap-4 px-6 py-4 border-b border-white/10 bg-white/[0.02]">
             <div className="text-xs font-semibold uppercase tracking-wider text-neutral-500">
-              Servizio
+              Area
             </div>
             <div className="hidden md:block text-xs font-semibold uppercase tracking-wider text-red-400/70">
-              Senza CIVIKA
+              Da solo
             </div>
-            <div className="hidden md:block text-xs font-semibold uppercase tracking-wider text-emerald-400/70">
-              Con CIVIKA
+            <div className="hidden md:block text-xs font-semibold uppercase tracking-wider text-accent-400/70">
+              Con Civika
             </div>
           </div>
 

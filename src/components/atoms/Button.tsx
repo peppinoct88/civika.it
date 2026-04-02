@@ -10,7 +10,7 @@ import { buttonHover } from "@/lib/animations";
 
 const variants = {
   primary:
-    "bg-primary-500 text-white hover:bg-primary-600 active:bg-primary-700 shadow-[0_0_20px_rgba(51,102,204,0.15)] hover:shadow-[0_0_30px_rgba(51,102,204,0.25)]",
+    "bg-accent-500 text-white hover:bg-accent-600 active:bg-accent-700 shadow-[0_0_20px_rgba(16,185,129,0.2)] hover:shadow-[0_0_30px_rgba(16,185,129,0.35)]",
   secondary:
     "bg-white/10 text-white border border-white/20 hover:bg-white/15 hover:border-white/30 backdrop-blur-sm",
   ghost:

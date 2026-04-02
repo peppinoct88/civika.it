@@ -1,111 +1,50 @@
 "use client";
 
-import { motion } from "framer-motion";
-import {
-  Shield,
-  Puzzle,
-  MapPin,
-  Scale,
-  Clock,
-  BarChart3,
-} from "lucide-react";
-import { cn } from "@/lib/utils";
-import { fadeUpChild } from "@/lib/animations";
 import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import { Container } from "@/components/layout/Container";
-import { SectionHeader } from "@/components/molecules/SectionHeader";
-import { Card } from "@/components/molecules/Card";
-import { StaggerContainer } from "@/components/motion/StaggerContainer";
+import { FadeUp } from "@/components/motion/FadeUp";
+import { Badge } from "@/components/atoms/Badge";
 
-/* ── Data ── */
-
-const differentials = [
-  {
-    icon: Shield,
-    title: "Specializzazione PA",
-    description:
-      "Non siamo un'agenzia generica. Lavoriamo esclusivamente con Comuni e istituzioni pubbliche siciliane.",
-  },
-  {
-    icon: Puzzle,
-    title: "Approccio integrato",
-    description:
-      "Eventi, comunicazione, bandi: un unico partner per tutte le esigenze di visibilità.",
-  },
-  {
-    icon: MapPin,
-    title: "Radicamento territoriale",
-    description:
-      "Conosciamo la Sicilia, i suoi Comuni, le sue dinamiche. Siamo del territorio.",
-  },
-  {
-    icon: Scale,
-    title: "Compliance garantita",
-    description:
-      "Ogni nostro output è conforme alla normativa vigente. Zero rischi per l'amministrazione.",
-  },
-  {
-    icon: Clock,
-    title: "Agenda corta",
-    description:
-      "Lavoriamo con un numero limitato di partner per garantire la massima attenzione.",
-  },
-  {
-    icon: BarChart3,
-    title: "Risultati misurabili",
-    description:
-      "Report dettagliati, numeri reali, impatto documentato. Niente fumo, solo risultati.",
-  },
-] as const;
-
-/* ── Component ── */
+/* ── Component — Chi è Giuseppe (Authority + Empatia) ── */
 
 export function WhySection() {
   return (
-    <SectionWrapper id="perche-noi" bg="gradient">
-      <Container>
-        <SectionHeader
-          overline="Perché noi"
-          title="Perché scegliere CIVIKA"
-          subtitle="6 ragioni concrete."
-          dark
-        />
+    <SectionWrapper id="chi-sono" bg="gradient">
+      <Container size="md">
+        <FadeUp className="text-center">
+          <Badge variant="default" className="mb-8">
+            Chi c&apos;è dietro Civika
+          </Badge>
+        </FadeUp>
 
-        <StaggerContainer
-          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
-          staggerDelay={0.1}
-          delayChildren={0.15}
-        >
-          {differentials.map((item) => {
-            const Icon = item.icon;
+        <FadeUp delay={0.1}>
+          <h2 className="font-display text-3xl italic leading-[1.15] tracking-tight text-neutral-50 text-center sm:text-4xl lg:text-5xl mb-8">
+            &ldquo;Ho visto troppi imprenditori rinunciare a fondi che
+            spettavano loro. Ho creato Civika per cambiare questo.&rdquo;
+          </h2>
+        </FadeUp>
 
-            return (
-              <motion.div key={item.title} variants={fadeUpChild}>
-                <Card variant="glass" className="h-full">
-                  {/* Icon */}
-                  <div
-                    className={cn(
-                      "mb-4 flex h-12 w-12 items-center justify-center rounded-xl",
-                      "bg-primary-500/10 text-primary-400"
-                    )}
-                  >
-                    <Icon className="h-5 w-5" strokeWidth={1.8} />
-                  </div>
+        <FadeUp delay={0.2}>
+          <div className="mx-auto max-w-2xl space-y-5 text-center">
+            <p className="text-lg leading-relaxed text-neutral-300">
+              <strong className="text-neutral-100">Giuseppe Spalletta</strong>,
+              fondatore di Civika, ha passato anni a lavorare con enti pubblici
+              e istituzioni, vedendo dall&apos;interno come funziona il mondo
+              dei finanziamenti.
+            </p>
 
-                  {/* Title */}
-                  <h3 className="font-heading text-base font-semibold text-neutral-100">
-                    {item.title}
-                  </h3>
+            <p className="text-[0.9375rem] leading-relaxed text-neutral-400">
+              Una cosa lo ha sempre colpito: i fondi ci sono, ma le imprese non
+              li raggiungono. Non per mancanza di merito, ma per mancanza di
+              chi sappia fare il ponte tra il bando e il progetto. Civika nasce
+              con una missione precisa: sbloccare i fondi per chi li merita.
+            </p>
 
-                  {/* Description */}
-                  <p className="mt-2 text-sm leading-relaxed text-neutral-400">
-                    {item.description}
-                  </p>
-                </Card>
-              </motion.div>
-            );
-          })}
-        </StaggerContainer>
+            <p className="text-sm text-neutral-500 pt-2">
+              Giuseppe Spalletta — Fondatore &amp; CEO, Civika
+            </p>
+          </div>
+        </FadeUp>
       </Container>
     </SectionWrapper>
   );
