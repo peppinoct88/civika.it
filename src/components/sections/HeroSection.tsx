@@ -197,7 +197,7 @@ export function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex items-center overflow-hidden pt-24 pb-16 lg:pt-28 lg:pb-20"
+      className="relative min-h-screen flex items-center overflow-hidden pt-32 pb-16 sm:pt-36 lg:pt-40 lg:pb-20"
     >
       {/* ── Background Image — skyline ── */}
       <motion.div
@@ -252,30 +252,6 @@ export function HeroSection() {
                 stagger={0.04}
               />
             </h1>
-
-            {/* Foto Giuseppe — visibile su mobile, nascosta su desktop */}
-            <motion.div
-              className="lg:hidden relative my-6 flex justify-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.5, ease: easeOutExpo }}
-            >
-              <div className="relative w-56 sm:w-64">
-                <img
-                  src="/giuseppe-scrivania.png"
-                  alt="Giuseppe Spalletta — Fondatore di Civika"
-                  className="rounded-xl w-full shadow-2xl shadow-black/30"
-                />
-                <div className="absolute bottom-3 left-3 right-3 rounded-lg bg-neutral-900/80 backdrop-blur-sm border border-white/10 px-3 py-2">
-                  <p className="text-xs font-semibold text-white">
-                    Giuseppe Spalletta
-                  </p>
-                  <p className="text-[10px] text-gold-400">
-                    Specialista in Progettazione Bandi
-                  </p>
-                </div>
-              </div>
-            </motion.div>
 
             {/* Subtitle — il pitch completo */}
             <motion.div
@@ -365,7 +341,7 @@ export function HeroSection() {
                   Giuseppe Spalletta
                 </p>
                 <p className="text-xs text-gold-400">
-                  Specialista in Progettazione Bandi | Fondatore Civika
+                  Fondatore Civika
                 </p>
               </div>
             </div>
