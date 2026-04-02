@@ -66,10 +66,9 @@ export function HeroSection() {
         transition={{ duration: 1.2 }}
         style={{ y: bgY }}
       >
-        {/* Giuseppe's photo — replace /hero-giuseppe.webp with actual photo */}
         <img
           className="h-full w-full object-cover object-top"
-          src="/hero-giuseppe.webp"
+          src="/giuseppe-spalletta.webp"
           alt=""
           aria-hidden="true"
         />
