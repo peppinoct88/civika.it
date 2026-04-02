@@ -20,6 +20,8 @@ const notFor = [
   "Cerchi soldi facili senza un progetto reale",
   "Non hai un'azienda attiva o sei in fase di pura ideazione",
   "Non sei disponibile a condividere dati sulla tua impresa",
+  "Pensi che i bandi si vincano con il fai-da-te e un template scaricato online",
+  "Non hai tempo né volontà di seguire un percorso strutturato",
 ];
 
 /* ── Component ── */
