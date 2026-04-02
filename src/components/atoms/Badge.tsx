@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 const variants = {
   default: "bg-primary-500/10 text-primary-300 border-primary-500/20",
   accent: "bg-accent-400/10 text-accent-300 border-accent-400/20",
+  gold: "bg-gold-400/10 text-gold-300 border-gold-400/20",
   outline: "bg-transparent text-neutral-300 border-neutral-700",
 } as const;
 

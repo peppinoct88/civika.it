@@ -5,7 +5,6 @@ import Lenis from "lenis";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { ScrollProgress } from "@/components/motion/ScrollProgress";
-import { FilmGrain } from "@/components/motion/FilmGrain";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { StatsTickerSection } from "@/components/sections/StatsTickerSection";
 import { ProblemSection } from "@/components/sections/ProblemSection";
@@ -39,7 +38,6 @@ export default function Homepage() {
   return (
     <>
       <ScrollProgress />
-      <FilmGrain />
       <Navbar />
 
       <main id="main-content">

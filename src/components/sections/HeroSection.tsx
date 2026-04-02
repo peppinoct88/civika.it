@@ -102,7 +102,7 @@ export function HeroSection() {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, ease: easeOutExpo }}
           >
-            <Badge variant="accent">
+            <Badge variant="gold">
               Il 73% dei fondi pubblici resta inutilizzato
             </Badge>
           </motion.div>
@@ -124,15 +124,18 @@ export function HeroSection() {
 
           {/* Subtitle — Promessa + meccanismo */}
           <motion.p
-            className="max-w-2xl text-lg leading-relaxed text-neutral-300 sm:text-xl"
+            className="max-w-2xl text-lg leading-[1.8] text-neutral-300 sm:text-xl"
             variants={heroSubtitle}
           >
-            Civika trasforma i bandi pubblici in capitale reale per la tua impresa.
-            <br className="hidden sm:block" />
-            Con il Sistema Sblocca-Fondi™,
-            <br className="hidden sm:block" />
+            Civika trasforma i bandi pubblici
+            <br />
+            in capitale reale per la tua impresa.
+            <br />
+            <br />
+            Con il <span className="font-semibold text-gold-400">Sistema Sblocca-Fondi™</span>,
+            <br />
             il tuo progetto diventa la risposta
-            <br className="hidden sm:block" />
+            <br />
             che i bandi stanno cercando.
           </motion.p>
 

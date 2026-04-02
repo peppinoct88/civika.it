@@ -1,6 +1,6 @@
 "use client";
 
-import { FadeUp } from "@/components/motion";
+import { Marquee } from "@/components/motion";
 import { Divider } from "@/components/atoms";
 
 /* ── Data ── */
@@ -21,16 +21,16 @@ const stats: Stat[] = [
 
 function StatGlassCard({ value, label }: Stat) {
   return (
-    <div className="flex flex-col items-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-5 py-5 backdrop-blur-sm text-center">
+    <div className="flex items-center gap-4 rounded-xl border border-white/10 bg-white/[0.04] px-6 py-4 backdrop-blur-sm">
       <span className="font-mono text-2xl font-bold text-accent-400 sm:text-3xl">
         {value}
       </span>
-      <span className="text-sm font-medium text-neutral-300 leading-snug">{label}</span>
+      <span className="text-sm font-medium text-neutral-300">{label}</span>
     </div>
   );
 }
 
-/* ── Stats Section (static grid) ── */
+/* ── Stats Ticker Section — scorrimento lento ── */
 
 export function StatsTickerSection() {
   return (
@@ -38,15 +38,13 @@ export function StatsTickerSection() {
       {/* Top divider */}
       <Divider variant="gradient" />
 
-      {/* Static grid */}
-      <div className="mx-auto max-w-5xl px-5 py-8">
-        <FadeUp>
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-5">
-            {stats.map((stat) => (
-              <StatGlassCard key={stat.label} {...stat} />
-            ))}
-          </div>
-        </FadeUp>
+      {/* Marquee lento */}
+      <div className="py-6">
+        <Marquee speed={80} pauseOnHover>
+          {stats.map((stat) => (
+            <StatGlassCard key={stat.label} {...stat} />
+          ))}
+        </Marquee>
       </div>
 
       {/* Bottom divider */}

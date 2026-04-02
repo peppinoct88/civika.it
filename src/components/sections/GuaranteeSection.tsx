@@ -62,7 +62,7 @@ export function GuaranteeSection() {
                     <div
                       className={cn(
                         "flex h-12 w-12 items-center justify-center rounded-xl",
-                        "bg-accent-500/10 text-accent-400"
+                        "bg-gold-400/10 text-gold-400"
                       )}
                     >
                       <Icon className="h-6 w-6" strokeWidth={1.5} />

@@ -36,7 +36,7 @@ export function SectionHeader({
           <p
             className={cn(
               "text-[0.6875rem] font-medium uppercase tracking-[0.08em] mb-4",
-              dark ? "text-primary-400" : "text-primary-600"
+              dark ? "text-gold-400" : "text-gold-600"
             )}
           >
             {overline}

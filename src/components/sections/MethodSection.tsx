@@ -91,11 +91,11 @@ export function MethodSection() {
                 <div
                   className={cn(
                     "relative z-10 flex h-[3.5rem] w-[3.5rem] items-center justify-center",
-                    "rounded-full border border-accent-500/20 bg-accent-500/10",
+                    "rounded-full border border-gold-400/25 bg-gold-400/10",
                     "mb-5"
                   )}
                 >
-                  <span className="font-display text-lg font-bold text-accent-400">
+                  <span className="font-display text-lg font-bold text-gold-400">
                     {phase.number}
                   </span>
                 </div>
