@@ -70,7 +70,7 @@ export default function Footer() {
   return (
     <footer
       ref={footerRef}
-      className="relative bg-[#0a0a0c] overflow-hidden"
+      className="relative bg-neutral-950 overflow-hidden"
     >
       {/* Ambient background glow */}
       <div className="absolute inset-0 pointer-events-none">
@@ -163,13 +163,7 @@ export default function Footer() {
           </div>
           <div className="flex items-center gap-1.5 text-[11px] text-neutral-700">
             <span>Fatto con</span>
-            <motion.span
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="text-accent-400 text-sm"
-            >
-              &#9829;
-            </motion.span>
+            <span className="text-accent-400 text-sm">&#9829;</span>
             <span>in Sicilia</span>
           </div>
         </motion.div>

@@ -10,9 +10,9 @@ interface SectionWrapperProps {
 
 const backgrounds = {
   dark: "bg-neutral-950",
-  darker: "bg-[#0a0a0c]",
+  darker: "bg-neutral-900",
   light: "bg-neutral-50 text-neutral-900",
-  gradient: "bg-gradient-to-b from-neutral-950 to-[#0a0a0c]",
+  gradient: "bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950",
 } as const;
 
 export function SectionWrapper({

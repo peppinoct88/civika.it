@@ -20,7 +20,7 @@ export function CTASection() {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "linear-gradient(to bottom, #111113 0%, #0a1e1a 50%, #111113 100%)",
+            "linear-gradient(to bottom, #0a1e2e 0%, #0a2e24 50%, #0a1e2e 100%)",
         }}
       />
 

@@ -1,39 +1,26 @@
-import { DM_Sans, JetBrains_Mono } from "next/font/google";
-import localFont from "next/font/local";
+import { Playfair_Display, Libre_Franklin, JetBrains_Mono } from "next/font/google";
 
 /**
- * Font Display — Instrument Serif
- * Usato per hero, titoli display, enfasi
- * Caricato da file locale per performance ottimale
+ * Font Display — Playfair Display
+ * Serif elegante e autorevole per hero, titoli display, enfasi
  */
-export const instrumentSerif = localFont({
-  src: [
-    {
-      path: "../fonts/InstrumentSerif-Regular.ttf",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../fonts/InstrumentSerif-Italic.ttf",
-      weight: "400",
-      style: "italic",
-    },
-  ],
-  variable: "--font-instrument-serif",
+export const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair-display",
   display: "swap",
-  preload: true,
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
 });
 
 /**
- * Font Heading + Body — DM Sans
- * Font geometrico pulito per heading e body text
- * Fallback per Satoshi/General Sans (non su Google Fonts)
+ * Font Heading + Body — Libre Franklin
+ * Sans-serif raffinato e leggibile per heading e body text
  */
-export const dmSans = DM_Sans({
+export const libreFranklin = Libre_Franklin({
   subsets: ["latin"],
-  variable: "--font-dm-sans",
+  variable: "--font-libre-franklin",
   display: "swap",
-  weight: ["400", "500", "700"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 /**
@@ -51,7 +38,7 @@ export const jetbrainsMono = JetBrains_Mono({
  * Classe CSS combinata per tutte le font variables
  */
 export const fontVariables = [
-  instrumentSerif.variable,
-  dmSans.variable,
+  playfairDisplay.variable,
+  libreFranklin.variable,
   jetbrainsMono.variable,
 ].join(" ");

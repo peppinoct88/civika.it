@@ -8,11 +8,11 @@
 
 @theme inline {
   /* ── Font families ── */
-  --font-display: var(--font-instrument-serif), Georgia, serif;
-  --font-heading: var(--font-dm-sans), system-ui, sans-serif;
-  --font-body: var(--font-dm-sans), system-ui, sans-serif;
+  --font-display: var(--font-playfair-display), Georgia, serif;
+  --font-heading: var(--font-libre-franklin), system-ui, sans-serif;
+  --font-body: var(--font-libre-franklin), system-ui, sans-serif;
   --font-mono: var(--font-jetbrains-mono), "SF Mono", monospace;
-  --font-sans: var(--font-dm-sans), system-ui, sans-serif;
+  --font-sans: var(--font-libre-franklin), system-ui, sans-serif;
 
   /* ── Primary — Blu Civika (autorità, fiducia) ── */
   --color-primary-950: #0a1e2e;
@@ -27,18 +27,18 @@
   --color-primary-100: #d1e8f0;
   --color-primary-50: #ecf5f9;
 
-  /* ── Neutral — Warm gray ── */
-  --color-neutral-950: #111113;
-  --color-neutral-900: #1a1a1f;
-  --color-neutral-800: #28282f;
-  --color-neutral-700: #3d3d47;
-  --color-neutral-600: #55555f;
-  --color-neutral-500: #71717a;
-  --color-neutral-400: #9191a0;
-  --color-neutral-300: #b4b4c0;
-  --color-neutral-200: #d4d4dd;
-  --color-neutral-100: #ececf0;
-  --color-neutral-50: #f7f7f9;
+  /* ── Neutral — Toni Blu Civika (no nero puro) ── */
+  --color-neutral-950: #06111d;
+  --color-neutral-900: #0a1e2e;
+  --color-neutral-800: #0e2a42;
+  --color-neutral-700: #163b58;
+  --color-neutral-600: #1f4f72;
+  --color-neutral-500: #3a6d8f;
+  --color-neutral-400: #5e91b0;
+  --color-neutral-300: #89b3cc;
+  --color-neutral-200: #b8d4e5;
+  --color-neutral-100: #deeaf2;
+  --color-neutral-50: #f0f6fa;
 
   /* ── Accent — Verde Smeraldo Sblocco (azione, risultato, denaro) ── */
   --color-accent-700: #047857;
@@ -75,9 +75,9 @@
 
 :root {
   /* ── Superfici ── */
-  --surface-dark: #111113;
-  --surface-card: rgba(255, 255, 255, 0.03);
-  --surface-elevated: rgba(255, 255, 255, 0.06);
+  --surface-dark: #0a1e2e;
+  --surface-card: rgba(255, 255, 255, 0.05);
+  --surface-elevated: rgba(255, 255, 255, 0.08);
   --glass: rgba(255, 255, 255, 0.08);
   --glass-border: rgba(255, 255, 255, 0.12);
 
@@ -104,13 +104,13 @@
 
 body {
   overflow-x: hidden;
-  background-color: #111113;
-  color: #ececf0;
+  background-color: #0a1e2e;
+  color: #deeaf2;
 }
 
 ::selection {
-  background: rgba(16, 185, 129, 0.25);
-  color: #f7f7f9;
+  background: rgba(16, 185, 129, 0.3);
+  color: #f0f6fa;
 }
 
 /* ── Skip to content (a11y) ── */
@@ -137,30 +137,24 @@ body {
    ══════════════════════════════════════════════════ */
 
 @utility gradient-text {
-  background: linear-gradient(135deg, #10B981 0%, #34D399 50%, #10B981 100%);
-  background-size: 200% auto;
+  background: linear-gradient(135deg, #10B981 0%, #34D399 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shimmer 3s linear infinite;
 }
 
 @utility gradient-text-blue {
-  background: linear-gradient(135deg, #1b4f72 0%, #2b7a9e 50%, #1b4f72 100%);
-  background-size: 200% auto;
+  background: linear-gradient(135deg, #1b4f72 0%, #4a9aba 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shimmer 3s linear infinite;
 }
 
 @utility gradient-text-gold {
-  background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #f59e0b 100%);
-  background-size: 200% auto;
+  background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shimmer 3s linear infinite;
 }
 
 @utility glass-card {
@@ -238,7 +232,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #111113;
+  background: #0a1e2e;
 }
 
 ::-webkit-scrollbar-thumb {

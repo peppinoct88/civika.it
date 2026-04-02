@@ -45,7 +45,7 @@ export default function Navbar() {
           }`}
           style={{
             background: isScrolled
-              ? "linear-gradient(135deg, #0a0a0c 0%, #111113 50%, #0a0a0c 100%)"
+              ? "linear-gradient(135deg, #06111d 0%, #0a1e2e 50%, #06111d 100%)"
               : "transparent",
             borderWidth: isScrolled ? "1px" : "0px",
             borderColor: "rgba(16, 185, 129, 0.15)",
@@ -102,7 +102,7 @@ export default function Navbar() {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            className="fixed inset-0 z-40 bg-neutral-950/[0.97] backdrop-blur-2xl flex flex-col items-center justify-center"
+            className="fixed inset-0 z-40 bg-neutral-900/[0.97] backdrop-blur-2xl flex flex-col items-center justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

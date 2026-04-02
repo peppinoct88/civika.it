@@ -7,7 +7,7 @@ import {
   useTransform,
   useInView,
 } from "framer-motion";
-import { TextReveal, FilmGrain } from "@/components/motion";
+import { TextReveal } from "@/components/motion";
 import { Button } from "@/components/atoms";
 import { Badge } from "@/components/atoms";
 import { Container } from "@/components/layout/Container";
@@ -15,7 +15,6 @@ import {
   staggerContainer,
   heroSubtitle,
   heroCTA,
-  heroVideo,
   easeOutExpo,
 } from "@/lib/animations";
 
@@ -32,15 +31,8 @@ function ScrollIndicator() {
       <span className="text-xs font-medium uppercase tracking-widest text-neutral-400">
         Scorri
       </span>
-      <motion.div
+      <div
         className="h-10 w-[1px] bg-gradient-to-b from-white/40 to-transparent"
-        animate={{ scaleY: [0, 1, 0] }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        style={{ transformOrigin: "top" }}
       />
     </motion.div>
   );
@@ -52,13 +44,12 @@ export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const inView = useInView(sectionRef, { once: true, amount: 0.1 });
 
-  /* Parallax: video moves slower than scroll */
+  /* Parallax: background image moves slower than scroll */
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
   });
-  const videoY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const videoScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
 
   const containerVariants = staggerContainer(0.15, 0.2);
 
@@ -67,39 +58,32 @@ export function HeroSection() {
       ref={sectionRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* ── Video Background ── */}
+      {/* ── Photo Background ── */}
       <motion.div
         className="absolute inset-0 z-0"
-        variants={heroVideo}
-        initial="hidden"
-        animate={inView ? "visible" : "hidden"}
-        style={{ y: videoY, scale: videoScale }}
+        initial={{ opacity: 0 }}
+        animate={inView ? { opacity: 1 } : {}}
+        transition={{ duration: 1.2 }}
+        style={{ y: bgY }}
       >
-        <video
-          className="h-full w-full object-cover"
-          src="/hero-video.mp4"
-          poster="/hero-poster.webp"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="none"
+        {/* Giuseppe's photo — replace /hero-giuseppe.webp with actual photo */}
+        <img
+          className="h-full w-full object-cover object-top"
+          src="/hero-giuseppe.webp"
+          alt=""
           aria-hidden="true"
         />
       </motion.div>
 
       {/* ── Gradient Overlays ── */}
       <div
-        className="absolute inset-0 z-[1] bg-gradient-to-b from-neutral-950/80 via-neutral-950/60 to-neutral-950/90"
+        className="absolute inset-0 z-[1] bg-gradient-to-b from-neutral-900/85 via-neutral-900/60 to-neutral-900/95"
         aria-hidden="true"
       />
       <div
-        className="absolute inset-0 z-[1] bg-gradient-to-r from-neutral-950/40 via-transparent to-neutral-950/40"
+        className="absolute inset-0 z-[1] bg-gradient-to-r from-neutral-900/40 via-transparent to-neutral-900/40"
         aria-hidden="true"
       />
-
-      {/* ── Film Grain ── */}
-      <FilmGrain />
 
       {/* ── Content ── */}
       <Container
