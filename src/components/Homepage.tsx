@@ -6,7 +6,6 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { ScrollProgress } from "@/components/motion/ScrollProgress";
 import { HeroSection } from "@/components/sections/HeroSection";
-import { TrustBarSection } from "@/components/sections/TrustBarSection";
 import { StatsTickerSection } from "@/components/sections/StatsTickerSection";
 import { ProblemSection } from "@/components/sections/ProblemSection";
 import { MethodSection } from "@/components/sections/MethodSection";
@@ -46,7 +45,6 @@ export default function Homepage() {
       <main id="main-content">
         {/* ATTO 1: Cattura — Lead capture + social proof */}
         <HeroSection />
-        <TrustBarSection />
         <StatsTickerSection />
 
         {/* ATTO 2: Problema — "C'è un problema che nessuno vede" */}
