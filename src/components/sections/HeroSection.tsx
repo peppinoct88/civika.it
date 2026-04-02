@@ -11,7 +11,12 @@ import { TextReveal } from "@/components/motion";
 import { Badge } from "@/components/atoms";
 import { Container } from "@/components/layout/Container";
 import { easeOutExpo } from "@/lib/animations";
-import { Calendar, ArrowRight, ShieldCheck } from "lucide-react";
+import {
+  Calendar,
+  ArrowRight,
+  ShieldCheck,
+  CheckCircle2,
+} from "lucide-react";
 
 /* ── Scroll indicator ── */
 
@@ -69,7 +74,9 @@ function LeadForm() {
           required
           className={inputClass}
           value={formData.cognome}
-          onChange={(e) => setFormData({ ...formData, cognome: e.target.value })}
+          onChange={(e) =>
+            setFormData({ ...formData, cognome: e.target.value })
+          }
         />
       </div>
 
@@ -88,7 +95,9 @@ function LeadForm() {
         required
         className={inputClass}
         value={formData.telefono}
-        onChange={(e) => setFormData({ ...formData, telefono: e.target.value })}
+        onChange={(e) =>
+          setFormData({ ...formData, telefono: e.target.value })
+        }
       />
 
       <input
@@ -96,20 +105,36 @@ function LeadForm() {
         placeholder="Nome azienda"
         className={inputClass}
         value={formData.azienda}
-        onChange={(e) => setFormData({ ...formData, azienda: e.target.value })}
+        onChange={(e) =>
+          setFormData({ ...formData, azienda: e.target.value })
+        }
       />
 
       <select
         className={`${inputClass} appearance-none`}
         value={formData.fatturato}
-        onChange={(e) => setFormData({ ...formData, fatturato: e.target.value })}
+        onChange={(e) =>
+          setFormData({ ...formData, fatturato: e.target.value })
+        }
       >
-        <option value="" className="bg-neutral-900">Fatturato annuo</option>
-        <option value="under200k" className="bg-neutral-900">Meno di 200.000 €</option>
-        <option value="200k-500k" className="bg-neutral-900">200.000 € – 500.000 €</option>
-        <option value="500k-1m" className="bg-neutral-900">500.000 € – 1.000.000 €</option>
-        <option value="1m-5m" className="bg-neutral-900">1.000.000 € – 5.000.000 €</option>
-        <option value="over5m" className="bg-neutral-900">Oltre 5.000.000 €</option>
+        <option value="" className="bg-neutral-900">
+          Fatturato annuo
+        </option>
+        <option value="under200k" className="bg-neutral-900">
+          Meno di 200.000 €
+        </option>
+        <option value="200k-500k" className="bg-neutral-900">
+          200.000 € – 500.000 €
+        </option>
+        <option value="500k-1m" className="bg-neutral-900">
+          500.000 € – 1.000.000 €
+        </option>
+        <option value="1m-5m" className="bg-neutral-900">
+          1.000.000 € – 5.000.000 €
+        </option>
+        <option value="over5m" className="bg-neutral-900">
+          Oltre 5.000.000 €
+        </option>
       </select>
 
       {/* Privacy */}
@@ -119,8 +144,12 @@ function LeadForm() {
           required
           className="mt-0.5 accent-accent-500"
         />
-        Acconsento al trattamento dei dati personali ai sensi del GDPR.{" "}
-        <a href="/privacy-policy" className="text-accent-400 underline">Privacy Policy</a>
+        <span>
+          Acconsento al trattamento dei dati personali ai sensi del GDPR.{" "}
+          <a href="/privacy-policy" className="text-accent-400 underline">
+            Privacy Policy
+          </a>
+        </span>
       </label>
 
       {/* Submit */}
@@ -143,6 +172,15 @@ function LeadForm() {
     </form>
   );
 }
+
+/* ── Benefit bullets ── */
+
+const benefits = [
+  "Scopri a quali bandi può accedere la tua azienda (europei, nazionali, regionali)",
+  "Ricevi un Dossier personalizzato con importi, scadenze e probabilità di successo",
+  "Ottieni una Roadmap operativa: cosa fare, in che ordine, con che tempi",
+  "Zero burocrazia per te — gestiamo tutto noi dalla A alla Z",
+];
 
 /* ── Hero Section — Sblocco Fondi™ con form + foto ── */
 
@@ -185,9 +223,8 @@ export function HeroSection() {
 
       {/* ── Content ── */}
       <Container size="xl" className="relative z-10">
-        <div className="grid items-center gap-10 lg:grid-cols-[1fr_420px] lg:gap-14 xl:gap-20">
-
-          {/* ── Left: Copy + Form ── */}
+        <div className="grid items-start gap-10 lg:grid-cols-[1fr_440px] lg:gap-14 xl:gap-20">
+          {/* ── Left: Copy + Benefits + Form ── */}
           <div>
             {/* Badge */}
             <motion.div
@@ -202,53 +239,107 @@ export function HeroSection() {
             </motion.div>
 
             {/* Title */}
-            <h1 className="font-display text-3xl font-semibold leading-[1.15] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[3.5rem] mb-5">
+            <h1 className="font-display text-3xl font-semibold leading-[1.15] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[3.25rem] mb-5">
               <TextReveal
-                text="Milioni di euro restano bloccati."
+                text="Vuoi sbloccare fondi pubblici"
                 delay={0.3}
-                stagger={0.05}
+                stagger={0.04}
               />
               <br />
               <TextReveal
-                text="E la tua azienda paga il conto."
+                text="per far crescere la tua PMI?"
                 delay={0.55}
-                stagger={0.05}
+                stagger={0.04}
               />
             </h1>
 
-            {/* Subtitle */}
-            <motion.p
-              className="max-w-lg text-base leading-relaxed text-neutral-300 sm:text-lg mb-8"
+            {/* Foto Giuseppe — visibile su mobile, nascosta su desktop */}
+            <motion.div
+              className="lg:hidden relative my-6 flex justify-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.5, ease: easeOutExpo }}
+            >
+              <div className="relative w-56 sm:w-64">
+                <img
+                  src="/giuseppe-scrivania.png"
+                  alt="Giuseppe Spalletta — Fondatore di Civika"
+                  className="rounded-xl w-full shadow-2xl shadow-black/30"
+                />
+                <div className="absolute bottom-3 left-3 right-3 rounded-lg bg-neutral-900/80 backdrop-blur-sm border border-white/10 px-3 py-2">
+                  <p className="text-xs font-semibold text-white">
+                    Giuseppe Spalletta
+                  </p>
+                  <p className="text-[10px] text-gold-400">
+                    Specialista in Progettazione Bandi
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Subtitle — il pitch completo */}
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.6, ease: easeOutExpo }}
+              className="mb-6"
             >
-              Civika trasforma i bandi pubblici in capitale reale
-              per la tua impresa. Con il{" "}
-              <span className="font-semibold text-gold-400">Sistema Sblocca-Fondi™</span>,
-              il tuo progetto diventa la risposta che i bandi stanno cercando.
-            </motion.p>
+              <p className="max-w-xl text-base leading-relaxed text-neutral-300 sm:text-lg">
+                Ogni anno milioni di euro in finanziamenti pubblici restano
+                inutilizzati perché le PMI non sanno come accedervi. Civika ti
+                affianca con il{" "}
+                <span className="font-semibold text-gold-400">
+                  Sistema Sblocca-Fondi™
+                </span>{" "}
+                per individuare i bandi giusti, progettare la candidatura e
+                ottenere i fondi — senza che tu debba occuparti della
+                burocrazia.
+              </p>
+            </motion.div>
+
+            {/* Benefit bullets */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.75, ease: easeOutExpo }}
+              className="mb-8"
+            >
+              <p className="text-sm font-semibold uppercase tracking-wider text-gold-400 mb-3">
+                Parlane con uno Specialista in Progettazione Bandi e scopri come:
+              </p>
+              <ul className="space-y-2.5">
+                {benefits.map((b) => (
+                  <li key={b} className="flex items-start gap-2.5">
+                    <CheckCircle2 className="h-5 w-5 text-accent-400 shrink-0 mt-0.5" />
+                    <span className="text-sm leading-relaxed text-neutral-300">
+                      {b}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
 
             {/* Form */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.8, ease: easeOutExpo }}
+              transition={{ duration: 0.8, delay: 0.9, ease: easeOutExpo }}
               className="max-w-md rounded-xl border border-white/10 bg-white/[0.04] p-5 sm:p-6 backdrop-blur-sm"
             >
               <p className="text-sm font-semibold text-white mb-1">
                 Diagnosi Sblocca-Fondi™ Gratuita
               </p>
               <p className="text-xs text-neutral-400 mb-4">
-                Scopri quanto puoi sbloccare. Compila il form e ti ricontattiamo entro 24h.
+                Compila il form e ricevi il tuo Dossier personalizzato. Ti
+                ricontattiamo entro 24h.
               </p>
               <LeadForm />
             </motion.div>
           </div>
 
-          {/* ── Right: Foto Giuseppe alla scrivania ── */}
+          {/* ── Right: Foto Giuseppe — solo desktop ── */}
           <motion.div
-            className="hidden lg:block relative"
+            className="hidden lg:block relative sticky top-28"
             initial={{ opacity: 0, x: 40 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 1, delay: 0.5, ease: easeOutExpo }}
@@ -270,8 +361,12 @@ export function HeroSection() {
               />
               {/* Name badge overlay */}
               <div className="absolute bottom-4 left-4 right-4 rounded-lg bg-neutral-900/80 backdrop-blur-sm border border-white/10 px-4 py-3">
-                <p className="text-sm font-semibold text-white">Giuseppe Spalletta</p>
-                <p className="text-xs text-gold-400">Fondatore &amp; CEO, Civika</p>
+                <p className="text-sm font-semibold text-white">
+                  Giuseppe Spalletta
+                </p>
+                <p className="text-xs text-gold-400">
+                  Specialista in Progettazione Bandi | Fondatore Civika
+                </p>
               </div>
             </div>
           </motion.div>
