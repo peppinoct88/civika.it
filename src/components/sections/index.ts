@@ -1,11 +1,14 @@
 export { HeroSection } from "./HeroSection";
+export { TrustBarSection } from "./TrustBarSection";
 export { StatsTickerSection } from "./StatsTickerSection";
 export { ProblemSection } from "./ProblemSection";
 export { SolutionSection } from "./SolutionSection";
 export { ComparisonSection } from "./ComparisonSection";
 export { MethodSection } from "./MethodSection";
+export { ProcessSection } from "./ProcessSection";
 export { FundingSection } from "./FundingSection";
 export { WhySection } from "./WhySection";
+export { QualificationSection } from "./QualificationSection";
 export { GuaranteeSection } from "./GuaranteeSection";
 export { CTASection } from "./CTASection";
 export { FAQSection } from "./FAQSection";

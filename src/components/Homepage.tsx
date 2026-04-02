@@ -6,13 +6,16 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { ScrollProgress } from "@/components/motion/ScrollProgress";
 import { HeroSection } from "@/components/sections/HeroSection";
+import { TrustBarSection } from "@/components/sections/TrustBarSection";
 import { StatsTickerSection } from "@/components/sections/StatsTickerSection";
 import { ProblemSection } from "@/components/sections/ProblemSection";
 import { MethodSection } from "@/components/sections/MethodSection";
 import { ComparisonSection } from "@/components/sections/ComparisonSection";
+import { ProcessSection } from "@/components/sections/ProcessSection";
 import { SolutionSection } from "@/components/sections/SolutionSection";
 import { FundingSection } from "@/components/sections/FundingSection";
 import { WhySection } from "@/components/sections/WhySection";
+import { QualificationSection } from "@/components/sections/QualificationSection";
 import { GuaranteeSection } from "@/components/sections/GuaranteeSection";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { CTASection } from "@/components/sections/CTASection";
@@ -41,22 +44,27 @@ export default function Homepage() {
       <Navbar />
 
       <main id="main-content">
-        {/* ATTO 1: Cattura — "C'è un problema che nessuno vede" */}
+        {/* ATTO 1: Cattura — Lead capture + social proof */}
         <HeroSection />
+        <TrustBarSection />
         <StatsTickerSection />
+
+        {/* ATTO 2: Problema — "C'è un problema che nessuno vede" */}
         <ProblemSection />
 
-        {/* ATTO 2: Soluzione — "Ecco il sistema che sblocca i fondi" */}
+        {/* ATTO 3: Soluzione — "Ecco il sistema che sblocca i fondi" */}
         <MethodSection />
         <ComparisonSection />
+        <ProcessSection />
         <SolutionSection />
 
-        {/* ATTO 3: Prova — "Non fidarti. Guarda i fatti." */}
+        {/* ATTO 4: Prova — "Non fidarti. Guarda i fatti." */}
         <FundingSection />
         <WhySection />
+        <QualificationSection />
         <GuaranteeSection />
 
-        {/* ATTO 4: Chiusura — "Il primo passo è facile" */}
+        {/* ATTO 5: Chiusura — "Il primo passo è facile" */}
         <FAQSection />
         <CTASection />
       </main>

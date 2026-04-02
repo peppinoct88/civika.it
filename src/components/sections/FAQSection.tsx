@@ -9,38 +9,48 @@ import { Container } from "@/components/layout/Container";
 import { SectionHeader } from "@/components/molecules/SectionHeader";
 import { FadeUp } from "@/components/motion/FadeUp";
 
-/* ── Data ── */
+/* ── Data — FAQ orientate a obiezioni di vendita ── */
 
 const faqs = [
   {
-    question: "La mia azienda è troppo piccola per accedere ai bandi?",
+    question: "Perché la Diagnosi Sblocca-Fondi™ è gratuita?",
     answer:
-      "No. Esistono bandi specifici per micro-imprese, PMI e startup. Il problema non è la dimensione — è non sapere quali opportunità esistono per te. La Diagnosi gratuita serve proprio a questo.",
+      "Perché è il modo migliore per dimostrarti il nostro valore. Il 73% di chi riceve il Dossier decide di affidarci il progetto. Non abbiamo bisogno di venderti nulla — basta che vedi i numeri.",
   },
   {
-    question: "Quanto costa il servizio di Civika?",
+    question: "Sarò obbligato a comprare qualcosa dopo la Diagnosi?",
     answer:
-      "Il costo dipende dal pacchetto (Standard, PRO o VIP) e dalla complessità del bando. Ma il punto è il ROI: in media, per ogni euro investito nella consulenza, i nostri clienti ne sbloccano 23 in fondi. La Diagnosi è gratuita e ti dà tutti i numeri prima di decidere.",
+      "Assolutamente no. Ricevi il Dossier Sblocca-Fondi™, la Mappa dei Fondi del tuo settore e la Roadmap Operativa. Se non vuoi procedere, tieni tutto e non devi nulla. Zero pressioni, zero vincoli.",
   },
   {
-    question: "Cosa succede se il progetto non viene approvato?",
+    question: "La mia azienda è troppo piccola per i bandi?",
     answer:
-      "La nostra Garanzia di Risultato prevede che rivediamo insieme la strategia e ripresentiamo il progetto a nostre spese. Il tuo investimento non va mai perso.",
+      "No. Esistono bandi specifici per micro-imprese con fatturato da 200.000€ in su. Il problema non è la dimensione — è non sapere quali opportunità esistono per te. La Diagnosi serve proprio a questo.",
   },
   {
     question: "Quanto tempo ci vuole per ottenere i fondi?",
     answer:
-      "Dipende dal bando: alcuni hanno tempi di risposta di 60-90 giorni, altri 6-12 mesi. Nella Diagnosi ti diamo una timeline realistica per il tuo caso specifico.",
+      "Dipende dal bando: alcuni rispondono in 60-90 giorni, altri in 6-12 mesi. Nella Diagnosi ti diamo una timeline realistica per il tuo caso specifico, così sai esattamente cosa aspettarti.",
+  },
+  {
+    question: "E se il progetto non viene approvato?",
+    answer:
+      "Scatta la Garanzia «Fondi o Riproviamo»: analizziamo i feedback dell'ente, rivediamo la strategia e ripresentiamo a nostre spese. Il tuo investimento non va mai perso.",
   },
   {
     question: "Devo occuparmi io della burocrazia?",
     answer:
-      "No. Gestiamo tutto noi: dalla ricerca del bando alla presentazione, dalla gestione dell'iter alla rendicontazione finale. Tu continui a gestire la tua azienda.",
+      "No. Gestiamo tutto noi: dalla ricerca del bando alla presentazione, dalla gestione dell'iter alla rendicontazione finale. Tu continui a fare l'imprenditore — alla burocrazia pensiamo noi.",
   },
   {
-    question: "Come funziona la Diagnosi Sblocca-Fondi™?",
+    question: "In cosa vi differenziate dai consulenti generalisti?",
     answer:
-      "È una call gratuita di 30 minuti. Analizziamo il tuo settore, la tua azienda e il territorio. Ti mostriamo quali bandi sono attivi per te, quanto valgono e qual è il percorso per ottenerli. Nessun impegno.",
+      "Civika fa solo progettazione bandi. Non facciamo 'anche i bandi' — facciamo solo quello. Ogni progetto ha un team dedicato, un project manager assegnato e report di avanzamento continui. È la differenza tra un tuttofare e uno specialista.",
+  },
+  {
+    question: "Quanto costa il servizio se decido di procedere?",
+    answer:
+      "Il costo dipende dalla complessità del bando e dal pacchetto scelto. Ma il dato che conta è il ROI: in media, per ogni euro investito nella consulenza, i nostri clienti ne sbloccano 23 in fondi. La Diagnosi gratuita ti dà tutti i numeri prima di decidere qualsiasi cosa.",
   },
 ] as const;
 
@@ -107,7 +117,7 @@ export function FAQSection() {
         <SectionHeader
           overline="Domande frequenti"
           title="Hai dubbi? È normale."
-          subtitle="Ecco le risposte alle domande che ci fanno più spesso."
+          subtitle="Le risposte alle obiezioni più comuni — quelle che avresti anche tu."
           dark
         />
 
