@@ -36,7 +36,7 @@ export function CTASection() {
       <Container size="md" className="relative text-center">
         {/* Title */}
         <FadeUp>
-          <h2 className="font-display text-[clamp(2rem,4vw+0.5rem,3.75rem)] font-bold italic leading-[1.1] tracking-tight text-neutral-50">
+          <h2 className="font-display text-[clamp(2rem,4vw+0.5rem,3.75rem)] font-semibold leading-[1.1] tracking-tight text-neutral-50">
             Scopri quanto puoi sbloccare.
           </h2>
         </FadeUp>

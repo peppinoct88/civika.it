@@ -97,7 +97,7 @@ export default function Footer() {
                 className="h-[42px] w-auto"
               />
             </Link>
-            <p className="font-display italic text-neutral-400 text-lg leading-relaxed mb-2">
+            <p className="font-display text-neutral-400 text-lg leading-relaxed mb-2">
               I fondi non si cercano. Si progettano.
             </p>
             <p className="text-neutral-600 text-[13px]">

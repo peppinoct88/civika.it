@@ -1,12 +1,13 @@
-import { Playfair_Display, Libre_Franklin, JetBrains_Mono } from "next/font/google";
+import { Lora, Libre_Franklin, JetBrains_Mono } from "next/font/google";
 
 /**
- * Font Display — Playfair Display
- * Serif elegante e autorevole per hero, titoli display, enfasi
+ * Font Display — Lora
+ * Serif moderno ed elegante per titoli e hero.
+ * Leggibile anche a grandi dimensioni, non ornato.
  */
-export const playfairDisplay = Playfair_Display({
+export const lora = Lora({
   subsets: ["latin"],
-  variable: "--font-playfair-display",
+  variable: "--font-lora",
   display: "swap",
   weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
@@ -38,7 +39,7 @@ export const jetbrainsMono = JetBrains_Mono({
  * Classe CSS combinata per tutte le font variables
  */
 export const fontVariables = [
-  playfairDisplay.variable,
+  lora.variable,
   libreFranklin.variable,
   jetbrainsMono.variable,
 ].join(" ");

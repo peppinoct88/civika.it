@@ -8,7 +8,7 @@
 
 @theme inline {
   /* ── Font families ── */
-  --font-display: var(--font-playfair-display), Georgia, serif;
+  --font-display: var(--font-lora), Georgia, serif;
   --font-heading: var(--font-libre-franklin), system-ui, sans-serif;
   --font-body: var(--font-libre-franklin), system-ui, sans-serif;
   --font-mono: var(--font-jetbrains-mono), "SF Mono", monospace;

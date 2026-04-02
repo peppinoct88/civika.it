@@ -25,10 +25,10 @@ export function TextReveal({
   return (
     <span ref={ref} className={cn("inline", className)}>
       {words.map((word, i) => (
-        <span key={i} className="inline-block overflow-hidden mr-[0.3em]">
+        <span key={i} className="inline-block overflow-hidden mr-[0.3em] py-[0.1em]">
           <motion.span
             className="inline-block"
-            initial={{ y: "110%", opacity: 0 }}
+            initial={{ y: "100%", opacity: 0 }}
             animate={inView ? { y: 0, opacity: 1 } : {}}
             transition={{
               duration: 0.7,

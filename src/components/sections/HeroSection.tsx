@@ -108,7 +108,7 @@ export function HeroSection() {
           </motion.div>
 
           {/* Main Title — Battlecry */}
-          <h1 className="font-display text-4xl italic leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl max-w-4xl">
+          <h1 className="font-display text-4xl font-semibold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl max-w-4xl">
             <TextReveal
               text="I fondi non si cercano. Si progettano."
               delay={0.3}

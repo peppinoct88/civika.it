@@ -18,7 +18,7 @@ export function WhySection() {
         </FadeUp>
 
         <FadeUp delay={0.1}>
-          <h2 className="font-display text-3xl italic leading-[1.15] tracking-tight text-neutral-50 text-center sm:text-4xl lg:text-5xl mb-8">
+          <h2 className="font-display text-3xl font-semibold leading-[1.15] tracking-tight text-neutral-50 text-center sm:text-4xl lg:text-5xl mb-8">
             &ldquo;Ho visto troppi imprenditori rinunciare a fondi che
             spettavano loro. Ho creato Civika per cambiare questo.&rdquo;
           </h2>
