@@ -124,19 +124,13 @@ export function HeroSection() {
 
           {/* Subtitle — Promessa + meccanismo */}
           <motion.p
-            className="max-w-2xl text-lg leading-[1.8] text-neutral-300 sm:text-xl"
+            className="max-w-xl text-lg leading-relaxed text-neutral-300 sm:text-xl"
             variants={heroSubtitle}
           >
-            Civika trasforma i bandi pubblici
-            <br />
-            in capitale reale per la tua impresa.
-            <br />
-            <br />
-            Con il <span className="font-semibold text-gold-400">Sistema Sblocca-Fondi™</span>,
-            <br />
-            il tuo progetto diventa la risposta
-            <br />
-            che i bandi stanno cercando.
+            Civika trasforma i bandi pubblici in capitale reale
+            per la tua impresa. Con il{" "}
+            <span className="font-semibold text-gold-400">Sistema Sblocca-Fondi™</span>,
+            il tuo progetto diventa la risposta che i bandi stanno cercando.
           </motion.p>
 
           {/* CTAs — Primaria + Secondaria */}
