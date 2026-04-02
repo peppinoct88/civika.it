@@ -204,13 +204,13 @@ export function HeroSection() {
             {/* Title */}
             <h1 className="font-display text-3xl font-semibold leading-[1.15] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[3.5rem] mb-5">
               <TextReveal
-                text="I fondi non si cercano."
+                text="Milioni di euro restano bloccati."
                 delay={0.3}
                 stagger={0.05}
               />
               <br />
               <TextReveal
-                text="Si progettano."
+                text="E la tua azienda paga il conto."
                 delay={0.55}
                 stagger={0.05}
               />
