@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ShieldCheck, Eye, CircleDollarSign } from "lucide-react";
+import { ShieldCheck, Eye, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { fadeUpChild } from "@/lib/animations";
 import { SectionWrapper } from "@/components/layout/SectionWrapper";
@@ -10,26 +10,29 @@ import { SectionHeader } from "@/components/molecules/SectionHeader";
 import { Card } from "@/components/molecules/Card";
 import { StaggerContainer } from "@/components/motion/StaggerContainer";
 
-/* ── Data — Garanzia Tripla Protezione ── */
+/* ── Data — Garanzia Tripla Blindata ── */
 
 const guarantees = [
   {
     icon: ShieldCheck,
-    title: "Garanzia di Risultato",
+    name: "Garanzia «Fondi o Riproviamo»",
+    title: "Se non vinci, ripresentiamo gratis",
     description:
-      "Se il progetto non viene approvato, rivediamo insieme la strategia e ripresentiamo a nostre spese. Il tuo investimento non va mai perso.",
+      "Se il progetto non viene approvato, analizziamo i feedback, rivediamo la strategia e ripresentiamo a nostre spese. Il tuo investimento non va mai perso.",
   },
   {
     icon: Eye,
-    title: "Garanzia di Trasparenza",
+    name: "Garanzia «Vetrina Aperta»",
+    title: "Sai sempre a che punto sei",
     description:
-      "Sai sempre a che punto è il tuo progetto. Report di avanzamento, accesso ai documenti, comunicazione diretta. Zero sorprese.",
+      "Report di avanzamento, accesso ai documenti, comunicazione diretta col tuo project manager. Zero sorprese, zero burocrazia nascosta.",
   },
   {
-    icon: CircleDollarSign,
-    title: "Garanzia Nessun Rischio",
+    icon: Clock,
+    name: "Garanzia «Risposta in 48h»",
+    title: "La Diagnosi è gratis, per sempre",
     description:
-      "La Diagnosi Sblocca-Fondi™ è gratuita. Scopri il tuo potenziale prima di investire un euro. Se non ci sono opportunità concrete, te lo diciamo.",
+      "La Diagnosi Sblocca-Fondi™ è gratuita e lo resterà. Entro 48 ore lavorative ricevi il tuo Dossier personalizzato. Se non ci sono opportunità, te lo diciamo.",
   },
 ] as const;
 
@@ -40,9 +43,9 @@ export function GuaranteeSection() {
     <SectionWrapper id="garanzia" bg="darker">
       <Container>
         <SectionHeader
-          overline="Tripla Protezione"
+          overline="Tripla garanzia"
           title="Il rischio lo prendiamo noi."
-          subtitle="Tre garanzie concrete per eliminare ogni dubbio."
+          subtitle="Tre garanzie concrete con nomi e cognomi. Nessun asterisco."
           dark
         />
 
@@ -55,7 +58,7 @@ export function GuaranteeSection() {
             const Icon = guarantee.icon;
 
             return (
-              <motion.div key={guarantee.title} variants={fadeUpChild}>
+              <motion.div key={guarantee.name} variants={fadeUpChild}>
                 <Card variant="glass" className="h-full">
                   <div className="flex flex-col items-center text-center gap-4">
                     {/* Icon */}
@@ -68,15 +71,20 @@ export function GuaranteeSection() {
                       <Icon className="h-6 w-6" strokeWidth={1.5} />
                     </div>
 
-                    {/* Text */}
-                    <div>
-                      <h3 className="font-heading text-lg font-semibold text-neutral-100">
-                        {guarantee.title}
-                      </h3>
-                      <p className="mt-3 text-[0.9375rem] leading-relaxed text-neutral-400">
-                        {guarantee.description}
-                      </p>
-                    </div>
+                    {/* Name badge */}
+                    <span className="inline-block rounded-full bg-gold-400/10 border border-gold-400/20 px-3 py-0.5 text-[11px] font-bold uppercase tracking-wider text-gold-400">
+                      {guarantee.name}
+                    </span>
+
+                    {/* Title */}
+                    <h3 className="font-heading text-lg font-semibold text-neutral-100">
+                      {guarantee.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-[0.9375rem] leading-relaxed text-neutral-400">
+                      {guarantee.description}
+                    </p>
                   </div>
                 </Card>
               </motion.div>

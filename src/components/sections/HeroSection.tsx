@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import {
   motion,
   useScroll,
@@ -8,61 +8,164 @@ import {
   useInView,
 } from "framer-motion";
 import { TextReveal } from "@/components/motion";
-import { Button } from "@/components/atoms";
 import { Badge } from "@/components/atoms";
 import { Container } from "@/components/layout/Container";
-import {
-  staggerContainer,
-  heroSubtitle,
-  heroCTA,
-  easeOutExpo,
-} from "@/lib/animations";
+import { easeOutExpo } from "@/lib/animations";
+import { Calendar, ArrowRight, ShieldCheck } from "lucide-react";
 
 /* ── Scroll indicator ── */
 
 function ScrollIndicator() {
   return (
     <motion.div
-      className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+      className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ delay: 1.4, duration: 0.6 }}
+      transition={{ delay: 2, duration: 0.6 }}
     >
       <span className="text-xs font-medium uppercase tracking-widest text-neutral-400">
         Scorri
       </span>
-      <div
-        className="h-10 w-[1px] bg-gradient-to-b from-white/40 to-transparent"
-      />
+      <div className="h-8 w-[1px] bg-gradient-to-b from-white/40 to-transparent" />
     </motion.div>
   );
 }
 
-/* ── Hero Section — Sblocco Fondi™ ── */
+/* ── Lead Capture Form ── */
+
+function LeadForm() {
+  const [formData, setFormData] = useState({
+    nome: "",
+    cognome: "",
+    email: "",
+    telefono: "",
+    azienda: "",
+    fatturato: "",
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // TODO: Collegare a Klaviyo / API
+    console.log("Lead form submitted:", formData);
+  };
+
+  const inputClass =
+    "w-full rounded-lg border border-white/15 bg-white/[0.07] px-4 py-3 text-sm text-white placeholder:text-neutral-500 focus:border-accent-400/50 focus:outline-none focus:ring-1 focus:ring-accent-400/30 transition-colors";
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-3">
+      <div className="grid grid-cols-2 gap-3">
+        <input
+          type="text"
+          placeholder="Nome *"
+          required
+          className={inputClass}
+          value={formData.nome}
+          onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
+        />
+        <input
+          type="text"
+          placeholder="Cognome *"
+          required
+          className={inputClass}
+          value={formData.cognome}
+          onChange={(e) => setFormData({ ...formData, cognome: e.target.value })}
+        />
+      </div>
+
+      <input
+        type="email"
+        placeholder="Email aziendale *"
+        required
+        className={inputClass}
+        value={formData.email}
+        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+      />
+
+      <input
+        type="tel"
+        placeholder="Telefono *"
+        required
+        className={inputClass}
+        value={formData.telefono}
+        onChange={(e) => setFormData({ ...formData, telefono: e.target.value })}
+      />
+
+      <input
+        type="text"
+        placeholder="Nome azienda"
+        className={inputClass}
+        value={formData.azienda}
+        onChange={(e) => setFormData({ ...formData, azienda: e.target.value })}
+      />
+
+      <select
+        className={`${inputClass} appearance-none`}
+        value={formData.fatturato}
+        onChange={(e) => setFormData({ ...formData, fatturato: e.target.value })}
+      >
+        <option value="" className="bg-neutral-900">Fatturato annuo</option>
+        <option value="under200k" className="bg-neutral-900">Meno di 200.000 €</option>
+        <option value="200k-500k" className="bg-neutral-900">200.000 € – 500.000 €</option>
+        <option value="500k-1m" className="bg-neutral-900">500.000 € – 1.000.000 €</option>
+        <option value="1m-5m" className="bg-neutral-900">1.000.000 € – 5.000.000 €</option>
+        <option value="over5m" className="bg-neutral-900">Oltre 5.000.000 €</option>
+      </select>
+
+      {/* Privacy */}
+      <label className="flex items-start gap-2 text-[11px] text-neutral-500 leading-snug cursor-pointer pt-1">
+        <input
+          type="checkbox"
+          required
+          className="mt-0.5 accent-accent-500"
+        />
+        Acconsento al trattamento dei dati personali ai sensi del GDPR.{" "}
+        <a href="/privacy-policy" className="text-accent-400 underline">Privacy Policy</a>
+      </label>
+
+      {/* Submit */}
+      <button
+        type="submit"
+        className="w-full flex items-center justify-center gap-2 rounded-lg bg-accent-500 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-accent-500/20 hover:bg-accent-600 hover:shadow-accent-500/30 transition-all duration-200 cursor-pointer"
+      >
+        <Calendar className="h-4 w-4" />
+        Richiedi la Diagnosi Gratuita
+        <ArrowRight className="h-4 w-4" />
+      </button>
+
+      {/* Trust note */}
+      <div className="flex items-center justify-center gap-1.5 pt-1">
+        <ShieldCheck className="h-3.5 w-3.5 text-accent-400" />
+        <span className="text-[11px] text-neutral-500">
+          Gratuita. Senza impegno. I tuoi dati sono al sicuro.
+        </span>
+      </div>
+    </form>
+  );
+}
+
+/* ── Hero Section — Sblocco Fondi™ con form + foto ── */
 
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const inView = useInView(sectionRef, { once: true, amount: 0.1 });
 
-  /* Parallax: background image moves slower than scroll */
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
   });
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
 
-  const containerVariants = staggerContainer(0.15, 0.2);
-
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center overflow-hidden pt-24 pb-16 lg:pt-28 lg:pb-20"
     >
       {/* ── Background Image — skyline ── */}
       <motion.div
         className="absolute inset-0 z-0"
         initial={{ opacity: 0 }}
-        animate={inView ? { opacity: 0.25 } : {}}
+        animate={inView ? { opacity: 0.2 } : {}}
         transition={{ duration: 1.5 }}
         style={{ y: bgY }}
       >
@@ -74,77 +177,105 @@ export function HeroSection() {
         />
       </motion.div>
 
-      {/* ── Overlay Blu Civika pesante ── */}
+      {/* ── Overlay ── */}
       <div
-        className="absolute inset-0 z-[1] bg-gradient-to-b from-[#06111d]/90 via-[#0a1e2e]/80 to-[#0a1e2e]/95"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute inset-0 z-[1] bg-gradient-to-t from-[#0a1e2e] via-transparent to-transparent"
+        className="absolute inset-0 z-[1] bg-gradient-to-b from-[#06111d]/90 via-[#0a1e2e]/85 to-[#0a1e2e]"
         aria-hidden="true"
       />
 
       {/* ── Content ── */}
-      <Container
-        size="lg"
-        className="relative z-10 flex flex-col items-center text-center"
-      >
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          className="flex flex-col items-center gap-6"
-        >
-          {/* Overline — stat che agita il problema */}
+      <Container size="xl" className="relative z-10">
+        <div className="grid items-center gap-10 lg:grid-cols-[1fr_420px] lg:gap-14 xl:gap-20">
+
+          {/* ── Left: Copy + Form ── */}
+          <div>
+            {/* Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, ease: easeOutExpo }}
+              className="mb-6"
+            >
+              <Badge variant="gold">
+                Il 73% dei fondi pubblici resta inutilizzato
+              </Badge>
+            </motion.div>
+
+            {/* Title */}
+            <h1 className="font-display text-3xl font-semibold leading-[1.15] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[3.5rem] mb-5">
+              <TextReveal
+                text="I fondi non si cercano."
+                delay={0.3}
+                stagger={0.05}
+              />
+              <br />
+              <TextReveal
+                text="Si progettano."
+                delay={0.55}
+                stagger={0.05}
+              />
+            </h1>
+
+            {/* Subtitle */}
+            <motion.p
+              className="max-w-lg text-base leading-relaxed text-neutral-300 sm:text-lg mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.6, ease: easeOutExpo }}
+            >
+              Civika trasforma i bandi pubblici in capitale reale
+              per la tua impresa. Con il{" "}
+              <span className="font-semibold text-gold-400">Sistema Sblocca-Fondi™</span>,
+              il tuo progetto diventa la risposta che i bandi stanno cercando.
+            </motion.p>
+
+            {/* Form */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.8, ease: easeOutExpo }}
+              className="max-w-md rounded-xl border border-white/10 bg-white/[0.04] p-5 sm:p-6 backdrop-blur-sm"
+            >
+              <p className="text-sm font-semibold text-white mb-1">
+                Diagnosi Sblocca-Fondi™ Gratuita
+              </p>
+              <p className="text-xs text-neutral-400 mb-4">
+                Scopri quanto puoi sbloccare. Compila il form e ti ricontattiamo entro 24h.
+              </p>
+              <LeadForm />
+            </motion.div>
+          </div>
+
+          {/* ── Right: Foto Giuseppe alla scrivania ── */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, ease: easeOutExpo }}
+            className="hidden lg:block relative"
+            initial={{ opacity: 0, x: 40 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 1, delay: 0.5, ease: easeOutExpo }}
           >
-            <Badge variant="gold">
-              Il 73% dei fondi pubblici resta inutilizzato
-            </Badge>
+            <div className="relative">
+              {/* Decorative glow */}
+              <div
+                className="absolute -inset-8 rounded-2xl opacity-30"
+                style={{
+                  background:
+                    "radial-gradient(ellipse at center, rgba(16,185,129,0.15) 0%, transparent 70%)",
+                }}
+                aria-hidden="true"
+              />
+              <img
+                src="/giuseppe-scrivania.png"
+                alt="Giuseppe Spalletta — Fondatore di Civika"
+                className="relative rounded-xl w-full shadow-2xl shadow-black/30"
+              />
+              {/* Name badge overlay */}
+              <div className="absolute bottom-4 left-4 right-4 rounded-lg bg-neutral-900/80 backdrop-blur-sm border border-white/10 px-4 py-3">
+                <p className="text-sm font-semibold text-white">Giuseppe Spalletta</p>
+                <p className="text-xs text-gold-400">Fondatore &amp; CEO, Civika</p>
+              </div>
+            </div>
           </motion.div>
-
-          {/* Main Title — Battlecry */}
-          <h1 className="font-display text-4xl font-semibold leading-[1.15] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl max-w-4xl">
-            <TextReveal
-              text="I fondi non si cercano."
-              delay={0.3}
-              stagger={0.05}
-            />
-            <br />
-            <TextReveal
-              text="Si progettano."
-              delay={0.55}
-              stagger={0.05}
-            />
-          </h1>
-
-          {/* Subtitle — Promessa + meccanismo */}
-          <motion.p
-            className="max-w-xl text-lg leading-relaxed text-neutral-300 sm:text-xl"
-            variants={heroSubtitle}
-          >
-            Civika trasforma i bandi pubblici in capitale reale
-            per la tua impresa. Con il{" "}
-            <span className="font-semibold text-gold-400">Sistema Sblocca-Fondi™</span>,
-            il tuo progetto diventa la risposta che i bandi stanno cercando.
-          </motion.p>
-
-          {/* CTAs — Primaria + Secondaria */}
-          <motion.div
-            className="flex flex-wrap items-center justify-center gap-4 pt-4"
-            variants={heroCTA}
-          >
-            <Button variant="primary" size="lg" asChild>
-              <a href="/diagnosi">Prenota la Diagnosi Gratuita</a>
-            </Button>
-            <Button variant="secondary" size="lg" asChild>
-              <a href="/risorse/mappa-fondi">Scarica la Mappa dei Fondi™</a>
-            </Button>
-          </motion.div>
-        </motion.div>
+        </div>
       </Container>
 
       {/* ── Scroll Indicator ── */}
