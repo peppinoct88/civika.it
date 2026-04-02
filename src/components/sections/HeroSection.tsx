@@ -108,10 +108,16 @@ export function HeroSection() {
           </motion.div>
 
           {/* Main Title — Battlecry */}
-          <h1 className="font-display text-4xl font-semibold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl max-w-4xl">
+          <h1 className="font-display text-4xl font-semibold leading-[1.15] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl max-w-4xl">
             <TextReveal
-              text="I fondi non si cercano. Si progettano."
+              text="I fondi non si cercano."
               delay={0.3}
+              stagger={0.05}
+            />
+            <br />
+            <TextReveal
+              text="Si progettano."
+              delay={0.55}
               stagger={0.05}
             />
           </h1>
@@ -121,9 +127,13 @@ export function HeroSection() {
             className="max-w-2xl text-lg leading-relaxed text-neutral-300 sm:text-xl"
             variants={heroSubtitle}
           >
-            Civika trasforma i bandi pubblici in capitale reale per la tua
-            impresa. Con il Sistema Sblocca-Fondi™, il tuo progetto
-            diventa la risposta che i bandi stanno cercando.
+            Civika trasforma i bandi pubblici in capitale reale per la tua impresa.
+            <br className="hidden sm:block" />
+            Con il Sistema Sblocca-Fondi™,
+            <br className="hidden sm:block" />
+            il tuo progetto diventa la risposta
+            <br className="hidden sm:block" />
+            che i bandi stanno cercando.
           </motion.p>
 
           {/* CTAs — Primaria + Secondaria */}
