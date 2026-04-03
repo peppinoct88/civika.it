@@ -296,10 +296,10 @@ export function HeroSection() {
               transition={{ duration: 0.8, delay: 0.9, ease: easeOutExpo }}
               className="max-w-md rounded-xl border border-white/10 bg-white/[0.04] p-5 sm:p-6 backdrop-blur-sm"
             >
-              <p className="text-sm font-semibold text-white mb-1">
+              <h3 className="text-xl font-bold text-white mb-1">
                 Diagnosi Sblocca-Fondi™ Gratuita
-              </p>
-              <p className="text-xs text-neutral-400 mb-4">
+              </h3>
+              <p className="text-base text-neutral-300 mb-5">
                 Compila il form e ricevi il tuo Dossier personalizzato. Ti
                 ricontattiamo entro 24h.
               </p>
