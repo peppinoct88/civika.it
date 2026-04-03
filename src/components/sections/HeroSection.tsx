@@ -239,7 +239,7 @@ export function HeroSection() {
             </motion.div>
 
             {/* Title */}
-            <h1 className="font-display text-3xl font-semibold leading-[1.18] tracking-tight text-white sm:text-4xl md:text-[2.75rem] lg:text-[3rem] mb-5">
+            <h1 className="font-display text-4xl font-bold leading-[1.15] tracking-tight text-white sm:text-5xl md:text-[3.5rem] lg:text-[4rem] mb-6">
               <TextReveal
                 text="Vuoi sbloccare fondi pubblici per far crescere la tua PMI?"
                 delay={0.3}
