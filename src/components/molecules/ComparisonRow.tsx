@@ -26,22 +26,22 @@ export function ComparisonRow({
         className
       )}
     >
-      <div className="font-medium text-neutral-200 text-sm mb-1 md:mb-0">
+      <div className="font-medium text-neutral-200 text-base mb-1 md:mb-0">
         {label}
       </div>
 
       {/* Mobile: show inline labels | Desktop: hide them */}
-      <div className="flex items-start gap-2 text-sm">
+      <div className="flex items-start gap-2 text-base">
         <X className="w-4 h-4 text-red-400 shrink-0 mt-0.5" aria-hidden="true" />
-        <span className="text-neutral-500">
+        <span className="text-neutral-400">
           <span className="md:hidden font-semibold text-red-400/70 mr-1">Da solo:</span>
           {without}
         </span>
       </div>
 
-      <div className="flex items-start gap-2 text-sm">
+      <div className="flex items-start gap-2 text-base">
         <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" aria-hidden="true" />
-        <span className="text-neutral-200">
+        <span className="text-neutral-300">
           <span className="md:hidden font-semibold text-accent-400/70 mr-1">Con Civika:</span>
           {withCivika}
         </span>

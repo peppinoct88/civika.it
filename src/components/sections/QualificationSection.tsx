@@ -47,7 +47,7 @@ export function QualificationSection() {
                 {qualifiedFor.map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-accent-400 shrink-0 mt-0.5" />
-                    <span className="text-sm leading-relaxed text-neutral-300">{item}</span>
+                    <span className="text-base leading-relaxed text-neutral-200">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -64,7 +64,7 @@ export function QualificationSection() {
                 {notFor.map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <XCircle className="h-5 w-5 text-red-400 shrink-0 mt-0.5" />
-                    <span className="text-sm leading-relaxed text-neutral-300">{item}</span>
+                    <span className="text-base leading-relaxed text-neutral-200">{item}</span>
                   </li>
                 ))}
               </ul>

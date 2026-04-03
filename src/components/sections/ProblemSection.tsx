@@ -79,7 +79,7 @@ export function ProblemSection() {
                       <h3 className="font-heading text-lg font-semibold text-neutral-100">
                         {problem.title}
                       </h3>
-                      <p className="mt-2 text-[0.9375rem] leading-relaxed text-neutral-400">
+                      <p className="mt-2 text-base leading-relaxed text-neutral-300">
                         {problem.description}
                       </p>
                     </div>

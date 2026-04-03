@@ -35,7 +35,7 @@ export function SectionHeader({
         <FadeUp>
           <p
             className={cn(
-              "text-[0.6875rem] font-medium uppercase tracking-[0.08em] mb-4",
+              "text-xs font-semibold uppercase tracking-[0.1em] mb-4",
               dark ? "text-gold-400" : "text-gold-600"
             )}
           >
@@ -61,9 +61,9 @@ export function SectionHeader({
         <FadeUp delay={0.1}>
           <p
             className={cn(
-              "mt-4 text-lg leading-relaxed max-w-2xl",
+              "mt-4 text-lg sm:text-xl leading-relaxed max-w-2xl",
               align === "center" && "mx-auto",
-              dark ? "text-neutral-400" : "text-neutral-600"
+              dark ? "text-neutral-300" : "text-neutral-600"
             )}
           >
             {subtitle}

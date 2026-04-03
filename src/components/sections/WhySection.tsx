@@ -33,7 +33,7 @@ export function WhySection() {
 
             {/* ── Testo — posizionato a destra ── */}
             <div className="relative lg:ml-[42%] px-6 pb-10 pt-6 sm:px-10 sm:pb-14 lg:py-16 lg:px-14 lg:pr-12">
-              <p className="text-sm font-semibold italic text-neutral-300 mb-2">
+              <p className="text-base font-semibold italic text-neutral-200 mb-2">
                 Mi presento:
               </p>
 
@@ -50,7 +50,7 @@ export function WhySection() {
                 </strong>
               </p>
 
-              <p className="text-sm leading-relaxed text-neutral-400 max-w-lg">
+              <p className="text-base leading-relaxed text-neutral-300 max-w-lg">
                 Non per mancanza di merito, ma per mancanza di chi sappia fare
                 il ponte tra il bando e il progetto. Ho creato Civika con una
                 missione precisa: sbloccare i fondi per chi li merita.

@@ -99,7 +99,7 @@ export function SolutionSection() {
                 <h3 className="font-heading text-base font-semibold text-neutral-100">
                   {target.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-neutral-400">
+                <p className="mt-2 text-base leading-relaxed text-neutral-300">
                   {target.description}
                 </p>
               </motion.div>

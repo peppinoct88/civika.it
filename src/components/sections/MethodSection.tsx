@@ -109,7 +109,7 @@ export function MethodSection() {
                 </p>
 
                 {/* Description */}
-                <p className="text-sm leading-relaxed text-neutral-400 max-w-[260px]">
+                <p className="text-base leading-relaxed text-neutral-300 max-w-[280px]">
                   {phase.description}
                 </p>
               </motion.div>

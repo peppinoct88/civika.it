@@ -254,7 +254,7 @@ export function HeroSection() {
               transition={{ duration: 0.7, delay: 0.6, ease: easeOutExpo }}
               className="mb-6"
             >
-              <p className="max-w-xl text-base leading-relaxed text-neutral-300 sm:text-lg">
+              <p className="max-w-xl text-lg leading-relaxed text-neutral-200 sm:text-xl">
                 Ogni anno milioni di euro in finanziamenti pubblici restano
                 inutilizzati perché le PMI non sanno come accedervi. Civika ti
                 affianca con il{" "}
@@ -274,14 +274,14 @@ export function HeroSection() {
               transition={{ duration: 0.7, delay: 0.75, ease: easeOutExpo }}
               className="mb-8"
             >
-              <p className="text-sm font-semibold uppercase tracking-wider text-gold-400 mb-3">
+              <p className="text-base font-semibold uppercase tracking-wider text-gold-400 mb-4">
                 Parlane con uno Specialista in Progettazione Bandi e scopri come:
               </p>
-              <ul className="space-y-2.5">
+              <ul className="space-y-3">
                 {benefits.map((b) => (
-                  <li key={b} className="flex items-start gap-2.5">
+                  <li key={b} className="flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-accent-400 shrink-0 mt-0.5" />
-                    <span className="text-sm leading-relaxed text-neutral-300">
+                    <span className="text-base leading-relaxed text-neutral-200">
                       {b}
                     </span>
                   </li>

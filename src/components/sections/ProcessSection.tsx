@@ -83,7 +83,7 @@ export function ProcessSection() {
                 </h3>
 
                 {/* Description */}
-                <p className="text-sm leading-relaxed text-neutral-400">
+                <p className="text-base leading-relaxed text-neutral-300">
                   {step.description}
                 </p>
               </motion.div>

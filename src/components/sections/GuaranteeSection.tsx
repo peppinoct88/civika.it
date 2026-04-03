@@ -82,7 +82,7 @@ export function GuaranteeSection() {
                     </h3>
 
                     {/* Description */}
-                    <p className="text-[0.9375rem] leading-relaxed text-neutral-400">
+                    <p className="text-base leading-relaxed text-neutral-300">
                       {guarantee.description}
                     </p>
                   </div>
