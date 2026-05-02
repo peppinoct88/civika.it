@@ -114,13 +114,13 @@ async function seed() {
     { resource: "media", action: "upload", scope: "all", description: "Caricare file" },
     { resource: "media", action: "delete", scope: "own", description: "Eliminare propri file" },
     { resource: "media", action: "delete", scope: "all", description: "Eliminare tutti i file" },
-    // Bandi (futuro)
+    // Bandi (RBAC namespace; tabelle reali in schema scout — vedi ADR-024)
     { resource: "bandi", action: "search", scope: "all", description: "Cercare bandi" },
     { resource: "bandi", action: "manage", scope: "all", description: "Gestire bandi" },
     { resource: "bandi", action: "ingest", scope: "all", description: "Ingerire nuovi bandi" },
-    // Organizations
-    { resource: "organizations", action: "manage", scope: "own", description: "Gestire propria organizzazione" },
-    { resource: "organizations", action: "manage", scope: "all", description: "Gestire tutte le organizzazioni" },
+    // Clienti (RBAC sui clienti scout; mapping in user_clienti — vedi ADR-025)
+    { resource: "clienti", action: "manage", scope: "own", description: "Gestire propri clienti" },
+    { resource: "clienti", action: "manage", scope: "all", description: "Gestire tutti i clienti" },
     // API
     { resource: "api", action: "access", scope: "all", description: "Accesso API programmatico" },
   ];
@@ -169,7 +169,7 @@ async function seed() {
     ["notifications", "manage", "all"],
     ["media", "upload", "all"], ["media", "delete", "all"],
     ["bandi", "search", "all"], ["bandi", "manage", "all"],
-    ["organizations", "manage", "all"],
+    ["clienti", "manage", "all"],
     ["api", "access", "all"],
   ];
   adminPerms.forEach(([r, a, s]) => addPerm("admin", r, a, s));
@@ -210,7 +210,7 @@ async function seed() {
     ["notifications", "manage", "own"],
     ["media", "upload", "all"], ["media", "delete", "own"],
     ["bandi", "search", "all"], ["bandi", "manage", "all"], ["bandi", "ingest", "all"],
-    ["organizations", "manage", "own"],
+    ["clienti", "manage", "own"],
     ["api", "access", "all"],
   ];
   scoutPerms.forEach(([r, a, s]) => addPerm("scout_operator", r, a, s));

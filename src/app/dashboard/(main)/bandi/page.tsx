@@ -1,280 +1,236 @@
-"use client";
+/**
+ * Pagina /dashboard/bandi — Strato 9 A4.2 + A4.3 wired al frontend.
+ *
+ * Server Component che chiama POST /match della FastAPI civika-scout per
+ * il cliente attivo dell'utente (post ADR-025: cookie `active_cliente_id`
+ * con fallback al primo cliente di `GET /clienti/me`). Mostra
+ * titolo/ente/scadenza/importo/score cosine, + se rerank=true:
+ * pertinenza/fattibilità/urgenza/valore_atteso + le 4 motivazioni Sonnet
+ * 4.6 (una per dimensione, ADR-035).
+ */
 
-import { useState } from "react";
-import {
-  Search,
-  Sparkles,
-  Filter,
-  ArrowUpRight,
-  Clock,
-  Euro,
-  Building2,
-  Calendar,
-  Target,
-  Brain,
-  Zap,
-  Globe,
-  BookOpen,
-  TrendingUp,
-} from "lucide-react";
+import { Sparkles, Globe, Clock, AlertCircle, Inbox } from "lucide-react";
 
-/* ═══════════════════════════════════════════════
-   CIVIKA — Scouting Bandi (RAG-ready)
-   Interfaccia per la ricerca intelligente di bandi
-   europei, nazionali e regionali con AI
-   ═══════════════════════════════════════════════ */
+import { ApiClientError, postMatch } from "@/lib/api/client";
+import { resolveActiveCliente } from "@/lib/active-cliente";
+import type { ClienteRead, MatchProposalRead } from "@/lib/api/types";
 
-const categories = [
-  { label: "Tutti", count: 0, active: true },
-  { label: "PNRR", count: 0, active: false },
-  { label: "Europei", count: 0, active: false },
-  { label: "Nazionali", count: 0, active: false },
-  { label: "Regionali", count: 0, active: false },
-];
+import { BandiSearchBar } from "./_search-bar";
+import { BandoCard } from "./_bando-card";
 
-const features = [
-  {
-    icon: Brain,
-    title: "Ricerca Semantica AI",
-    description: "Trova bandi pertinenti con ricerca in linguaggio naturale. Il motore RAG comprende il contesto del tuo comune.",
-    status: "Prossimamente",
-  },
-  {
-    icon: Target,
-    title: "Match Automatico",
-    description: "L'AI analizza il profilo del tuo comune e suggerisce automaticamente i bandi più compatibili.",
-    status: "Prossimamente",
-  },
-  {
-    icon: Zap,
-    title: "Alert in Tempo Reale",
-    description: "Ricevi notifiche istantanee quando vengono pubblicati nuovi bandi rilevanti per il tuo territorio.",
-    status: "Prossimamente",
-  },
-  {
-    icon: BookOpen,
-    title: "Analisi Documenti",
-    description: "Upload dei documenti di bando per estrazione automatica di requisiti, scadenze e importi.",
-    status: "Prossimamente",
-  },
-];
+const RERANK_DEFAULT = process.env.NEXT_PUBLIC_RERANK_DEFAULT !== "false";
 
-const sampleBandi = [
-  {
-    title: "PNRR M5C2 — Rigenerazione Urbana",
-    ente: "Ministero dell'Interno",
-    scadenza: "Da definire",
-    importo: "€ 50.000 - € 5.000.000",
-    categoria: "PNRR",
-    match: 92,
-    tags: ["Rigenerazione", "Urbanistica", "Comuni < 15.000 ab."],
-  },
-  {
-    title: "Bando Cultura e Turismo Sostenibile",
-    ente: "Regione Siciliana",
-    scadenza: "Da definire",
-    importo: "€ 20.000 - € 200.000",
-    categoria: "Regionali",
-    match: 87,
-    tags: ["Cultura", "Turismo", "Sostenibilità"],
-  },
-  {
-    title: "Horizon Europe — Smart Communities",
-    ente: "Commissione Europea",
-    scadenza: "Da definire",
-    importo: "€ 500.000 - € 3.000.000",
-    categoria: "Europei",
-    match: 74,
-    tags: ["Smart City", "Innovazione", "Digitale"],
-  },
-];
+interface MatchResult {
+  ok: true;
+  cliente: ClienteRead;
+  proposals: MatchProposalRead[];
+  reranked: boolean;
+}
 
-export default function BandiPage() {
-  const [searchQuery, setSearchQuery] = useState("");
+interface MatchError {
+  ok: false;
+  status: number | null;
+  message: string;
+  hint: string;
+}
+
+async function loadMatches(
+  cliente: ClienteRead,
+): Promise<MatchResult | MatchError> {
+  try {
+    const proposals = await postMatch({
+      cliente_id: cliente.id,
+      top_k: 10,
+      rerank: RERANK_DEFAULT,
+    });
+    return { ok: true, cliente, proposals, reranked: RERANK_DEFAULT };
+  } catch (error) {
+    if (error instanceof ApiClientError) {
+      const detail =
+        typeof error.detail === "string"
+          ? error.detail
+          : JSON.stringify(error.detail);
+      return {
+        ok: false,
+        status: error.status,
+        message: detail,
+        hint: hintForStatus(error.status),
+      };
+    }
+    return {
+      ok: false,
+      status: null,
+      message: error instanceof Error ? error.message : "Errore sconosciuto",
+      hint: "Verifica che la FastAPI sia in esecuzione: cd apps/api && uv run uvicorn civika_api.main:app --reload",
+    };
+  }
+}
+
+function hintForStatus(status: number): string {
+  switch (status) {
+    case 404:
+      return "Il cliente non esiste lato API — disallineamento user_clienti vs clienti?";
+    case 409:
+      return "Il cliente non ha embedding_profilo: aggiungi `needs` da /dashboard/profile-edit e attendi il run di embed_pending_clienti";
+    case 401:
+    case 403:
+      return "JWT mancante o non valido — fai login dalla pagina /dashboard/login";
+    default:
+      return "Verifica i log della FastAPI in apps/api";
+  }
+}
+
+export default async function BandiPage() {
+  const active = await resolveActiveCliente();
+
+  if (!active.ok && active.reason === "api_error") {
+    return (
+      <PageShell title="Scouting Bandi" subtitle="">
+        <ErrorState
+          status={active.status}
+          message={active.message}
+          hint="Verifica che la FastAPI sia raggiungibile e che il JWT sia valido."
+        />
+      </PageShell>
+    );
+  }
+
+  if (!active.ok) {
+    return (
+      <PageShell title="Scouting Bandi" subtitle="Nessun cliente associato">
+        <NoClientiState />
+      </PageShell>
+    );
+  }
+
+  const result = await loadMatches(active.active);
 
   return (
     <div className="space-y-6">
-      {/* ── Header con AI badge ── */}
       <div className="flex items-start justify-between">
         <div>
           <div className="flex items-center gap-3">
             <h1 className="text-2xl font-semibold text-white">Scouting Bandi</h1>
             <span className="flex items-center gap-1.5 rounded-lg bg-[#D4A03C]/15 px-2.5 py-1 text-xs font-semibold text-[#D4A03C]">
               <Sparkles className="h-3.5 w-3.5" />
-              Powered by AI
+              {result.ok && result.reranked ? "Sonnet 4.6 ranking" : "Cosine BGE-M3"}
             </span>
           </div>
           <p className="mt-1 text-sm text-[#6B8AAD]">
-            Scopri bandi europei, nazionali e regionali con ricerca semantica intelligente
+            Top-{result.ok ? result.proposals.length : 10} bandi consolidati per{" "}
+            <span className="text-[#A0BED8]">{active.active.nome}</span>
           </p>
         </div>
       </div>
 
-      {/* ── AI Search Bar (hero) ── */}
-      <div className="relative overflow-hidden rounded-2xl border border-[#D4A03C]/20 bg-gradient-to-br from-[#0F1F33] to-[#0A1628] p-6">
-        {/* Background glow */}
-        <div className="absolute -right-20 -top-20 h-60 w-60 rounded-full bg-[#D4A03C]/5 blur-3xl" />
-        <div className="absolute -left-10 -bottom-10 h-40 w-40 rounded-full bg-[#1B3A5C]/20 blur-3xl" />
+      <BandiSearchBar />
 
-        <div className="relative">
-          <div className="mb-3 flex items-center gap-2">
-            <Brain className="h-4 w-4 text-[#D4A03C]" />
-            <span className="text-xs font-medium text-[#D4A03C]">Ricerca Semantica RAG</span>
+      {result.ok ? (
+        <div className="space-y-3">
+          <div className="flex items-center justify-between">
+            <h2 className="text-base font-semibold text-white flex items-center gap-2">
+              <Globe className="h-4 w-4 text-[#D4A03C]" />
+              {result.proposals.length} match trovati
+            </h2>
+            <span className="text-xs text-[#4A6A8A] flex items-center gap-1">
+              <Clock className="h-3 w-3" />
+              {result.reranked
+                ? "Rerank multi-dimensionale Sonnet 4.6"
+                : "Solo cosine similarity (rerank disabilitato)"}
+            </span>
           </div>
-          <div className="relative">
-            <Sparkles className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#D4A03C]" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Descrivi cosa cerchi... es. &quot;bandi per riqualificazione piazze in comuni sotto 15.000 abitanti&quot;"
-              className="h-14 w-full rounded-xl border border-[#D4A03C]/20 bg-[#070E18]/60 pl-12 pr-32 text-sm text-white placeholder-[#4A6A8A] transition-all focus:border-[#D4A03C]/40 focus:ring-2 focus:ring-[#D4A03C]/10 focus:outline-none"
-            />
-            <button className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-2 rounded-lg bg-gradient-to-r from-[#D4A03C] to-[#E8C06A] px-5 py-2.5 text-sm font-semibold text-[#0A1628] transition-all hover:shadow-lg hover:shadow-[#D4A03C]/20">
-              <Search className="h-4 w-4" />
-              Cerca
-            </button>
-          </div>
-          <div className="mt-3 flex items-center gap-2 flex-wrap">
-            <span className="text-xs text-[#4A6A8A]">Suggerimenti:</span>
-            {["PNRR comuni siciliani", "fondi europei cultura", "digitalizzazione PA"].map((s) => (
-              <button
-                key={s}
-                onClick={() => setSearchQuery(s)}
-                className="rounded-lg border border-[#1B3A5C]/30 bg-[#1B3A5C]/10 px-2.5 py-1 text-xs text-[#8AACCC] hover:border-[#D4A03C]/30 hover:text-[#D4A03C] transition-all"
-              >
-                {s}
-              </button>
-            ))}
-          </div>
+
+          {result.proposals.length === 0 ? (
+            <EmptyState />
+          ) : (
+            result.proposals.map((proposal) => (
+              <BandoCard key={proposal.bando.id} proposal={proposal} />
+            ))
+          )}
         </div>
-      </div>
+      ) : (
+        <ErrorState
+          status={result.status}
+          message={result.message}
+          hint={result.hint}
+        />
+      )}
+    </div>
+  );
+}
 
-      {/* ── Categories ── */}
-      <div className="flex items-center gap-2">
-        <Filter className="h-4 w-4 text-[#4A6A8A]" />
-        {categories.map((cat) => (
-          <button
-            key={cat.label}
-            className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${
-              cat.active
-                ? "bg-[#D4A03C]/15 text-[#E8C06A] border border-[#D4A03C]/20"
-                : "text-[#6B8AAD] border border-[#1B3A5C]/20 hover:border-[#1B3A5C]/40 hover:text-[#A0BED8]"
-            }`}
-          >
-            {cat.label} ({cat.count})
-          </button>
-        ))}
-      </div>
-
-      {/* ── Preview Bandi (demo data) ── */}
-      <div className="space-y-3">
-        <div className="flex items-center justify-between">
-          <h2 className="text-base font-semibold text-white flex items-center gap-2">
-            <Globe className="h-4 w-4 text-[#D4A03C]" />
-            Anteprima Bandi
-          </h2>
-          <span className="text-xs text-[#4A6A8A] flex items-center gap-1">
-            <Clock className="h-3 w-3" />
-            I dati verranno aggiornati con il modulo RAG
-          </span>
-        </div>
-
-        {sampleBandi.map((bando) => (
-          <div
-            key={bando.title}
-            className="group relative overflow-hidden rounded-2xl border border-[#1B3A5C]/20 bg-[#0F1F33]/60 p-5 backdrop-blur-sm transition-all duration-300 hover:border-[#D4A03C]/20"
-          >
-            <div className="flex items-start justify-between gap-4">
-              <div className="flex-1">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className={`rounded-md px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${
-                    bando.categoria === "PNRR"
-                      ? "bg-blue-500/10 text-blue-400"
-                      : bando.categoria === "Europei"
-                      ? "bg-purple-500/10 text-purple-400"
-                      : "bg-emerald-500/10 text-emerald-400"
-                  }`}>
-                    {bando.categoria}
-                  </span>
-                  <span className="text-[10px] text-[#4A6A8A]">•</span>
-                  <span className="text-xs text-[#6B8AAD] flex items-center gap-1">
-                    <Building2 className="h-3 w-3" />
-                    {bando.ente}
-                  </span>
-                </div>
-
-                <h3 className="text-sm font-semibold text-white group-hover:text-[#E8C06A] transition-colors">
-                  {bando.title}
-                </h3>
-
-                <div className="mt-3 flex items-center gap-4 text-xs text-[#6B8AAD]">
-                  <span className="flex items-center gap-1">
-                    <Calendar className="h-3.5 w-3.5" />
-                    {bando.scadenza}
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <Euro className="h-3.5 w-3.5" />
-                    {bando.importo}
-                  </span>
-                </div>
-
-                <div className="mt-3 flex items-center gap-2 flex-wrap">
-                  {bando.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-md bg-[#1B3A5C]/20 px-2 py-0.5 text-[10px] text-[#8AACCC]"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Match score */}
-              <div className="flex flex-col items-center gap-1">
-                <div className="relative flex h-14 w-14 items-center justify-center rounded-xl bg-[#0A1628]/60 border border-[#1B3A5C]/20">
-                  <TrendingUp className="absolute -top-1 -right-1 h-3.5 w-3.5 text-[#D4A03C]" />
-                  <span className="text-lg font-bold text-[#D4A03C]">{bando.match}%</span>
-                </div>
-                <span className="text-[10px] text-[#4A6A8A]">Match</span>
-              </div>
-            </div>
-
-            <button className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl border border-[#1B3A5C]/20 py-2.5 text-xs font-medium text-[#6B8AAD] hover:border-[#D4A03C]/30 hover:text-[#D4A03C] hover:bg-[#D4A03C]/5 transition-all">
-              Dettagli Bando
-              <ArrowUpRight className="h-3.5 w-3.5" />
-            </button>
-          </div>
-        ))}
-      </div>
-
-      {/* ── AI Features Grid ── */}
+function PageShell({
+  title,
+  subtitle,
+  children,
+}: {
+  title: string;
+  subtitle: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="space-y-6">
       <div>
-        <h2 className="mb-4 text-base font-semibold text-white flex items-center gap-2">
-          <Sparkles className="h-4 w-4 text-[#D4A03C]" />
-          Funzionalità AI in Arrivo
-        </h2>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {features.map((feature) => (
-            <div
-              key={feature.title}
-              className="group rounded-2xl border border-[#1B3A5C]/15 bg-[#0F1F33]/40 p-5 transition-all duration-300 hover:border-[#1B3A5C]/30"
-            >
-              <div className="mb-3 flex items-center justify-between">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#1B3A5C]/20">
-                  <feature.icon className="h-5 w-5 text-[#D4A03C]" />
-                </div>
-                <span className="rounded-md bg-[#D4A03C]/10 px-2 py-0.5 text-[10px] font-semibold text-[#D4A03C]">
-                  {feature.status}
-                </span>
-              </div>
-              <h3 className="text-sm font-semibold text-white">{feature.title}</h3>
-              <p className="mt-1.5 text-xs text-[#6B8AAD] leading-relaxed">
-                {feature.description}
-              </p>
-            </div>
-          ))}
+        <h1 className="text-2xl font-semibold text-white">{title}</h1>
+        {subtitle && <p className="mt-1 text-sm text-[#6B8AAD]">{subtitle}</p>}
+      </div>
+      {children}
+    </div>
+  );
+}
+
+function EmptyState() {
+  return (
+    <div className="rounded-2xl border border-[#1B3A5C]/20 bg-[#0F1F33]/60 p-8 text-center">
+      <p className="text-sm text-[#6B8AAD]">
+        Nessun bando consolidato disponibile per questo cliente.
+      </p>
+      <p className="mt-2 text-xs text-[#4A6A8A]">
+        Verifica che ci siano bandi con embedding_combinato valorizzato (run
+        embed_pending_bandi) e che lo stato sia `aperto`.
+      </p>
+    </div>
+  );
+}
+
+function NoClientiState() {
+  return (
+    <div className="rounded-2xl border border-[#1B3A5C]/30 bg-[#0F1F33]/60 p-8 text-center">
+      <Inbox className="mx-auto h-10 w-10 text-[#4A6A8A]" />
+      <h2 className="mt-3 text-base font-semibold text-white">
+        Nessun cliente associato al tuo account
+      </h2>
+      <p className="mt-1 text-xs text-[#6B8AAD]">
+        Per accedere allo scouting bandi devi essere assegnato come consulente o
+        operatore di almeno un cliente CIVIKA.
+      </p>
+      <p className="mt-3 text-[11px] text-[#4A6A8A]">
+        Contatta il super-admin per ricevere un mapping in `user_clienti` (vedi
+        ADR-025).
+      </p>
+    </div>
+  );
+}
+
+function ErrorState({
+  status,
+  message,
+  hint,
+}: {
+  status: number | null;
+  message: string;
+  hint: string;
+}) {
+  return (
+    <div className="rounded-2xl border border-amber-500/30 bg-amber-500/5 p-6">
+      <div className="flex items-start gap-3">
+        <AlertCircle className="h-5 w-5 flex-shrink-0 text-amber-400" />
+        <div className="flex-1">
+          <h3 className="text-sm font-semibold text-amber-400">
+            Match non disponibile{status ? ` (HTTP ${status})` : ""}
+          </h3>
+          <p className="mt-1 text-xs text-[#A0BED8]">{message}</p>
+          <p className="mt-3 text-xs text-[#6B8AAD]">{hint}</p>
         </div>
       </div>
     </div>

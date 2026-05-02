@@ -8,7 +8,6 @@ import {
   timestamp,
   jsonb,
   inet,
-  decimal,
   unique,
   index,
   pgEnum,
@@ -328,124 +327,13 @@ export const media = pgTable("media", {
 });
 
 // ============================================================
-// ORGANIZZAZIONI (per matching bandi futuro)
+// BANDI / ORGANIZZAZIONI / MATCH
 // ============================================================
-
-export const organizations = pgTable("organizations", {
-  id: uuid("id").defaultRandom().primaryKey(),
-  name: varchar("name", { length: 255 }).notNull(),
-  taxCode: varchar("tax_code", { length: 20 }),
-  sector: varchar("sector", { length: 100 }),
-  sizeCategory: varchar("size_category", { length: 50 }),
-  region: varchar("region", { length: 100 }),
-  province: varchar("province", { length: 100 }),
-  municipality: varchar("municipality", { length: 255 }),
-  description: text("description"),
-  website: varchar("website", { length: 500 }),
-  profileData: jsonb("profile_data").default({}),
-  deletedAt: timestamp("deleted_at", { withTimezone: true }),
-  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
-  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow(),
-});
-
-export const userOrganizations = pgTable(
-  "user_organizations",
-  {
-    userId: uuid("user_id")
-      .notNull()
-      .references(() => users.id, { onDelete: "cascade" }),
-    organizationId: uuid("organization_id")
-      .notNull()
-      .references(() => organizations.id, { onDelete: "cascade" }),
-    roleInOrg: varchar("role_in_org", { length: 50 }).default("member"),
-  },
-  (table) => [
-    unique("user_organizations_pk").on(table.userId, table.organizationId),
-  ]
-);
-
-// ============================================================
-// PREDISPOSIZIONE BANDI (MODULO RAG FUTURO)
-// ============================================================
-
-export const bandi = pgTable(
-  "bandi",
-  {
-    id: uuid("id").defaultRandom().primaryKey(),
-    externalId: varchar("external_id", { length: 255 }),
-    title: varchar("title", { length: 500 }).notNull(),
-    issuingEntity: varchar("issuing_entity", { length: 255 }).notNull(),
-    entityType: varchar("entity_type", { length: 50 }),
-    description: text("description"),
-    fullText: text("full_text"),
-    amountMin: decimal("amount_min", { precision: 15, scale: 2 }),
-    amountMax: decimal("amount_max", { precision: 15, scale: 2 }),
-    currency: varchar("currency", { length: 3 }).default("EUR"),
-    deadline: timestamp("deadline", { withTimezone: true }),
-    publicationDate: timestamp("publication_date", { withTimezone: true }),
-    category: varchar("category", { length: 100 }),
-    subcategories: text("subcategories").array(),
-    targetSectors: text("target_sectors").array(),
-    targetSizes: text("target_sizes").array(),
-    regions: text("regions").array(),
-    url: varchar("url", { length: 500 }),
-    documents: jsonb("documents").default([]),
-    status: varchar("status", { length: 20 }).default("active"),
-    // embedding: vector('embedding', { dimensions: 1536 }), // Abilitare quando si installa pgvector
-    metadata: jsonb("metadata").default({}),
-    ingestedAt: timestamp("ingested_at", { withTimezone: true }).defaultNow(),
-    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
-    updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow(),
-  },
-  (table) => [
-    index("idx_bandi_status_deadline").on(table.status, table.deadline),
-    index("idx_bandi_category").on(table.category),
-    index("idx_bandi_entity").on(table.issuingEntity),
-  ]
-);
-
-export const bandoMatches = pgTable(
-  "bando_matches",
-  {
-    id: uuid("id").defaultRandom().primaryKey(),
-    bandoId: uuid("bando_id")
-      .notNull()
-      .references(() => bandi.id, { onDelete: "cascade" }),
-    organizationId: uuid("organization_id")
-      .notNull()
-      .references(() => organizations.id, { onDelete: "cascade" }),
-    score: decimal("score", { precision: 5, scale: 4 }).notNull(),
-    reasoning: text("reasoning"),
-    status: varchar("status", { length: 20 }).default("new"),
-    notifiedAt: timestamp("notified_at", { withTimezone: true }),
-    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
-    updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow(),
-  },
-  (table) => [
-    unique("bando_matches_unique").on(table.bandoId, table.organizationId),
-    index("idx_bando_matches_org").on(table.organizationId),
-    index("idx_bando_matches_bando").on(table.bandoId),
-  ]
-);
-
-export const savedBandi = pgTable(
-  "saved_bandi",
-  {
-    userId: uuid("user_id")
-      .notNull()
-      .references(() => users.id, { onDelete: "cascade" }),
-    bandoId: uuid("bando_id")
-      .notNull()
-      .references(() => bandi.id, { onDelete: "cascade" }),
-    notes: text("notes"),
-    savedAt: timestamp("saved_at", { withTimezone: true }).defaultNow(),
-  },
-  (table) => [unique("saved_bandi_pk").on(table.userId, table.bandoId)]
-);
-
-// ============================================================
-// GDPR
-// ============================================================
+// Le tabelle di dominio "scout" (clienti, bandi_consolidati, match_proposti,
+// user_clienti, ...) vivono nello schema SQLAlchemy gestito da Alembic
+// in `migrations/versions/`. Vedi ADR-024 (DB unificato) e ADR-025 (mapping
+// users ↔ clienti). Drizzle non le ridichiara: l'accesso passa via FastAPI
+// civika-scout (POST /match, GET /clienti/me, ...).
 
 export const gdprConsents = pgTable(
   "gdpr_consents",
