@@ -93,6 +93,7 @@ export default async function CatalogoPage({
     stato?: BandoStato;
     livello?: FonteLivello;
     page?: string;
+    vista?: string;
   }>;
 }) {
   if (!(await isSuperAdmin())) {
@@ -101,6 +102,7 @@ export default async function CatalogoPage({
 
   const sp = await searchParams;
   const page = Math.max(1, Number(sp.page) || 1);
+  const vista = resolveVista({ stato: sp.stato, vista: sp.vista });
   const result = await loadCatalogo({
     q: sp.q,
     stato: sp.stato,
@@ -118,6 +120,8 @@ export default async function CatalogoPage({
         </p>
       </header>
 
+      <ViewTabs current={vista} q={sp.q} livello={sp.livello} />
+
       <FiltersBar
         q={sp.q ?? ""}
         stato={sp.stato}
@@ -132,12 +136,81 @@ export default async function CatalogoPage({
           q={sp.q}
           stato={sp.stato}
           livello={sp.livello}
+          vista={vista}
         />
       ) : (
         <ErrorBanner status={result.status} message={result.message} />
       )}
     </div>
   );
+}
+
+type Vista = "tutti" | "attivi" | "in_scadenza" | "scaduti";
+
+const VISTE: { id: Vista; label: string; stato?: BandoStato }[] = [
+  { id: "tutti", label: "Tutti" },
+  { id: "attivi", label: "Attivi", stato: "aperto" },
+  { id: "in_scadenza", label: "In scadenza" },
+  { id: "scaduti", label: "Scaduti", stato: "chiuso" },
+];
+
+function ViewTabs({
+  current,
+  q,
+  livello,
+}: {
+  current: Vista;
+  q?: string;
+  livello?: FonteLivello;
+}) {
+  function buildHref(v: (typeof VISTE)[number]): string {
+    const qs = new URLSearchParams();
+    if (q) qs.set("q", q);
+    if (livello) qs.set("livello", livello);
+    if (v.stato) qs.set("stato", v.stato);
+    if (v.id === "in_scadenza") {
+      qs.set("vista", "in_scadenza");
+      qs.set("stato", "aperto");
+    }
+    return qs.toString() ? `/dashboard/catalogo?${qs.toString()}` : "/dashboard/catalogo";
+  }
+  return (
+    <nav className="flex flex-wrap gap-1 rounded-2xl border border-[#1B3A5C]/30 bg-[#0F1F33] p-1.5">
+      {VISTE.map((v) => {
+        const active = current === v.id;
+        return (
+          <Link
+            key={v.id}
+            href={buildHref(v)}
+            className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
+              active
+                ? "bg-[#D4A03C]/15 text-[#E8C06A]"
+                : "text-[#6B8AAD] hover:bg-white/[0.04] hover:text-[#A0BED8]"
+            }`}
+          >
+            {v.label}
+          </Link>
+        );
+      })}
+    </nav>
+  );
+}
+
+function resolveVista(params: { stato?: BandoStato; vista?: string }): Vista {
+  if (params.vista === "in_scadenza") return "in_scadenza";
+  if (!params.stato) return "tutti";
+  if (params.stato === "aperto") return "attivi";
+  if (params.stato === "chiuso") return "scaduti";
+  return "tutti";
+}
+
+function daysUntil(scadenza: string | null | undefined): number | null {
+  if (!scadenza) return null;
+  const d = new Date(scadenza);
+  if (Number.isNaN(d.getTime())) return null;
+  const now = new Date();
+  const diffMs = d.getTime() - now.getTime();
+  return Math.ceil(diffMs / (1000 * 60 * 60 * 24));
 }
 
 function FiltersBar({
@@ -202,6 +275,7 @@ function CatalogoContent({
   q,
   stato,
   livello,
+  vista,
 }: {
   page: BandiListPage;
   clienti: ClienteRead[];
@@ -209,11 +283,28 @@ function CatalogoContent({
   q?: string;
   stato?: BandoStato;
   livello?: FonteLivello;
+  vista: Vista;
 }) {
-  if (page.items.length === 0) {
+  let items = page.items;
+  let totalShown = page.total;
+
+  if (vista === "in_scadenza") {
+    // Pagina caricata = aperti (server-side). Filtriamo a ≤ 30 giorni e
+    // ordiniamo per scadenza ASC (la più urgente in cima).
+    const filtered = items
+      .map((it) => ({ it, gg: daysUntil(it.bando.scadenza) }))
+      .filter((x) => x.gg !== null && x.gg >= 0 && x.gg <= 30)
+      .sort((a, b) => (a.gg ?? 0) - (b.gg ?? 0));
+    items = filtered.map((x) => x.it);
+    totalShown = filtered.length;
+  }
+
+  if (items.length === 0) {
     return (
       <div className="rounded-2xl border border-[#1B3A5C]/30 bg-[#0F1F33] p-8 text-center text-sm text-[#6B8AAD]">
-        Nessun bando trovato con i filtri selezionati.
+        {vista === "in_scadenza"
+          ? "Nessun bando in scadenza nei prossimi 30 giorni in questa pagina."
+          : "Nessun bando trovato con i filtri selezionati."}
       </div>
     );
   }
@@ -224,21 +315,25 @@ function CatalogoContent({
     <>
       <div className="flex items-center justify-between text-xs text-[#6B8AAD]">
         <span>
-          {page.total} bandi totali · pagina {page.page} di {totalPages}
+          {vista === "in_scadenza"
+            ? `${totalShown} in scadenza in questa pagina (di ${page.total} aperti totali)`
+            : `${page.total} bandi totali · pagina ${page.page} di ${totalPages}`}
         </span>
       </div>
       <ul className="space-y-2">
-        {page.items.map((item) => (
+        {items.map((item) => (
           <BandoRow key={item.bando.id} item={item} clienti={clienti} />
         ))}
       </ul>
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        q={q}
-        stato={stato}
-        livello={livello}
-      />
+      {vista !== "in_scadenza" && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          q={q}
+          stato={stato}
+          livello={livello}
+        />
+      )}
     </>
   );
 }
@@ -251,6 +346,9 @@ function BandoRow({
   clienti: ClienteRead[];
 }) {
   const { bando } = item;
+  const gg = daysUntil(bando.scadenza);
+  const isUrgent = bando.stato === "aperto" && gg !== null && gg >= 0 && gg <= 30;
+  const isExpired = bando.stato === "aperto" && gg !== null && gg < 0;
   return (
     <li className="rounded-2xl border border-[#1B3A5C]/30 bg-gradient-to-br from-[#0F1F33] to-[#0A1628] p-4">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
@@ -270,6 +368,16 @@ function BandoRow({
             >
               {bando.stato}
             </span>
+            {isUrgent && (
+              <span className="rounded-md bg-amber-500/15 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-amber-300">
+                {gg === 0 ? "scade oggi" : `scade tra ${gg}gg`}
+              </span>
+            )}
+            {isExpired && (
+              <span className="rounded-md bg-red-500/15 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-red-300">
+                scaduto
+              </span>
+            )}
             {item.n_clienti_match > 0 && (
               <span className="flex items-center gap-1 rounded-md bg-[#D4A03C]/15 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-[#E8C06A]">
                 <Users className="h-2.5 w-2.5" />
