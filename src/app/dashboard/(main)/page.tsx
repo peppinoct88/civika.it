@@ -63,8 +63,11 @@ async function loadInbox(): Promise<InboxResult | InboxError> {
 }
 
 export default async function DashboardHome() {
-  const active = await resolveActiveCliente();
-  const inboxState = active.ok ? await loadInbox() : null;
+  const [active, inboxResult] = await Promise.all([
+    resolveActiveCliente(),
+    loadInbox(),
+  ]);
+  const inboxState = active.ok ? inboxResult : null;
 
   const clienti = active.ok ? active.clienti : [];
   const activeId = active.ok ? active.active.id : null;

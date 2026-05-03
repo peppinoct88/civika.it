@@ -63,8 +63,10 @@ export default async function WorkspaceClientePage({
   params: Promise<{ clienteId: string }>;
 }) {
   const { clienteId } = await params;
-  const active = await resolveActiveCliente();
-  const result = await loadWorkspace(clienteId);
+  const [active, result] = await Promise.all([
+    resolveActiveCliente(),
+    loadWorkspace(clienteId),
+  ]);
 
   const clienti = active.ok ? active.clienti : [];
 
