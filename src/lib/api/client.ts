@@ -14,10 +14,12 @@
 import { cookies } from "next/headers";
 import type {
   ApiError,
+  BandiListPage,
   BandoClientePipelineRead,
   BandoClientePipelineUpsert,
   BandoConsolidatoRead,
   BandoDetailRead,
+  BandoStato,
   ClienteRead,
   ClienteUpdateNeeds,
   CoverageAuditAlertRead,
@@ -26,6 +28,7 @@ import type {
   CoverageAuditSegnalazioneCreate,
   FeedbackMatchCreate,
   FeedbackMatchRead,
+  FonteLivello,
   InboxGiornalieraRead,
   MatchProposalRead,
   MatchRequest,
@@ -180,6 +183,23 @@ export async function getCockpitBandoDetail(
   bandoId: string,
 ): Promise<BandoDetailRead> {
   return request<BandoDetailRead>(`/cockpit/bando/${clienteId}/${bandoId}`);
+}
+
+export async function getBandiCatalogo(params?: {
+  q?: string;
+  stato?: BandoStato;
+  livello?: FonteLivello;
+  page?: number;
+  pageSize?: number;
+}): Promise<BandiListPage> {
+  const qs = new URLSearchParams();
+  if (params?.q) qs.set("q", params.q);
+  if (params?.stato) qs.set("stato", params.stato);
+  if (params?.livello) qs.set("livello", params.livello);
+  if (params?.page) qs.set("page", String(params.page));
+  if (params?.pageSize) qs.set("page_size", String(params.pageSize));
+  const suffix = qs.toString() ? `?${qs.toString()}` : "";
+  return request<BandiListPage>(`/bandi${suffix}`);
 }
 
 // ============================================================

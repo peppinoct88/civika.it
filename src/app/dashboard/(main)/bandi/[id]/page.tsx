@@ -21,6 +21,7 @@ import {
   ExternalLink,
   FileText,
   Gauge,
+  Paperclip,
   Sparkles,
   Target,
   Timer,
@@ -39,7 +40,9 @@ import {
 import { FeedbackButtons } from "@/app/dashboard/(main)/bandi/_feedback-buttons";
 import type {
   BandoDetailRead,
+  BandoEstrattoRichRead,
   BandoEventoRead,
+  DocumentoBandoRead,
 } from "@/lib/api/types";
 
 import { PipelineActions } from "./_pipeline-actions";
@@ -129,6 +132,8 @@ function DetailContent({
   const { bando, cliente, match_scores, motivazioni, match_id } = detail;
   const pipeline = detail.pipeline ?? null;
   const eventi = detail.eventi ?? [];
+  const documenti = detail.documenti ?? [];
+  const rich = detail.bando_estratto ?? null;
 
   return (
     <article className="space-y-6">
@@ -140,7 +145,15 @@ function DetailContent({
             <ScoreCard scores={match_scores} motivazioni={motivazioni ?? null} />
           )}
 
-          <MetadataCard bando={bando} />
+          {rich?.oggetto_descrizione && (
+            <DescrizioneCard testo={rich.oggetto_descrizione} />
+          )}
+
+          {documenti.length > 0 && <DocumentiCard documenti={documenti} />}
+
+          <MetadataCard bando={bando} rich={rich} />
+
+          {rich && <CriteriCard rich={rich} />}
 
           {eventi.length > 0 && <EventiTimeline eventi={eventi} />}
 
@@ -350,7 +363,13 @@ function MotivazioneRow({ label, text }: { label: string; text: string }) {
   );
 }
 
-function MetadataCard({ bando }: { bando: BandoDetailRead["bando"] }) {
+function MetadataCard({
+  bando,
+  rich,
+}: {
+  bando: BandoDetailRead["bando"];
+  rich: BandoEstrattoRichRead | null;
+}) {
   return (
     <section className="overflow-hidden rounded-2xl border border-[#1B3A5C]/30 bg-gradient-to-br from-[#0F1F33] to-[#0A1628] p-5">
       <h2 className="mb-3 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#A0BED8]">
@@ -364,10 +383,19 @@ function MetadataCard({ bando }: { bando: BandoDetailRead["bando"] }) {
           label="Importo totale"
           value={formatCentesimiEur(bando.importo_totale_centesimi)}
         />
-        <Field
-          label="Stato"
-          value={bando.stato}
-        />
+        <Field label="Stato" value={bando.stato} />
+        {rich?.importo_max_beneficiario_centesimi != null && (
+          <Field
+            label="Importo max beneficiario"
+            value={formatCentesimiEur(rich.importo_max_beneficiario_centesimi)}
+          />
+        )}
+        {rich?.data_pubblicazione && (
+          <Field
+            label="Data pubblicazione"
+            value={formatScadenza(rich.data_pubblicazione)}
+          />
+        )}
         {bando.livello && (
           <Field label="Livello" value={livelloLabel(bando.livello)} />
         )}
@@ -377,9 +405,165 @@ function MetadataCard({ bando }: { bando: BandoDetailRead["bando"] }) {
             value={formatScadenza(bando.data_graduatoria_attesa_il)}
           />
         )}
+        {rich?.codice_cup && (
+          <Field label="Codice CUP" value={rich.codice_cup} />
+        )}
+        {rich?.codice_cig && (
+          <Field label="Codice CIG" value={rich.codice_cig} />
+        )}
       </dl>
     </section>
   );
+}
+
+function DescrizioneCard({ testo }: { testo: string }) {
+  return (
+    <section className="overflow-hidden rounded-2xl border border-[#1B3A5C]/30 bg-gradient-to-br from-[#0F1F33] to-[#0A1628] p-5">
+      <h2 className="mb-3 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#A0BED8]">
+        <FileText className="h-3 w-3" />
+        Oggetto del bando
+      </h2>
+      <p className="whitespace-pre-line text-xs leading-relaxed text-[#E2EAF5]">
+        {testo}
+      </p>
+    </section>
+  );
+}
+
+function CriteriCard({ rich }: { rich: BandoEstrattoRichRead }) {
+  const cof = rich.cofinanziamento_pct;
+  const spese = rich.spese_ammissibili;
+  const speseList = parseSpeseAmmissibili(spese);
+  const hasContent =
+    cof != null ||
+    speseList.length > 0 ||
+    !!rich.modalita_presentazione ||
+    !!rich.note;
+  if (!hasContent) return null;
+  return (
+    <section className="overflow-hidden rounded-2xl border border-[#1B3A5C]/30 bg-gradient-to-br from-[#0F1F33] to-[#0A1628] p-5">
+      <h2 className="mb-3 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#A0BED8]">
+        <Gauge className="h-3 w-3" />
+        Criteri e modalità
+      </h2>
+      <div className="space-y-4 text-xs leading-relaxed text-[#E2EAF5]">
+        {cof != null && (
+          <div>
+            <div className="mb-0.5 text-[10px] font-semibold uppercase tracking-wide text-[#D4A03C]/80">
+              Cofinanziamento
+            </div>
+            <div>{cof}%</div>
+          </div>
+        )}
+        {speseList.length > 0 && (
+          <div>
+            <div className="mb-1 text-[10px] font-semibold uppercase tracking-wide text-[#D4A03C]/80">
+              Spese ammissibili
+            </div>
+            <ul className="list-disc space-y-1 pl-4 text-[#A0BED8]">
+              {speseList.map((s, i) => (
+                <li key={i}>{s}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {rich.modalita_presentazione && (
+          <div>
+            <div className="mb-0.5 text-[10px] font-semibold uppercase tracking-wide text-[#D4A03C]/80">
+              Modalità di presentazione
+            </div>
+            <p className="whitespace-pre-line text-[#A0BED8]">
+              {rich.modalita_presentazione}
+            </p>
+          </div>
+        )}
+        {rich.note && (
+          <div>
+            <div className="mb-0.5 text-[10px] font-semibold uppercase tracking-wide text-[#D4A03C]/80">
+              Note
+            </div>
+            <p className="whitespace-pre-line text-[#A0BED8]">{rich.note}</p>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
+function parseSpeseAmmissibili(raw: unknown): string[] {
+  if (!raw) return [];
+  if (Array.isArray(raw)) {
+    return raw.flatMap((v) =>
+      typeof v === "string"
+        ? [v]
+        : v && typeof v === "object" && "descrizione" in v
+          ? [String((v as { descrizione: unknown }).descrizione)]
+          : [],
+    );
+  }
+  if (typeof raw === "object") {
+    const obj = raw as Record<string, unknown>;
+    if (Array.isArray(obj.voci)) return parseSpeseAmmissibili(obj.voci);
+    if (Array.isArray(obj.items)) return parseSpeseAmmissibili(obj.items);
+    return Object.entries(obj).map(([k, v]) =>
+      typeof v === "string" ? `${k}: ${v}` : k,
+    );
+  }
+  return [];
+}
+
+function DocumentiCard({ documenti }: { documenti: DocumentoBandoRead[] }) {
+  return (
+    <section className="overflow-hidden rounded-2xl border border-[#1B3A5C]/30 bg-gradient-to-br from-[#0F1F33] to-[#0A1628] p-5">
+      <h2 className="mb-3 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#A0BED8]">
+        <Paperclip className="h-3 w-3" />
+        Documenti ({documenti.length})
+      </h2>
+      <ul className="space-y-2">
+        {documenti.map((doc, i) => (
+          <li key={`${doc.kind}-${i}`}>
+            <a
+              href={doc.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-start gap-3 rounded-xl border border-[#1B3A5C]/30 bg-[#0A1628]/60 p-3 text-xs transition-colors hover:border-[#D4A03C]/40"
+            >
+              <FileText className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#D4A03C]" />
+              <div className="min-w-0 flex-1">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span
+                    className={`rounded-md px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide ${
+                      doc.kind === "sorgente"
+                        ? "bg-emerald-500/15 text-emerald-300"
+                        : "bg-sky-500/15 text-sky-300"
+                    }`}
+                  >
+                    {doc.kind}
+                  </span>
+                  <span className="truncate font-medium text-white">
+                    {doc.titolo}
+                  </span>
+                </div>
+                <div className="mt-1 flex flex-wrap gap-x-3 gap-y-0.5 text-[10px] text-[#6B8AAD]">
+                  {doc.mime_type && <span>{doc.mime_type}</span>}
+                  {doc.size_bytes != null && (
+                    <span>{formatBytes(doc.size_bytes)}</span>
+                  )}
+                </div>
+              </div>
+              <ExternalLink className="mt-1 h-3 w-3 flex-shrink-0 text-[#6B8AAD]" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+function formatBytes(n: number): string {
+  if (n < 1024) return `${n} B`;
+  if (n < 1024 * 1024) return `${(n / 1024).toFixed(0)} kB`;
+  return `${(n / (1024 * 1024)).toFixed(1)} MB`;
 }
 
 function Field({ label, value }: { label: string; value: string | null }) {

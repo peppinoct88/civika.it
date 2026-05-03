@@ -140,6 +140,14 @@ export async function POST(request: NextRequest) {
       },
     });
 
+    response.cookies.set("access_token", accessToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      path: "/",
+      maxAge: 15 * 60, // 15 minuti, allineato a ACCESS_TOKEN_EXPIRY
+    });
+
     response.cookies.set("refresh_token", refreshTokenValue, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",

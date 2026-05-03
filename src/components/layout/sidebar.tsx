@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import {
   Inbox,
   LayoutDashboard,
+  Library,
   Settings,
   ScrollText,
   Search,
@@ -34,7 +35,7 @@ const navigation: NavItem[] = [
   { label: "Impostazioni", href: "/dashboard/settings", icon: Settings },
 ];
 
-export function Sidebar() {
+export function Sidebar({ showCatalogo = false }: { showCatalogo?: boolean }) {
   const [collapsed, setCollapsed] = useState(false);
   const pathname = usePathname();
   const { mobileOpen, setMobileOpen } = useSidebar();
@@ -155,6 +156,30 @@ export function Sidebar() {
             </>
           )}
         </Link>
+        {showCatalogo && (
+          <Link
+            href="/dashboard/catalogo"
+            onClick={closeOnMobile}
+            className={`group relative flex items-center gap-3 rounded-xl px-3 py-2.5 text-[13px] font-medium transition-all duration-200 ${
+              collapsed ? "justify-center" : ""
+            } ${
+              pathname.startsWith("/dashboard/catalogo")
+                ? "bg-[#D4A03C]/10 text-[#E8C06A]"
+                : "text-[#6B8AAD] hover:bg-white/[0.04] hover:text-[#A0BED8]"
+            }`}
+            title={collapsed ? "Catalogo bandi" : undefined}
+          >
+            {pathname.startsWith("/dashboard/catalogo") && (
+              <div className="absolute left-0 top-1/2 h-5 w-[3px] -translate-y-1/2 rounded-r-full bg-[#D4A03C]" />
+            )}
+            <Library
+              className={`h-[18px] w-[18px] shrink-0 transition-colors ${
+                pathname.startsWith("/dashboard/catalogo") ? "text-[#D4A03C]" : "text-[#4A6A8A] group-hover:text-[#8AACCC]"
+              }`}
+            />
+            {!collapsed && <span>Catalogo bandi</span>}
+          </Link>
+        )}
         <Link
           href="/dashboard/profile-edit"
           onClick={closeOnMobile}

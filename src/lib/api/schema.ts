@@ -24,6 +24,29 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/bandi": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Catalogo globale bandi consolidati (super_admin)
+         * @description Lista paginata di bandi consolidati con counter clienti-match.
+         *
+         *     Risposta: `BandiListPage` (items + total + page + page_size).
+         *     Ordering: `created_at DESC`. Idempotente.
+         */
+        get: operations["list_bandi_bandi_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/clienti/me": {
         parameters: {
             query?: never;
@@ -281,6 +304,37 @@ export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
         /**
+         * BandiListItem
+         * @description Riga del catalogo globale `GET /bandi` (super_admin).
+         *
+         *     Vista compatta del bando consolidato senza arricchimenti per-cliente
+         *     (niente score, niente pipeline). Il super_admin la usa per esplorare
+         *     il corpus, filtrare e poi aprire il dettaglio passando un cliente.
+         */
+        BandiListItem: {
+            bando: components["schemas"]["BandoConsolidatoRead"];
+            /**
+             * N Clienti Match
+             * @description Numero di clienti CIVIKA con almeno un `match_proposti` su questo bando. Indica popolarità/attivazione del bando nel parco clienti.
+             * @default 0
+             */
+            n_clienti_match: number;
+        };
+        /**
+         * BandiListPage
+         * @description Risposta paginata `GET /bandi`.
+         */
+        BandiListPage: {
+            /** Items */
+            items: components["schemas"]["BandiListItem"][];
+            /** Total */
+            total: number;
+            /** Page */
+            page: number;
+            /** Page Size */
+            page_size: number;
+        };
+        /**
          * BandoClientePipelineRead
          * @description Riga `bando_cliente_pipeline` come letta dal DB.
          */
@@ -365,6 +419,8 @@ export interface components {
             beneficiari_tipo: {
                 [key: string]: unknown;
             } | null;
+            /** Categoria Beneficiari */
+            categoria_beneficiari?: components["schemas"]["CategoriaBeneficiari"][] | null;
             /** Settori Ateco */
             settori_ateco: {
                 [key: string]: unknown;
@@ -398,8 +454,10 @@ export interface components {
          *
          *     Aggrega tutto ciò che il cockpit operatore mostra in `/dashboard/bandi/[id]`:
          *     bando consolidato canonico, riga pipeline (se esiste), score+motivazioni
-         *     rerank, lifecycle events. È una vista read-only — le mutazioni passano
-         *     da `POST /cockpit/pipeline/{cliente_id}/{bando_id}`.
+         *     rerank, lifecycle events, documenti (PDF sorgente + allegati), campi
+         *     ricchi dell'estratto canonico (descrizione, cofinanziamento, criteri).
+         *     Vista read-only — le mutazioni passano da
+         *     `POST /cockpit/pipeline/{cliente_id}/{bando_id}`.
          */
         BandoDetailRead: {
             cliente: components["schemas"]["ClienteRead"];
@@ -417,6 +475,45 @@ export interface components {
              * @description Lifecycle events su questo bando, ordinati per `rilevato_at` discendente. Include proroghe, FAQ aggiunte, modulistica, graduatoria pubblicata.
              */
             eventi?: components["schemas"]["BandoEventoRead"][];
+            /**
+             * Documenti
+             * @description PDF sorgente canonico (presigned R2, 1h) + allegati esterni dichiarati nella pagina fonte. Vuota se nessun raw_document ingerito e nessun allegato in `link_allegati`.
+             */
+            documenti?: components["schemas"]["DocumentoBandoRead"][];
+            /** @description Campi ricchi dell'estratto canonico (descrizione, cofinanziamento, criteri, CUP/CIG). None se il consolidato non ha estratto canonico associato (non dovrebbe accadere, edge case storico). */
+            bando_estratto?: components["schemas"]["BandoEstrattoRichRead"] | null;
+        };
+        /**
+         * BandoEstrattoRichRead
+         * @description Campi "ricchi" dell'estratto canonico esposti in scheda dettaglio.
+         *
+         *     `BandoConsolidatoRead` mostra solo i campi normalizzati per il listing.
+         *     Per la pagina dettaglio servono anche descrizione lunga, criteri di
+         *     cofinanziamento, modalità di presentazione, note libere, codici CUP/CIG
+         *     — tutti residenti su `bandi_estratti`. Niente embedding o campi tecnici
+         *     di pipeline.
+         */
+        BandoEstrattoRichRead: {
+            /** Oggetto Descrizione */
+            oggetto_descrizione?: string | null;
+            /** Cofinanziamento Pct */
+            cofinanziamento_pct?: string | null;
+            /** Spese Ammissibili */
+            spese_ammissibili?: {
+                [key: string]: unknown;
+            } | null;
+            /** Modalita Presentazione */
+            modalita_presentazione?: string | null;
+            /** Note */
+            note?: string | null;
+            /** Codice Cup */
+            codice_cup?: string | null;
+            /** Codice Cig */
+            codice_cig?: string | null;
+            /** Importo Max Beneficiario Centesimi */
+            importo_max_beneficiario_centesimi?: number | null;
+            /** Data Pubblicazione */
+            data_pubblicazione?: string | null;
         };
         /** BandoEventoRead */
         BandoEventoRead: {
@@ -484,6 +581,22 @@ export interface components {
          * @enum {string}
          */
         BandoStato: "aperto" | "in_proroga" | "chiuso" | "ritirato" | "in_attesa_aggiudicazione" | "missed_opportunity" | "graduatoria_pubblicata" | "draft_low_confidence";
+        /**
+         * CategoriaBeneficiari
+         * @description Categorie normalizzate dei beneficiari ammissibili a un bando.
+         *
+         *     Popolato dal parser Haiku in fase di estrazione strutturata, oltre alla
+         *     lista libera `beneficiari_tipo.valori`. Permette il filtro hard SQL su
+         *     compatibilità cliente↔bando senza euristica su stringhe libere
+         *     (vedi `civika_matcher.eligibility`).
+         *
+         *     Un bando può avere più categorie (es. PNRR rigenerazione urbana ammette
+         *     `enti_locali` + `pmi` + `ets` insieme): il campo è ARRAY.
+         *
+         *     Allineato all'enum Postgres `categoria_beneficiari` (migration 0010).
+         * @enum {string}
+         */
+        CategoriaBeneficiari: "enti_locali" | "regioni" | "province" | "pa_centrale" | "gal" | "pmi" | "grandi_imprese" | "persone_fisiche" | "professionisti" | "ets" | "cooperative_sociali" | "ricerca" | "operatori_tlc" | "operatori_energia" | "agricoltori" | "consorzi" | "altro";
         /** ClienteRead */
         ClienteRead: {
             /**
@@ -669,6 +782,35 @@ export interface components {
             scadenza_dichiarata?: string | null;
             /** Descrizione */
             descrizione?: string | null;
+        };
+        /**
+         * DocumentoBandoRead
+         * @description Singolo documento associato al bando: sorgente canonica o allegato.
+         *
+         *     `kind` discrimina la natura del riferimento:
+         *       - `sorgente`: il `raw_document` canonico ingerito da R2 — il PDF/HTML
+         *         che il parser ha letto per estrarre i dati. `url` è un presigned URL
+         *         R2 a 1h. Sempre presente quando esiste un canonical estratto con
+         *         `r2_key`.
+         *       - `allegato`: un allegato dichiarato nella pagina sorgente (link
+         *         `link_allegati` JSONB, popolato dall'estrazione Haiku). `url` è
+         *         l'URL pubblico originale della fonte — non passa da R2.
+         *
+         *     `mime_type`, `size_bytes` sono valorizzati solo per `sorgente` (li
+         *     abbiamo da `raw_documents`); per gli allegati esterni li lasciamo None
+         *     finché non li scaricheremo lato pipeline.
+         */
+        DocumentoBandoRead: {
+            /** Kind */
+            kind: string;
+            /** Titolo */
+            titolo: string;
+            /** Url */
+            url: string;
+            /** Mime Type */
+            mime_type?: string | null;
+            /** Size Bytes */
+            size_bytes?: number | null;
         };
         /**
          * FeedbackMatchCreate
@@ -1018,6 +1160,43 @@ export interface operations {
                     "application/json": {
                         [key: string]: string;
                     };
+                };
+            };
+        };
+    };
+    list_bandi_bandi_get: {
+        parameters: {
+            query?: {
+                q?: string | null;
+                stato?: components["schemas"]["BandoStato"] | null;
+                livello?: components["schemas"]["FonteLivello"] | null;
+                page?: number;
+                page_size?: number;
+            };
+            header?: {
+                authorization?: string | null;
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BandiListPage"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
                 };
             };
         };

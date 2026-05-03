@@ -8,11 +8,9 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { Bell, LogOut, Settings, Sparkles, User } from "lucide-react";
 
 export function TopbarUserMenu() {
-  const router = useRouter();
   const [profileOpen, setProfileOpen] = useState(false);
   const profileRef = useRef<HTMLDivElement>(null);
 
@@ -26,11 +24,15 @@ export function TopbarUserMenu() {
     return () => document.removeEventListener("mousedown", handleClick);
   }, []);
 
-  function handleLogout() {
-    document.cookie = "access_token=; path=/; max-age=0";
-    document.cookie = "refresh_token=; path=/; max-age=0";
-    router.push("/dashboard/login");
-    router.refresh();
+  async function handleLogout() {
+    try {
+      await fetch("/api/auth/logout", { method: "POST" });
+    } catch {
+      // Anche se la chiamata fallisce, forziamo la navigation:
+      // i cookie potrebbero comunque essere stati cancellati e
+      // l'utente vuole comunque uscire.
+    }
+    window.location.assign("/dashboard/login");
   }
 
   return (

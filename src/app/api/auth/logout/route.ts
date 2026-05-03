@@ -39,8 +39,9 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Cancella cookie
+    // Cancella cookie (entrambi httpOnly server-side; il client non li può toccare)
     const response = NextResponse.json({ success: true }, { status: 200 });
+    response.cookies.delete("access_token");
     response.cookies.delete("refresh_token");
 
     return response;

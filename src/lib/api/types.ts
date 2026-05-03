@@ -149,6 +149,15 @@ export type InboxEventoRecente = Schemas["InboxEventoRecente"];
 export type InboxGiornalieraRead = Schemas["InboxGiornalieraRead"];
 export type BandoEventoRead = Schemas["BandoEventoRead"];
 export type BandoDetailRead = Schemas["BandoDetailRead"];
+export type DocumentoBandoRead = Schemas["DocumentoBandoRead"];
+export type BandoEstrattoRichRead = Schemas["BandoEstrattoRichRead"];
+
+// ============================================================
+// Catalogo globale (super_admin)
+// ============================================================
+
+export type BandiListItem = Schemas["BandiListItem"];
+export type BandiListPage = Schemas["BandiListPage"];
 
 // ============================================================
 // Errori HTTP FastAPI

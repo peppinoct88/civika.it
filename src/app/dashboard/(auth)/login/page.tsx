@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 /* ═══════════════════════════════════════════════
@@ -27,7 +26,6 @@ function FloatingParticle({ delay, x, size }: { delay: number; x: number; size: 
 }
 
 export default function DashboardLoginPage() {
-  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -58,9 +56,8 @@ export default function DashboardLoginPage() {
         return;
       }
 
-      document.cookie = `access_token=${data.data.accessToken}; path=/; max-age=900; samesite=strict; secure`;
-      router.push("/dashboard");
-      router.refresh();
+      window.location.assign("/dashboard");
+      return;
     } catch {
       setError("Errore di connessione. Riprova.");
     } finally {

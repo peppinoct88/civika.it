@@ -3,16 +3,18 @@ import { Toaster } from "sonner";
 import { Sidebar } from "@/components/layout/sidebar";
 import { SidebarProvider } from "@/components/layout/sidebar-context";
 import { Topbar } from "@/components/layout/topbar";
+import { isSuperAdmin } from "@/lib/auth/session";
 
 export default async function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const showCatalogo = await isSuperAdmin();
   return (
     <SidebarProvider>
       <div className="min-h-screen bg-[#0B1929]">
-        <Sidebar />
+        <Sidebar showCatalogo={showCatalogo} />
         <div className="transition-all duration-300 lg:pl-[260px]">
           <Topbar />
           <main className="p-4 sm:p-6">{children}</main>
